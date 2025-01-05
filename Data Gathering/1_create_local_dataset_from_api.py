@@ -36,12 +36,28 @@ def main():
             session.load()
             # https://docs.fastf1.dev/core.html#fastf1.core.Telemetry - Can merge weather data here as well!
             # Merge the telemetry data.
-            laps = session.laps.reset_index(drop=True)
+            combined_dataset = session.laps.reset_index(drop=True)
+            
+            for idx, lap in combined_dataset.iterrows():
+                # There are so many telemetry points - we are looking lap by lap so we just take the last one.
+                telemetry_data = lap.get_telemetry().add_driver_ahead()
+                combined_dataset = combined_dataset.reindex(columns=telemetry_data.columns)
+                combined_dataset.iloc[idx] = telemetry_data.iloc[-1]
+                combined_dataset.to_csv("test.csv")
+            
             weather_data = session.laps.get_weather_data().reset_index(drop=True)
-            joined = pd.concat([laps, weather_data.loc[:, ~(weather_data.columns == 'Time')]], axis=1)
-            joined.to_csv("test.csv")
-            # Position data, car data and telemetry data
-                       
+            combined_dataset = pd.concat([combined_dataset, weather_data.loc[:, ~(weather_data.columns == 'Time')]], axis=1)
+
+
+            # Only distance not built in is distance behind - but we can factor that in.
+            # Mandatory pit stop made - is not ready here either
+
+            combined_dataset.to_csv("test.csv")
+            break
+
+
+                
+
 
 if __name__ == "__main__":
     main()
