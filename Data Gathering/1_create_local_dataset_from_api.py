@@ -22,8 +22,6 @@ def main():
     # Ignored testing due to various factors - primarily to stop rogue data from sandbagging.
     # Helps us get details of all sessions inc. practice, sprint, qualifying and the race.
     event_schedule = f1.get_event_schedule(year, include_testing=False)
-    event_schedule.to_csv("test.csv")
-
     #This is fixed - the biggest amount of sessions per weekend is 5.
     SESSION_COLUMNS = ['Session1', 'Session2', 'Session3', 'Session4', 'Session5']
     
@@ -32,12 +30,18 @@ def main():
         # Load dataframes for all 5 sessions.
         for session_column in SESSION_COLUMNS:
             # Example of where we don't stick to this format: https://www.formula1.com/en/results/2020/races/1057/emilia-romagna/practice/0
-            if row[session_column] is '':
+            if row[session_column] == '':
                 continue
             session = f1.get_session(year, int(row['RoundNumber']), row[session_column])
             session.load()
             # https://docs.fastf1.dev/core.html#fastf1.core.Telemetry - Can merge weather data here as well!
-            # Merge the telemetry data.            
+            # Merge the telemetry data.
+            laps = session.laps.reset_index(drop=True)
+            weather_data = session.laps.get_weather_data().reset_index(drop=True)
+            joined = pd.concat([laps, weather_data.loc[:, ~(weather_data.columns == 'Time')]], axis=1)
+            joined.to_csv("test.csv")
+            # Position data, car data and telemetry data
+                       
 
 if __name__ == "__main__":
     main()
