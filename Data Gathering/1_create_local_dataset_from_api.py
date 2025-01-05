@@ -23,7 +23,8 @@ def main():
     # Helps us get details of all sessions inc. practice, sprint, qualifying and the race.
     event_schedule = f1.get_event_schedule(year, include_testing=False)
     #This is fixed - the biggest amount of sessions per weekend is 5.
-    SESSION_COLUMNS = ['Session1', 'Session2', 'Session3', 'Session4', 'Session5']
+    SESSION_COLUMNS = ['Session5']
+    master_data = None
     
     # For each events, get all the lap data here.
     for _, row in event_schedule.iterrows():
@@ -47,33 +48,57 @@ def main():
 
             combined_dataset[telemetry_data_columns] = pd.NA
 
-            combined_dataset['MandatoryPitStop'] = True
-            # Mandatory pit stop made - is not ready here either.
-            if session == "Race":
-                for driver in combined_dataset["Driver"].unique():
-                    driversRace = combined_dataset[combined_dataset["Driver"] == driver].sort_values("LapNumber")
-                    for idx, lap in driversRace:
-                        if (lap["Compound"] == "WET" or lap["Compound"] == "INTERMEDIATE") or \
-                           (lap["Compound"] != driversRace.iloc[0]["Compound"]):
-                            break
-                        else:
-                            lap.iloc[idx, "Compound"] = False
-                combined_dataset.to_csv("test.csv")
-                exit()
-
             for idx, lap in combined_dataset.iterrows():
                 # There are so many telemetry points - we are looking lap by lap so we just take the last one.
-                telemetry_data = lap.get_telemetry().add_driver_ahead()
+                print(lap)
+                telemetry_data = lap.get_telemetry()
                 telemetry_data = telemetry_data[telemetry_data_columns]
                 combined_dataset.loc[idx, telemetry_data_columns] = telemetry_data.iloc[-1]
-                break
 
             weather_data = session.laps.get_weather_data().reset_index(drop=True)
             combined_dataset = pd.concat([combined_dataset, weather_data.loc[:, ~(weather_data.columns == 'Time')]], axis=1)
 
+            combined_dataset['MandatoryPitStop'] = True
+            # Mandatory pit stop made - is not ready here either.
+            if row[session_column] == "Race":
+                for driver in combined_dataset["Driver"].unique():
+                    driversRace = combined_dataset[combined_dataset["Driver"] == driver].sort_values("LapNumber")
+                    
+                    # Iterate through each lap for the current driver
+                    for idx, lap in driversRace.iterrows():
+                        # Check if the lap's compound is WET or INTERMEDIATE
+                        # OR if the compound is different from the first lap's compound
+                        if lap["Compound"] == "WET" or lap["Compound"] == "INTERMEDIATE" or \
+                        lap["Compound"] != driversRace.iloc[0]["Compound"]:
+                            break  # Break if the condition is met
+                        else:
+                            # Update the MandatoryPitStop for the current lap if conditions are met
+                            combined_dataset.loc[
+                                (combined_dataset["Driver"] == driver) & 
+                                (combined_dataset["LapNumber"] == lap["LapNumber"]), 
+                                "MandatoryPitStop"
+                            ] = False
+
+                    """
+                    results = session.results
+                    for col in results.columns:
+                        if pd.api.types.is_timedelta64_dtype(combined_dataset[col]):
+                            combined_dataset.loc[combined_dataset["Driver"] == driver, col] = results[results['Abbreviation'] == driver][col].fillna(pd.Timedelta(0))
+                        else:
+                            combined_dataset.loc[combined_dataset["Driver"] == driver, col] = results[results['Abbreviation'] == driver][col]
+                    """
+
+                    combined_dataset.to_csv("test.csv")
+
             # Only distance not built in is distance behind - but we can factor that in.     
-                
-            # Did they complete full race distance.
+            if row[session_column] == "Race" or row[session_column] == "Sprint":
+                for idx, lap in combined_dataset.iterrows():
+                    driver_ahead, distance_to_driver_ahead = lap["DriverAhead"], lap["DistanceToDriverAhead"]
+                    combined_dataset.loc[
+                            (combined_dataset["DriverNumber"] == driver_ahead) & 
+                            (combined_dataset["LapNumber"] == lap["LapNumber"]), 
+                            ["DriverBehind", "DistanceToDriverBehind"]
+                        ] = [driver_ahead, distance_to_driver_ahead]
 
             # Fields to check what race and session it is.
             combined_dataset['Country'] = row['Country']
@@ -81,10 +106,12 @@ def main():
             combined_dataset['OfficialEventName'] = row['OfficialEventName']
             combined_dataset['EventDate'] = row['EventDate']
             combined_dataset['EventName'] = row['EventName']
-            combined_dataset['Session'] = session_column
+            combined_dataset['Session'] = row[session_column]
             combined_dataset['Year'] = year
 
             combined_dataset.to_csv("test.csv")
+
+            exit()
    
 if __name__ == "__main__":
     main()
