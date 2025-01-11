@@ -1,7 +1,6 @@
 import fastf1 as f1
 f1.set_log_level('INFO')
 import pandas as pd
-from fastf1.core import DataNotLoadedError
 
 # Year by year to prevent rate limit issue.
 import argparse
@@ -61,7 +60,7 @@ def main():
                 for idx, lap in combined_dataset.iterrows():
                     try:
                         # There are so many telemetry points - we are looking lap by lap so we just take the last one.
-                        telemetry_data = lap.get_telemetry()#.add_driver_ahead()
+                        telemetry_data = lap.get_telemetry().add_driver_ahead()
                         telemetry_data = telemetry_data[TELEMETRY_DATA_COLUMNS]
                         combined_dataset.loc[idx, TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1]
                     except:
@@ -74,10 +73,10 @@ def main():
                 # Mandatory pit stop made - is not ready here either.
                 for driver in combined_dataset["Driver"].unique():
                         driversRace = combined_dataset[combined_dataset["Driver"] == driver].sort_values("LapNumber")
-                        
-                        if row[session_column] == "Race":
-                            # Iterate through each lap for the current driver
-                            for idx, lap in driversRace.iterrows():
+
+                        # Iterate through each lap for the current driver
+                        for idx, lap in driversRace.iterrows():
+                            if row[session_column] == "Race":
                                 # Check if the lap's compound is WET or INTERMEDIATE
                                 # OR if the compound is different from the first lap's compound
                                 if lap["Compound"] == "WET" or lap["Compound"] == "INTERMEDIATE" or \
@@ -91,8 +90,8 @@ def main():
                                         "MandatoryPitStop"
                                     ] = False
 
-                        results = session.results
-                        combined_dataset.loc[combined_dataset["Driver"] == driver, results.columns] = results[results['Abbreviation'] == driver].iloc[0].values
+                            results = session.results
+                            combined_dataset.loc[combined_dataset["Driver"] == driver, results.columns] = results[results['Abbreviation'] == driver].iloc[0].values
 
                 # Only distance not built in is distance behind - but we can factor that in.     
                 if row[session_column] == "Race" or row[session_column] == "Sprint":
