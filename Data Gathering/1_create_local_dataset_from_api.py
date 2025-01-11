@@ -11,29 +11,34 @@ def main():
     parser = argparse.ArgumentParser(description="Process a given year.")
 
     # Add a single positional argument for the year
-    parser.add_argument("year", type=int, help="Year to be processed")
+    parser.add_argument("start_year", type=int, help="Start year to be processed")
+    parser.add_argument("end_year", type=int, help="End year to be processed")
 
     # Parse the arguments
     args = parser.parse_args()
-    year = args.year
+    start_year = args.start_year
+    end_year = args.end_year
 
+    years_to_process = [year for year in range(start_year, end_year + 1)]
     # Example output using the provided year
-    print(f"The year you entered is: {args.year}")
-    
-    # Ignored testing due to various factors - primarily to stop rogue data from sandbagging.
-    # Helps us get details of all sessions inc. practice, sprint, qualifying and the race.
-    event_schedule = f1.get_event_schedule(year, include_testing=False)
+    print(f"The years you entered is: {years_to_process}")
+
+    event_dataframes = []
     #This is fixed - the biggest amount of sessions per weekend is 5.
     SESSION_COLUMNS = ['Session1', 'Session2', 'Session3', 'Session4', 'Session5']
-    event_dataframes = []
-    
-    # For each events, get all the lap data here.
-    for _, row in event_schedule.iterrows():
-        # Load dataframes for all 5 sessions.
-        for session_column in SESSION_COLUMNS:
-            try:
+
+    for year in years_to_process:
+        # Ignored testing due to various factors - primarily to stop rogue data from sandbagging.
+        # Helps us get details of all sessions inc. practice, sprint, qualifying and the race.
+        event_schedule = f1.get_event_schedule(year, include_testing=False)
+        
+        # For each events, get all the lap data here.
+        for _, row in event_schedule.iterrows():
+            # Load dataframes for all 5 sessions.
+            for session_column in SESSION_COLUMNS:
                 # Example of where we don't stick to this format: https://www.formula1.com/en/results/2020/races/1057/emilia-romagna/practice/0
-                if row[session_column] == '':
+                # https://github.com/theOehrly/Fast-F1/issues/672
+                if row[session_column] == '': 
                     continue
 
                 session = f1.get_session(year, int(row['RoundNumber']), row[session_column])
@@ -41,22 +46,24 @@ def main():
                 # https://docs.fastf1.dev/core.html#fastf1.core.Telemetry - Can merge weather data here as well!
                 # Merge the telemetry data.
                 combined_dataset = session.laps.reset_index(drop=True)
-                
+                results = session.results
+
                 # Add columns we are expecting for telemetry data.
-                telemetry_data_columns = [
+                TELEMETRY_DATA_COLUMNS = [
                     'Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS',  # Car data
                     'X', 'Y', 'Z', 'Status',  # Position data
-                    'DriverAhead', 'DistanceToDriverAhead' # Compare position
+                    'DriverAhead', 'DistanceToDriverAhead', # Compare position
+                    'DistanceToDriverBehind', 'DriverBehind' # Custom implementation columns
                 ]
 
-                combined_dataset[telemetry_data_columns] = pd.NA
+                combined_dataset[TELEMETRY_DATA_COLUMNS] = pd.NA
 
                 for idx, lap in combined_dataset.iterrows():
-                    # There are so many telemetry points - we are looking lap by lap so we just take the last one.
                     try:
-                        telemetry_data = lap.get_telemetry()
-                        telemetry_data = telemetry_data[telemetry_data_columns]
-                        combined_dataset.loc[idx, telemetry_data_columns] = telemetry_data.iloc[-1]
+                        # There are so many telemetry points - we are looking lap by lap so we just take the last one.
+                        telemetry_data = lap.get_telemetry()#.add_driver_ahead()
+                        telemetry_data = telemetry_data[TELEMETRY_DATA_COLUMNS]
+                        combined_dataset.loc[idx, TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1]
                     except:
                         pass
 
@@ -65,29 +72,27 @@ def main():
 
                 combined_dataset['MandatoryPitStop'] = True
                 # Mandatory pit stop made - is not ready here either.
-                if row[session_column] == "Race":
-                    for driver in combined_dataset["Driver"].unique():
+                for driver in combined_dataset["Driver"].unique():
                         driversRace = combined_dataset[combined_dataset["Driver"] == driver].sort_values("LapNumber")
                         
-                        # Iterate through each lap for the current driver
-                        for idx, lap in driversRace.iterrows():
-                            # Check if the lap's compound is WET or INTERMEDIATE
-                            # OR if the compound is different from the first lap's compound
-                            if lap["Compound"] == "WET" or lap["Compound"] == "INTERMEDIATE" or \
-                            lap["Compound"] != driversRace.iloc[0]["Compound"]:
-                                break  # Break if the condition is met
-                            else:
-                                # Update the MandatoryPitStop for the current lap if conditions are met
-                                combined_dataset.loc[
-                                    (combined_dataset["Driver"] == driver) & 
-                                    (combined_dataset["LapNumber"] == lap["LapNumber"]), 
-                                    "MandatoryPitStop"
-                                ] = False
+                        if row[session_column] == "Race":
+                            # Iterate through each lap for the current driver
+                            for idx, lap in driversRace.iterrows():
+                                # Check if the lap's compound is WET or INTERMEDIATE
+                                # OR if the compound is different from the first lap's compound
+                                if lap["Compound"] == "WET" or lap["Compound"] == "INTERMEDIATE" or \
+                                lap["Compound"] != driversRace.iloc[0]["Compound"]:
+                                    break  # Break if the condition is met
+                                else:
+                                    # Update the MandatoryPitStop for the current lap if conditions are met
+                                    combined_dataset.loc[
+                                        (combined_dataset["Driver"] == driver) & 
+                                        (combined_dataset["LapNumber"] == lap["LapNumber"]), 
+                                        "MandatoryPitStop"
+                                    ] = False
 
                         results = session.results
-                        combined_dataset.loc[combined_dataset["Driver"] == driver, results.columns] = results[results['Abbreviation'] == driver]
-
-                        combined_dataset.to_csv("test.csv")
+                        combined_dataset.loc[combined_dataset["Driver"] == driver, results.columns] = results[results['Abbreviation'] == driver].iloc[0].values
 
                 # Only distance not built in is distance behind - but we can factor that in.     
                 if row[session_column] == "Race" or row[session_column] == "Sprint":
@@ -100,26 +105,28 @@ def main():
                             ] = [driver_ahead, distance_to_driver_ahead]
                 
                 combined_dataset['Session'] = row[session_column]
+                # Fields to check what race and session it is.
+                combined_dataset['Country'] = row['Country']
+                combined_dataset['Location'] = row['Location']
+                combined_dataset['OfficialEventName'] = row['OfficialEventName']
+                combined_dataset['EventDate'] = row['EventDate']
+                combined_dataset['EventName'] = row['EventName']            
+                combined_dataset['Year'] = year
 
+                # Ensure data is sorted by Driver and Timestamp
+                combined_dataset = combined_dataset.sort_values(by=['Driver', 'Time'])
+                combined_dataset[TELEMETRY_DATA_COLUMNS] = combined_dataset.groupby('Driver',group_keys=False)[TELEMETRY_DATA_COLUMNS].apply(lambda group: group.ffill())
+                # Reset index if needed (apply can modify the index)
+                combined_dataset = combined_dataset.reset_index(drop=True)
                 event_dataframes.append(combined_dataset)
-            
-            except DataNotLoadedError:
-                # Why - event calender has fp3 but it did not happen. https://www.formula1.com/en/results/2020/races/1046/styria/practice/2 
-                print(f"This session did not happen: uear -{year} round number - {int(row['RoundNumber'])}, session - {row[session_column]}")
-        
-        combined_dataframes = pd.concat(event_dataframes)
 
-        # Fields to check what race and session it is.
-        combined_dataframes['Country'] = row['Country']
-        combined_dataframes['Location'] = row['Location']
-        combined_dataframes['OfficialEventName'] = row['OfficialEventName']
-        combined_dataframes['EventDate'] = row['EventDate']
-        combined_dataframes['EventName'] = row['EventName']            
-        combined_dataframes['Year'] = year
 
-        event_dataframes = [combined_dataframes]
+            if len(event_dataframes) > 0:
+                combined_dataframes = pd.concat(event_dataframes)
+                event_dataframes = [combined_dataframes]
+                combined_dataframes.reset_index(drop=True).to_csv("dataset.csv")
 
-    combined_dataset.to_csv("dataset.csv")
+    combined_dataframes.to_csv("dataset.csv")
    
 if __name__ == "__main__":
     main()
