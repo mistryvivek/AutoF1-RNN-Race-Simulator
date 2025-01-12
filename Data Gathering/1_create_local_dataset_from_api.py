@@ -32,7 +32,7 @@ def main():
         for session_column in SESSION_COLUMNS:
             # Example of where we don't stick to this format: https://www.formula1.com/en/results/2020/races/1057/emilia-romagna/practice/0
             # https://github.com/theOehrly/Fast-F1/issues/672
-            if row[session_column] == '': 
+            if row[session_column] == '' or [year, row['RoundNumber'], row[session_column]] == [2020, 2, 'Practice 3']: 
                 continue
 
             session = f1.get_session(year, int(row['RoundNumber']), row[session_column])
