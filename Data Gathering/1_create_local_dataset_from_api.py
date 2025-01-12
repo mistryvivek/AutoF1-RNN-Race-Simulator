@@ -118,7 +118,7 @@ def main():
         if len(event_dataframes) > 0:
             combined_dataframes = pd.concat(event_dataframes)
             event_dataframes = [combined_dataframes]
-            combined_dataframes.reset_index(drop=True).to_csv("dataset.csv")
+            combined_dataframes.reset_index(drop=True).to_csv(f"dataset{year}.csv")
 
     combined_dataframes.to_csv("dataset.csv")
    
