@@ -26,13 +26,19 @@ def main():
     # Helps us get details of all sessions inc. practice, sprint, qualifying and the race.
     event_schedule = f1.get_event_schedule(year, include_testing=False)
     
+    CANCELLED_SESSIONS = [[2020, 2, 'Practice 3'],
+                          [2020, 11, 'Practice 1'],
+                          [2020, 11, 'Practice 2'],
+                          [2019, 17, 'Practice 3'],
+                          [2021, 15, 'Practice 3']]
+    
     # For each events, get all the lap data here.
     for _, row in event_schedule.iterrows():
         # Load dataframes for all 5 sessions.
         for session_column in SESSION_COLUMNS:
             # Example of where we don't stick to this format: https://www.formula1.com/en/results/2020/races/1057/emilia-romagna/practice/0
             # https://github.com/theOehrly/Fast-F1/issues/672
-            if row[session_column] == '' or [year, row['RoundNumber'], row[session_column]] == [2020, 2, 'Practice 3']: 
+            if row[session_column] == '' or [year, row['RoundNumber'], row[session_column]] in CANCELLED_SESSIONS: 
                 continue
 
             session = f1.get_session(year, int(row['RoundNumber']), row[session_column])
