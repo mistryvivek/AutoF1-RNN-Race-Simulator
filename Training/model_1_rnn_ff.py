@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.utils.data import random_split
-from ..f1_dataset import CustomF1Dataloader
+from f1_dataset import CustomF1Dataloader
 
 HIDDEN_SIZE = 5
 LR = 0.0001
@@ -10,8 +10,7 @@ INPUT_SIZE = 2
 NUM_CLASSES = 5
 OPTIM = torch.optim.Adagrad
 
-DATASET = CustomF1Dataloader(1, "TyreLife,Compound", "../../Data Gathering")
-TRA
+DATASET = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 

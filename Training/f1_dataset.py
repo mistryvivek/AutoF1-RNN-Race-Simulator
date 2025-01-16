@@ -103,7 +103,7 @@ class CustomF1Dataloader(Dataset):
         return len(self.lap_data)
 
     def __getitem__(self, idx):
-        return len(self.lap_data[idx], self.labels[idx])
+        return self.lap_data[idx], self.labels[idx]
     
 custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(2, "TyreLife,Compound", "../Data Gathering")
