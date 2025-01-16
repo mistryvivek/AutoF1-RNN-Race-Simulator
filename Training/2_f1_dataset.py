@@ -74,9 +74,9 @@ class CustomF1Dataloader(Dataset):
 
                     encoder = LabelEncoder()
                     # Encode compounds.
-                    df['Compound'] = df['Compound'].fillna('MISSING')           
+                    df['Compound'] = df['Compound'].fillna('UNKNOWN')     
                     df['Compound'] = encoder.fit_transform(df['Compound']).astype(float)
-
+                    
                     # Handle NA values for TyreLife.
                     df['TyreLife'] = df['TyreLife'].fillna(0)
                     df['ClassifiedPosition'] = df['ClassifiedPosition'].fillna('U') # for unknown
@@ -105,7 +105,7 @@ class CustomF1Dataloader(Dataset):
     def __getitem__(self, idx):
         return len(self.lap_data[idx], self.labels[idx])
     
-"""custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
+custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(2, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(3, "TyreLife,Compound", "../Data Gathering")
-custom_dataset = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")"""
+custom_dataset = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")
