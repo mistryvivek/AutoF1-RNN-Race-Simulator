@@ -5,7 +5,7 @@ from f1_dataset import CustomF1Dataloader
 from earth_movers_distance import torch_energy_loss
 
 HIDDEN_SIZE = 5
-LR = 0.0001
+LR = 0.000001
 EPOCHS = 50
 INPUT_SIZE = 2
 OPTIM = torch.optim.Adagrad
@@ -61,9 +61,9 @@ def train():
         model.train()
 
         for inputs, pit_label, time_label in training_dataloader:
-            print(f"Inputs shape: {inputs.shape}")
-            print(f"Pit label shape: {pit_label.shape}")
-            print(f"Time label shape: {time_label.shape}")
+            #print(f"Inputs shape: {inputs.shape}")
+            #print(f"Pit label shape: {pit_label.shape}")
+            #print(f"Time label shape: {time_label.shape}")
 
             optim.zero_grad()
 
@@ -76,6 +76,6 @@ def train():
 
             optim.step()
 
-            print(total_loss)    
+            print(total_loss.detach().cpu().numpy())    
 
 train()
