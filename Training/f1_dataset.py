@@ -55,7 +55,9 @@ class CustomF1Dataloader(Dataset):
         # 4: only data where a driver gained a position
         # Traverse the directory
         self.lap_data = []
-        self.labels = []
+        self.time_labels = []
+        self.compound_labels = []
+        self.largest_sequence_length = 0
         data_fields = data_fields.split(",")  
         data_fields = [str(field) for field in data_fields]
         for root, dirs, files in os.walk(file_path):
@@ -82,12 +84,14 @@ class CustomF1Dataloader(Dataset):
                     df['ClassifiedPosition'] = df['ClassifiedPosition'].fillna('U') # for unknown
                     df['Points'] = df['Points'].fillna(0)
                     df['LapTime'] = df['LapTime'].dt.total_seconds()
-                    
+
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
                         for driver in dfEvent['Driver'].unique():
                             dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
                             dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
+                            if dfEventDriverRace.shape[0] > self.largest_sequence_length:
+                                self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (not dfEventDriverRace.empty) and \
                                 ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
@@ -95,17 +99,25 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
                                 orderedLaps['StintChange'] = orderedLaps['Compound'].shift(-1).where(orderedLaps['Stint'] != orderedLaps['Stint'].shift(-1), 0)
                                 data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
-                                data_output_array = orderedLaps[['LapTime', 'StintChange']].to_numpy().astype('float32')
                                 self.lap_data.append(torch.tensor(data_input_array, dtype=torch.float32))
-                                self.labels.append(torch.tensor(data_output_array, dtype=torch.float32))
+                                self.time_labels.append(torch.tensor(orderedLaps[['LapTime']].to_numpy().astype('float32'), dtype=torch.float32))
+                                self.compound_labels.append(torch.tensor(orderedLaps[['StintChange']].to_numpy().astype('float32'), dtype=torch.float32))
 
+    def add_padding(self, seq):
+        if seq.shape[0] != self.largest_sequence_length:
+            padding = seq[-1].unsqueeze(0).repeat(self.largest_sequence_length - seq.shape[0], 1)
+            padded_seq = torch.cat([seq, padding], dim=0)
+            return padded_seq
+        else:
+            return seq
+    
     def __len__(self):
         return len(self.lap_data)
 
     def __getitem__(self, idx):
-        return self.lap_data[idx], self.labels[idx]
+        return self.add_padding(self.lap_data[idx]), self.add_padding(self.compound_labels[idx]), self.add_padding(self.time_labels[idx])
     
-custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
+"""custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(2, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(3, "TyreLife,Compound", "../Data Gathering")
-custom_dataset = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")
+custom_dataset = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")"""
