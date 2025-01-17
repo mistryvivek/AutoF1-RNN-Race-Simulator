@@ -5,12 +5,12 @@ from f1_dataset import CustomF1Dataloader
 from earth_movers_distance import torch_wasserstein_loss
 
 HIDDEN_SIZE = 5
-LR = 0.000001
-EPOCHS = 50
+LR = 0.0001
+EPOCHS = 2000
 INPUT_SIZE = 2
-OPTIM = torch.optim.Adagrad
+OPTIM = torch.optim.Adam
 BATCH_SIZE = 50
-MSE_LOSS = nn.MSELoss()
+MAE_LOSS = nn.L1Loss()
 
 DATASET = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")
 
@@ -73,23 +73,14 @@ def train():
 
             pit_output, time_output = model(inputs)
 
-            # Check for NaN or Inf in pit_output and time_output
-            if torch.isnan(pit_output).any() or torch.isinf(pit_output).any():
-                print("Pit output contains NaN or Inf")
-                break  # Exit or handle the issue
-
-            if torch.isnan(time_output).any() or torch.isinf(time_output).any():
-                print("Time output contains NaN or Inf")
-                break  # Exit or handle the issue
-
             pit_loss = torch_wasserstein_loss(pit_output.squeeze(0), pit_label.squeeze(0))
-            time_loss = MSE_LOSS(time_output, time_label)
+            time_loss = MAE_LOSS(time_output, time_label)
             total_loss = pit_loss + time_loss
 
             total_loss.backward()
 
             optim.step()
 
-            print(pit_loss, time_loss)    
+            print(total_loss)    
 
 train()
