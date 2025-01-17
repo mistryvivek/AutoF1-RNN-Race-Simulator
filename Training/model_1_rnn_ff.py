@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import random_split, DataLoader
 from f1_dataset import CustomF1Dataloader
-from earth_movers_distance import torch_energy_loss
+from earth_movers_distance import torch_wasserstein_loss
 
 HIDDEN_SIZE = 5
 LR = 0.000001
@@ -65,10 +65,24 @@ def train():
             #print(f"Pit label shape: {pit_label.shape}")
             #print(f"Time label shape: {time_label.shape}")
 
+            if torch.isnan(inputs).any() or torch.isinf(inputs).any():
+                print("Inputs contain NaN or Inf")
+                break
+
             optim.zero_grad()
 
             pit_output, time_output = model(inputs)
-            pit_loss = torch_energy_loss(pit_output.squeeze(0), pit_label.squeeze(0))
+
+            # Check for NaN or Inf in pit_output and time_output
+            if torch.isnan(pit_output).any() or torch.isinf(pit_output).any():
+                print("Pit output contains NaN or Inf")
+                break  # Exit or handle the issue
+
+            if torch.isnan(time_output).any() or torch.isinf(time_output).any():
+                print("Time output contains NaN or Inf")
+                break  # Exit or handle the issue
+
+            pit_loss = torch_wasserstein_loss(pit_output.squeeze(0), pit_label.squeeze(0))
             time_loss = MSE_LOSS(time_output, time_label)
             total_loss = pit_loss + time_loss
 
@@ -76,6 +90,6 @@ def train():
 
             optim.step()
 
-            print(total_loss.detach().cpu().numpy())    
+            print(pit_loss, time_loss)    
 
 train()
