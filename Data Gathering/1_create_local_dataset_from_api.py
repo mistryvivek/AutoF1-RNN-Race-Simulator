@@ -62,7 +62,7 @@ def main():
                 # There are so many telemetry points - we are looking lap by lap so we just take the last one.
                     telemetry_data = lap.get_telemetry().add_driver_ahead()
                     telemetry_data = telemetry_data[GIVEN_TELEMETRY_DATA_COLUMNS]
-                    combined_dataset.loc[idx, GIVEN_TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1]
+                    combined_dataset.loc[idx, GIVEN_TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1][GIVEN_TELEMETRY_DATA_COLUMNS].values
                 except:
                     pass
 
