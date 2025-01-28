@@ -88,14 +88,12 @@ combined_dataset_corr_cols['Team'] = encoder.fit_transform(combined_dataset_corr
 combined_dataset_corr_cols['Status'] = encoder.fit_transform(combined_dataset_corr_cols['Status']).astype(float)
 combined_dataset_corr_cols['Country'] = encoder.fit_transform(combined_dataset_corr_cols['Country']).astype(float)
 combined_dataset_corr_cols['Location'] = encoder.fit_transform(combined_dataset_corr_cols['Location']).astype(float)
-print(combined_dataset_corr_cols[['Brake', 'DRS', 'DistanceToDriverAhead', 'DistanceToDriverBehind']].isna().sum())
-combined_dataset_corr_cols['Brake'] = combined_dataset_corr_cols['Brake'].fillna(0)
-combined_dataset_corr_cols['DRS'] = combined_dataset_corr_cols['DRS'].fillna(0)
-combined_dataset_corr_cols['DistanceToDriverAhead'] = combined_dataset_corr_cols['DistanceToDriverAhead'].fillna(0)
-combined_dataset_corr_cols['DistanceToDriverBehind'] = combined_dataset_corr_cols['DistanceToDriverBehind'].fillna(0)
 combined_dataset_corr_cols['LapTime'] = combined_dataset_corr_cols['LapTime'].apply(lambda x: x.total_seconds())
-print(combined_dataset_corr_cols[['Brake', 'DRS', 'DistanceToDriverAhead', 'DistanceToDriverBehind']].isna().sum())
 correlations = combined_dataset_corr_cols.corr(method='pearson')
+print("Pearsons: ")
+print(correlations['LapTime'])
+correlations = combined_dataset_corr_cols.corr(method='spearman')
+print("Spearman: ")
 print(correlations['LapTime'])
 
 

@@ -121,8 +121,6 @@ def main():
             combined_dataframes = pd.concat(event_dataframes)
             event_dataframes = [combined_dataframes]
             combined_dataframes.reset_index(drop=True).to_csv(f"dataset{year}.csv")
-
-    combined_dataframes.to_csv("dataset.csv")
    
 if __name__ == "__main__":
     main()
