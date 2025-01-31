@@ -81,6 +81,6 @@ def train():
 
             optim.step()
 
-            print(total_loss)    
+            print(time_loss, pit_loss)
 
 train()

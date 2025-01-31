@@ -76,14 +76,22 @@ class CustomF1Dataloader(Dataset):
 
                     encoder = LabelEncoder()
                     # Encode compounds.
-                    df['Compound'] = df['Compound'].fillna('UNKNOWN')     
+                    df['Compound'] = df['Compound'].fillna('UNKNOWN')    
                     df['Compound'] = encoder.fit_transform(df['Compound']).astype(float)
                     
                     # Handle NA values for TyreLife.
-                    df['TyreLife'] = df['TyreLife'].fillna(0)
                     df['ClassifiedPosition'] = df['ClassifiedPosition'].fillna('U') # for unknown
                     df['Points'] = df['Points'].fillna(0)
                     df['LapTime'] = df['LapTime'].dt.total_seconds()
+
+                    # Set all speeds to 0 if not already set.
+                    df['SpeedI1'] = df['SpeedI1'].fillna(0)
+                    df['SpeedI2'] = df['SpeedI2'].fillna(0)
+                    df['SpeedFL'] = df['SpeedFL'].fillna(0)
+                    df['SpeedST'] = df['SpeedST'].fillna(0)
+
+                    # Drop laps that aren't part of a stint
+                    df = df.dropna(subset=['Stint'])
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
@@ -93,12 +101,12 @@ class CustomF1Dataloader(Dataset):
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (not dfEventDriverRace.empty) and \
+                                (not dfEventDriverRace['LapTime'].isna().any()) and \
                                 ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
                                 orderedLaps['StintChange'] = orderedLaps['Compound'].shift(-1).where(orderedLaps['Stint'] != orderedLaps['Stint'].shift(-1), 0)
-                                orderedLaps['LapTime'] = orderedLaps['LapTime'].ffill()
                                 orderedLaps = orderedLaps [:-1]
                                 data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
                                 self.lap_data.append(torch.tensor(data_input_array, dtype=torch.float32))
