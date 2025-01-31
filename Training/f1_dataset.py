@@ -93,6 +93,18 @@ class CustomF1Dataloader(Dataset):
                     # Drop laps that aren't part of a stint
                     df = df.dropna(subset=['Stint'])
 
+                    # Forwardfill by using the last known point.
+                    weather_fill = ['AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp', 'WindDirection', 'WindSpeed']
+                    df[weather_fill] = df[weather_fill].ffill()
+
+                    print('AirTemp', df['AirTemp'].isna().sum())
+                    print('Humidity', df['Humidity'].isna().sum())
+                    print('Pressure', df['Pressure'].isna().sum())
+                    print('Rainfall', df['Rainfall'].isna().sum())
+                    print('TrackTemp', df['TrackTemp'].isna().sum())
+                    print('WindDirection', df['WindDirection'].isna().sum())
+                    print('WindSpeed', df['WindSpeed'].isna().sum())
+
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
                         for driver in dfEvent['Driver'].unique():
@@ -111,7 +123,7 @@ class CustomF1Dataloader(Dataset):
                                 data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
                                 self.lap_data.append(torch.tensor(data_input_array, dtype=torch.float32))
                                 self.time_labels.append(torch.tensor(orderedLaps[['LapTime']].to_numpy().astype('float32'), dtype=torch.float32))
-                                self.compound_labels.append(torch.tensor(orderedLaps[['StintChange']].to_numpy().astype('float32'), dtype=torch.float32))
+                                self.compound_labels.append(torch.tensor(orderedLaps[['StintChange']].to_numpy().astype('float32'), dtype=torch.long))
 
     def add_padding(self, seq):
         if seq.shape[0] != self.largest_sequence_length:

@@ -7,17 +7,20 @@ from earth_movers_distance import torch_wasserstein_loss
 HIDDEN_SIZE = 5
 LR = 0.0001
 EPOCHS = 2000
-INPUT_SIZE = 2
+INPUT_SIZE = 8
 OPTIM = torch.optim.Adam
 BATCH_SIZE = 50
-MAE_LOSS = nn.L1Loss()
+MAE_LOSS = nn.MSELoss()
+CE_LOSS = nn.CrossEntropyLoss()
+# There is an unknown tire in our dataset.
+PIT_CHOICES_NUM = 7
 
-DATASET = CustomF1Dataloader(4, "TyreLife,Compound", "../Data Gathering")
+DATASET = CustomF1Dataloader(4, "TyreLife,Compound,SpeedI1,SpeedI2,SpeedFL,SpeedST,DRS,DriverNumber", "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class UnifiedModelRNN(nn.Module):
-    def __init__(self, input_size, hidden_size):
+    def __init__(self, input_size, hidden_size, pit_choices_num):
         super(UnifiedModelRNN, self).__init__()
         
         self.rnn = nn.LSTM(input_size, hidden_size, batch_first=True)
@@ -25,7 +28,7 @@ class UnifiedModelRNN(nn.Module):
         self.fc_pit = nn.Sequential(
             nn.Linear(hidden_size, 64),
             nn.ReLU(),
-            nn.Linear(64, 1)
+            nn.Linear(64, PIT_CHOICES_NUM)
         )
         
         self.fc_time = nn.Sequential(
@@ -43,7 +46,7 @@ class UnifiedModelRNN(nn.Module):
         return pit_output, time_output
     
 def train():
-    model = UnifiedModelRNN(INPUT_SIZE, HIDDEN_SIZE)
+    model = UnifiedModelRNN(INPUT_SIZE, HIDDEN_SIZE, PIT_CHOICES_NUM)
     model.to(device)
 
     optim = OPTIM(model.parameters(), lr=LR)
@@ -73,7 +76,7 @@ def train():
 
             pit_output, time_output = model(inputs)
 
-            pit_loss = torch_wasserstein_loss(pit_output.squeeze(0), pit_label.squeeze(0))
+            pit_loss = CE_LOSS(pit_output.view(-1, 7), pit_label.view(-1))
             time_loss = MAE_LOSS(time_output, time_label)
             total_loss = pit_loss + time_loss
 
