@@ -143,7 +143,6 @@ pit_stop_df['PositionGain'] = pit_stop_df['PositionChange'] > 0
 
 pit_stop_laps = pit_stop_df[pit_stop_df['StintChange'] != "NO PIT"]
 pit_stop_laps = pit_stop_df.dropna(subset=['DistanceToDriverAhead', 'DistanceToDriverBehind'])
-print(pit_stop_laps['DistanceToDriverBehind'])
 
 plt.figure(figsize=(10, 6))
 
