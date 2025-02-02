@@ -79,7 +79,6 @@ combined_dataset = pd.concat([dataset2018, dataset2019, dataset2020, dataset2021
 combined_dataset_corr_cols = combined_dataset[['LapTime', 'Driver', 'SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST', 'Compound', 'TyreLife', 'FreshTyre', 'Team', 'TrackStatus', 'Brake', 'DRS', 'Status', 'DistanceToDriverAhead', 'DistanceToDriverBehind', 'AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp',
        'WindDirection', 'WindSpeed', 'Country', 'Location']].copy()
 combined_dataset_corr_cols = combined_dataset_corr_cols[combined_dataset_corr_cols['LapTime'].apply(lambda x: isinstance(x, pd.Timedelta))]
-print(combined_dataset_corr_cols['LapTime'].apply(type).value_counts())
 encoder = LabelEncoder()
 # Encode compounds.
 combined_dataset_corr_cols['Compound'] = encoder.fit_transform(combined_dataset_corr_cols['Compound']).astype(float)
@@ -96,6 +95,80 @@ correlations = combined_dataset_corr_cols.corr(method='spearman')
 print("Spearman: ")
 print(correlations['LapTime'])
 
+# Look at the pit stop data.
+pit_stop_df = pd.DataFrame()
+combined_races_dataset = pd.concat([racesDataset2018, racesDataset2019, racesDataset2020, racesDataset2021, racesDataset2022, racesDataset2023, racesDataset2024])
 
+for event in combined_races_dataset['EventName'].unique():
+    dfEvent = combined_races_dataset[combined_races_dataset['EventName'] == event].copy()
+    
+    for year in dfEvent['Year'].unique():
+        for driver in dfEvent['Driver'].unique():
+            dfDriver = dfEvent[(dfEvent['Driver'] == driver) & (dfEvent['Year'] == year)].copy()
+            
+            if dfDriver.shape[0] > 1:
+                dfDriver = dfDriver.sort_values(by='LapNumber').reset_index(drop=True)
+                dfDriver['StintChange'] = dfDriver['Compound'].shift(-1).where(dfDriver['Stint'] != dfDriver['Stint'].shift(-1), "NO PIT")
+                dfDriver = dfDriver[:-1]
+                pit_stop_df = pd.concat([pit_stop_df, dfDriver], ignore_index=True)
+                print(dfDriver['Compound'].value_counts())
+
+pit_stop_corr_cols = pit_stop_df[['LapTime', 'Driver', 'SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST', 'Compound', 'TyreLife', 'FreshTyre', 'Team', 'TrackStatus', 'Brake', 'DRS', 'Status', 'DistanceToDriverAhead', 'DistanceToDriverBehind', 'AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp',
+       'WindDirection', 'WindSpeed', 'Country', 'Location', 'StintChange']].copy()
+pit_stop_corr_cols['Compound'] = encoder.fit_transform(pit_stop_corr_cols['Compound']).astype(float)
+pit_stop_corr_cols['Driver'] = encoder.fit_transform(pit_stop_corr_cols['Driver']).astype(float)
+pit_stop_corr_cols['Team'] = encoder.fit_transform(pit_stop_corr_cols['Team']).astype(float)
+pit_stop_corr_cols['Status'] = encoder.fit_transform(pit_stop_corr_cols['Status']).astype(float)
+pit_stop_corr_cols['Country'] = encoder.fit_transform(pit_stop_corr_cols['Country']).astype(float)
+pit_stop_corr_cols['Location'] = encoder.fit_transform(pit_stop_corr_cols['Location']).astype(float)
+pit_stop_corr_cols['StintChange'] = encoder.fit_transform(pit_stop_corr_cols['StintChange']).astype(float)
+pit_stop_corr_cols['LapTime'] = pit_stop_corr_cols['LapTime'].apply(lambda x: x.total_seconds())
+correlations = pit_stop_corr_cols.corr(method='pearson')
+print("Pearsons (PIT): ")
+print(correlations['StintChange'])
+correlations = pit_stop_corr_cols.corr(method='spearman')
+print("Spearman (PIT): ")
+print(correlations['StintChange'])
+
+# Plot effect of under/overcut.
+DNFS = ['R', 'D', 'E', 'W', 'F', 'N', 'U']
+pit_stop_df['ClassifiedPosition'].fillna('U')
+# 24 places on the grid is the highest, if they DNF'ed the position change will be low enough to return a negative value.
+pit_stop_df['ClassifiedPosition'] = pit_stop_df['ClassifiedPosition'].apply(
+    lambda x: 25.0 if x in DNFS else float(x)
+)
+
+pit_stop_df['PositionChange'] = pit_stop_df['GridPosition'] - pit_stop_df['ClassifiedPosition']
+pit_stop_df['PositionGain'] = pit_stop_df['PositionChange'] > 0
+
+pit_stop_laps = pit_stop_df[pit_stop_df['StintChange'] != "NO PIT"]
+pit_stop_laps = pit_stop_df.dropna(subset=['DistanceToDriverAhead', 'DistanceToDriverBehind'])
+print(pit_stop_laps['DistanceToDriverBehind'])
+
+plt.figure(figsize=(10, 6))
+
+plt.scatter(pit_stop_laps['DistanceToDriverAhead'], pit_stop_laps['PositionChange'], color='blue', label='Data points')
+
+slope, intercept = np.polyfit(pit_stop_laps['DistanceToDriverAhead'], pit_stop_laps['PositionChange'], 1)
+line = slope * pit_stop_laps['DistanceToDriverAhead'] + intercept
+
+plt.plot(pit_stop_laps['DistanceToDriverAhead'], line, color='red', label='Fit line')
+
+plt.title('Distance To Driver Ahead at time of pit stop vs. Position Change of overall race')
+plt.xlabel('Distance To Driver Ahead on the lap the driver enters pits')
+plt.ylabel('PositionChange')
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+
+# Scatter plot of mean DistanceToDriverAhead vs PositionChange
+plt.scatter(pit_stop_df['DistanceToDriverBehind'], pit_stop_df['PositionChange'], color='blue', label='Data points')
+
+plt.title('Distance To Driver Behind at time of pit stop vs. Position Change of overall race')
+plt.xlabel('Distance To Driver Behind on the lap the driver enters pits')
+plt.ylabel('PositionChange')
+plt.legend()
+plt.show()
 
 

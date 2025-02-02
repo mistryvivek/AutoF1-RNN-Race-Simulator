@@ -97,13 +97,25 @@ class CustomF1Dataloader(Dataset):
                     weather_fill = ['AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp', 'WindDirection', 'WindSpeed']
                     df[weather_fill] = df[weather_fill].ffill()
 
-                    print('AirTemp', df['AirTemp'].isna().sum())
-                    print('Humidity', df['Humidity'].isna().sum())
-                    print('Pressure', df['Pressure'].isna().sum())
-                    print('Rainfall', df['Rainfall'].isna().sum())
-                    print('TrackTemp', df['TrackTemp'].isna().sum())
-                    print('WindDirection', df['WindDirection'].isna().sum())
-                    print('WindSpeed', df['WindSpeed'].isna().sum())
+                    # Some teamnames have been the changed over the past couples of years.
+                    OLD_TEAMS_MAPPING = {'AlphaTauri': 'RB',
+                                         'Toro Rosso': 'RB',
+                                         'Renault': 'Alpine',
+                                         'Force India': 'Aston Martin',
+                                         'Racing Point': 'Aston Martin',
+                                         'Alfa Romeo': 'Kick Sauber',
+                                         'Sauber': 'Kick Sauber'}
+                    
+                    df['Team'] = df['Team'].apply(lambda x: OLD_TEAMS_MAPPING[x] if x in OLD_TEAMS_MAPPING.keys() else x)
+                    df['Team'] = df['Team'].fillna("UNKNOWN")
+                    df['Team'] = encoder.fit_transform(df['Team']).astype(float)
+                    df['TrackStatus'] = df['TrackStatus'].fillna("UNKNOWN")
+                    df['TrackStatus'] = encoder.fit_transform(df['TrackStatus']).astype(float)
+
+                    # Have a seperate unknown class for unknown telemetrics.
+                    TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS', 'X', 'Y', 'Z', 'Status']
+                    df[TELEMETRY_COLUMNS] = df[TELEMETRY_COLUMNS].fillna("UNKNOWN")
+                    df[TELEMETRY_COLUMNS] = encoder.fit_transform(df['TrackStatus']).astype(float)
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
