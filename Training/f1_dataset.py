@@ -113,9 +113,10 @@ class CustomF1Dataloader(Dataset):
                     df['TrackStatus'] = encoder.fit_transform(df['TrackStatus']).astype(float)
 
                     # Have a seperate unknown class for unknown telemetrics.
+                    df['Brake'] = df['Brake'].map({True: 1, False: 0, None: -1})
                     TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS', 'X', 'Y', 'Z', 'Status']
-                    df[TELEMETRY_COLUMNS] = df[TELEMETRY_COLUMNS].fillna("UNKNOWN")
-                    df[TELEMETRY_COLUMNS] = encoder.fit_transform(df['TrackStatus']).astype(float)
+                    for col in TELEMETRY_COLUMNS:
+                        df[col] = encoder.fit_transform(df[col].astype(str)) 
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
@@ -131,7 +132,7 @@ class CustomF1Dataloader(Dataset):
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
                                 orderedLaps['StintChange'] = orderedLaps['Compound'].shift(-1).where(orderedLaps['Stint'] != orderedLaps['Stint'].shift(-1), 0)
-                                orderedLaps = orderedLaps [:-1]
+                                orderedLaps = orderedLaps[:-1]
                                 data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
                                 self.lap_data.append(torch.tensor(data_input_array, dtype=torch.float32))
                                 self.time_labels.append(torch.tensor(orderedLaps[['LapTime']].to_numpy().astype('float32'), dtype=torch.float32))

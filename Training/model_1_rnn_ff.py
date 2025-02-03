@@ -7,7 +7,7 @@ from earth_movers_distance import torch_wasserstein_loss
 HIDDEN_SIZE = 5
 LR = 0.0001
 EPOCHS = 2000
-INPUT_SIZE = 10
+INPUT_SIZE = 17
 OPTIM = torch.optim.Adam
 BATCH_SIZE = 50
 MAE_LOSS = nn.MSELoss()
@@ -15,7 +15,7 @@ CE_LOSS = nn.CrossEntropyLoss()
 # There is an unknown tire in our dataset.
 PIT_CHOICES_NUM = 7
 
-DATASET = CustomF1Dataloader(4, "TyreLife,Compound,SpeedI1,SpeedI2,SpeedFL,SpeedST,DRS,DriverNumber,Team,TrackStatus", "../Data Gathering")
+DATASET = CustomF1Dataloader(4, "TyreLife,Compound,SpeedI1,SpeedI2,SpeedFL,SpeedST,DRS,DriverNumber,Team,TrackStatus,AirTemp,Humidity,Pressure,Rainfall,TrackTemp,WindDirection,WindSpeed", "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -28,7 +28,7 @@ class UnifiedModelRNN(nn.Module):
         self.fc_pit = nn.Sequential(
             nn.Linear(hidden_size, 64),
             nn.ReLU(),
-            nn.Linear(64, PIT_CHOICES_NUM)
+            nn.Linear(64, pit_choices_num)
         )
         
         self.fc_time = nn.Sequential(
