@@ -7,7 +7,7 @@ from earth_movers_distance import torch_wasserstein_loss
 HIDDEN_SIZE = 5
 LR = 0.0001
 EPOCHS = 2000
-INPUT_SIZE = 17
+INPUT_SIZE = 20
 OPTIM = torch.optim.Adam
 BATCH_SIZE = 50
 MAE_LOSS = nn.MSELoss()

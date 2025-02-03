@@ -1,4 +1,5 @@
 import datetime
+import numpy as np
 import pandas as pd
 import os
 import torch
@@ -112,6 +113,11 @@ class CustomF1Dataloader(Dataset):
                     df['TrackStatus'] = df['TrackStatus'].fillna("UNKNOWN")
                     df['TrackStatus'] = encoder.fit_transform(df['TrackStatus']).astype(float)
 
+                    # Fill Qualifying times.
+                    df['Q1'] = df['Q1'].fillna(0.0)
+                    df['Q2'] = df['Q2'].fillna(0.0)
+                    df['Q3'] = df['Q3'].fillna(0.0)
+
                     # Have a seperate unknown class for unknown telemetrics.
                     df['Brake'] = df['Brake'].map({True: 1, False: 0, None: -1})
                     TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS', 'X', 'Y', 'Z', 'Status']
@@ -123,6 +129,11 @@ class CustomF1Dataloader(Dataset):
                         for driver in dfEvent['Driver'].unique():
                             dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
                             dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
+                            try:
+                                # Get Q1, Q2, Q3 times.
+                                quali_times = dfEventDriver[dfEventDriver['Session'] == 'Qualifying'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
+                            except IndexError as e:
+                                quali_times = [0.0] * 3
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (not dfEventDriverRace.empty) and \
@@ -134,7 +145,8 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps['StintChange'] = orderedLaps['Compound'].shift(-1).where(orderedLaps['Stint'] != orderedLaps['Stint'].shift(-1), 0)
                                 orderedLaps = orderedLaps[:-1]
                                 data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
-                                self.lap_data.append(torch.tensor(data_input_array, dtype=torch.float32))
+                                repeated_quali_times = np.tile(quali_times, (data_input_array.shape[0], 1))
+                                self.lap_data.append(torch.tensor(np.concatenate([data_input_array, repeated_quali_times], axis=1), dtype=torch.float32))
                                 self.time_labels.append(torch.tensor(orderedLaps[['LapTime']].to_numpy().astype('float32'), dtype=torch.float32))
                                 self.compound_labels.append(torch.tensor(orderedLaps[['StintChange']].to_numpy().astype('float32'), dtype=torch.long))
 
