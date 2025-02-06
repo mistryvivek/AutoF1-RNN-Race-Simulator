@@ -48,7 +48,7 @@ CSV_TO_FAST_F1_CONVERTERS = {
 DNFS = ['R', 'D', 'E', 'W', 'F', 'N', 'U']
 
 class CustomF1Dataloader(Dataset):
-    def __init__(self, dataset_type, data_fields, file_path):
+    def __init__(self, dataset_type, file_path):
         # Dataset type - 1, 2, 3 or 4
         # 1: all data ever
         # 2: all data apart from DNFs
@@ -56,11 +56,7 @@ class CustomF1Dataloader(Dataset):
         # 4: only data where a driver gained a position
         # Traverse the directory
         self.lap_data = []
-        self.time_labels = []
-        self.compound_labels = []
         self.largest_sequence_length = 0
-        data_fields = data_fields.split(",")  
-        data_fields = [str(field) for field in data_fields]
         for root, dirs, files in os.walk(file_path):
             for file in files:
                 if file.endswith('.csv'):
@@ -125,16 +121,13 @@ class CustomF1Dataloader(Dataset):
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str)) 
 
+                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime']
+
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
                         for driver in dfEvent['Driver'].unique():
                             dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
                             dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
-                            try:
-                                # Get Q1, Q2, Q3 times.
-                                quali_times = dfEventDriver[dfEventDriver['Session'] == 'Qualifying'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
-                            except IndexError as e:
-                                quali_times = [0.0] * 3
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (dfEventDriverRace.shape[0] > 1) and \
@@ -143,27 +136,54 @@ class CustomF1Dataloader(Dataset):
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
-                                orderedLaps['StintChange'] = orderedLaps['Compound'].shift(-1).where(orderedLaps['Stint'] != orderedLaps['Stint'].shift(-1), 0)
-                                orderedLaps = orderedLaps[:-1]
-                                data_input_array = orderedLaps[data_fields].to_numpy().astype('float32')
-                                repeated_quali_times = np.tile(quali_times, (data_input_array.shape[0], 1))
-                                self.lap_data.append(torch.tensor(np.concatenate([data_input_array, repeated_quali_times], axis=1), dtype=torch.float32))
-                                self.time_labels.append(torch.tensor(orderedLaps[['LapTime']].to_numpy().astype('float32'), dtype=torch.float32))
-                                self.compound_labels.append(torch.tensor(orderedLaps[['StintChange']].to_numpy().astype('float32'), dtype=torch.long))
+                                orderedLaps['StintChange'] = (orderedLaps['PitInTime'].isna()).astype(int)
+                                self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy(), dtype=torch.float32))
 
-    def add_padding(self, seq):
-        if seq.shape[0] != self.largest_sequence_length:
-            padding = seq[-1].unsqueeze(0).repeat(self.largest_sequence_length - seq.shape[0], 1)
-            padded_seq = torch.cat([seq, padding], dim=0)
-            return padded_seq
-        else:
-            return seq
     
     def __len__(self):
         return len(self.lap_data)
 
     def __getitem__(self, idx):
-        return self.add_padding(self.lap_data[idx]), self.add_padding(self.compound_labels[idx]), self.add_padding(self.time_labels[idx])
+        """ Want to output:
+        AUTOREGRESSIVE OUTPUTS
+        1. Did we pit previous lap?
+        2. Lap Time
+        3. Compound
+        4. Position after current lap.
+        5. Speed (x5)
+        TELEMETRY
+        6. Speed
+        7. RPM
+        8. nGear
+        9. Throttle
+        10. Brake
+        11. DRS
+        12. X 
+        13. Y
+        14. Z 
+        15. Status
+        -------
+        DATA THAT NEED ENCODING:
+        16. DriverNumber
+        17. Team
+        18. TrackStatus
+        ------
+        CONSTANT DATA
+        WEATHER
+        19.AirTemp
+        20.Humidity
+        21.Pressure
+        22.Rainfall
+        23.TrackTemp
+        24.WindDirection
+        25.WindSpeed
+        --------
+        TIMING DATA
+        26. Q1
+        27. Q2
+        28. Q3
+        """
+        return self.lap_data[idx]
     
 """custom_dataset = CustomF1Dataloader(1, "TyreLife,Compound", "../Data Gathering")
 custom_dataset = CustomF1Dataloader(2, "TyreLife,Compound", "../Data Gathering")
