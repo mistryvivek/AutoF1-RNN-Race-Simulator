@@ -19,7 +19,7 @@ CE_LOSS = nn.CrossEntropyLoss()
 # There is an unknown tire in our dataset.
 PIT_CHOICES_NUM = 7
 
-DATASET = CustomF1Dataloader(1, "TyreLife,Compound,SpeedI1,SpeedI2,SpeedFL,SpeedST,DRS,DriverNumber,Team,TrackStatus,AirTemp,Humidity,Pressure,Rainfall,TrackTemp,WindDirection,WindSpeed", "../Data Gathering")
+DATASET = CustomF1Dataloader(4, "TyreLife,Compound,SpeedI1,SpeedI2,SpeedFL,SpeedST,DRS,DriverNumber,Team,TrackStatus,AirTemp,Humidity,Pressure,Rainfall,TrackTemp,WindDirection,WindSpeed", "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
