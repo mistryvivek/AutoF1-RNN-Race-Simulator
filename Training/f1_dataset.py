@@ -136,7 +136,6 @@ class CustomF1Dataloader(Dataset):
                                 quali_times = [0.0] * 3
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
-                            print(dfEventDriverRace.shape[0])
                             if  (dfEventDriverRace.shape[0] > 1) and \
                                 (not dfEventDriverRace['LapTime'].isna().any()) and \
                                 ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
