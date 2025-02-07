@@ -18,7 +18,7 @@ EPOCHS = 2000
 LR = 0.0001
 
 OPTIM = torch.optim.Adam
-PIT_DECISION_LOSS_FN = FocalLoss(gamma=3, alpha=0.9)
+PIT_DECISION_LOSS_FN = FocalLoss(alpha=0.5)
 LAP_TIME_LOSS_FN = torch.nn.MSELoss()
 COMPOUND_PREDICTION_LOSS_FN = torch.nn.CrossEntropyLoss()
 
@@ -85,9 +85,6 @@ def testing_loop(model, laps):
            model_compound_decisions, laps[:,1:,2].squeeze(0)
 
 def labeling_stats(true_labels, predicted_labels):
-    print(np.sum(true_labels == 0))  # Negative class (no pit)
-    print(np.sum(true_labels == 1))  # Positive class (pit)
-
     conf_matrix = confusion_matrix(true_labels, predicted_labels)
     print("Confusion Matrix:")
     print(conf_matrix)
@@ -144,7 +141,7 @@ def stats(testing_dataset, model):
     pit_true_labels = np.concatenate(pit_true_labels)
     pit_predicted_labels = np.concatenate(pit_predicted_labels).flatten()
     # Skilearn needs everything in same format.
-    pit_predicted_labels = np.array([1.0 if prediction >= 0.5 else 0.0 for prediction in pit_predicted_labels])
+    pit_predicted_labels = np.array([1.0 if prediction >= 0.3 else 0.0 for prediction in pit_predicted_labels])
     
     print("PIT DECISION METRICS:")
     labeling_stats(pit_true_labels, pit_predicted_labels)
@@ -184,8 +181,6 @@ def training_loop(model, laps):
     compound_prediction_loss = COMPOUND_PREDICTION_LOSS_FN(torch.cat(model_compound_predictions, dim=0).squeeze(1), laps[:,1:,2].squeeze(0).to(torch.long))
 
     print(pit_decision_loss)
-    #print(lap_time_loss)
-    #print(compound_prediction_loss)
     print("==========")
     return pit_decision_loss
 
