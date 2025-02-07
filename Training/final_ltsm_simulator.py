@@ -30,7 +30,7 @@ class AutoF1LSTM(nn.Module):
         self.compound_encoding = nn.Embedding(NUM_COMPOUNDS, 5)
         
         # Input size vector - any embeddings + what embeddings return
-        self.ltsm = nn.LSTM(input_size - 1 + 5, hidden_size)
+        self.lstm = nn.LSTM(input_size - 1 + 5, hidden_size)
 
         self.pit_decision = nn.Sequential(
             nn.Linear(hidden_size, 64),
@@ -41,8 +41,7 @@ class AutoF1LSTM(nn.Module):
         self.lap_time = nn.Sequential(
             nn.Linear(hidden_size, 64),
             nn.ReLU(),
-            nn.Linear(64, 1),
-            nn.ReLU()
+            nn.Linear(64, 1)
         )
 
         self.compound_prediction = nn.Sequential(
@@ -57,7 +56,7 @@ class AutoF1LSTM(nn.Module):
         lap = torch.cat((lap[:, :, :2], lap[:, :, 3:]), dim=2) # Remove value without embedding.
         lap = torch.cat((lap, compound_embedding), dim=2) # Add embedded values.
         
-        h_t, (h_s, c_s) = self.ltsm(lap, (h_s, c_s))
+        h_t, (h_s, c_s) = self.lstm(lap, (h_s, c_s))
 
         pit_decision = self.pit_decision(h_t)
         lap_time_prediction = self.lap_time(h_t)
@@ -117,6 +116,10 @@ def continous_stats(true_values, predicted_values):
     print(f"R² Score: {r2:.4f}")
 
 def stats(testing_dataset, model):
+    for name, param in model.named_parameters():
+        if param.grad is None:
+            print(f"{name} has NO gradient!")
+
     model.eval()
 
     pit_true_labels = []
