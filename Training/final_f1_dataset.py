@@ -70,12 +70,13 @@ class CustomF1Dataloader(Dataset):
                         date_format=lambda date_str: datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S') if date_str else pd.NaT,
                         converters=CSV_TO_FAST_F1_CONVERTERS
                     )
-
-                    encoder = LabelEncoder()
+                    
+                    COMPOUND_ENCODING = {"SOFT": 0.0, "MEDIUM": 1.0, "HARD": 2.0, "INTERMEDIATE": 3.0, "WET": 4.0, "UNKNOWN": -1.0}
                     # Encode compounds.
                     df['Compound'] = df['Compound'].fillna('UNKNOWN')
-                    df['Compound'] = df['Compound'].replace({'HYPERSOFT': 'SOFT', 'ULTRASOFT': 'SOFT'})
-                    df['Compound'] = encoder.fit_transform(df['Compound']).astype(float)
+                    df['Compound'] = df['Compound'].replace({'HYPERSOFT': 'SOFT', 'SUPERSOFT': 'SOFT', 'ULTRASOFT': 'SOFT', 'TEST_UNKNOWN': 'UNKNOWN', 'TEST': 'UNKNOWN'})
+                    # Do not want UNKNOWN to be encoded.
+                    df['Compound'] = df['Compound'].apply(lambda x: COMPOUND_ENCODING[x])
                     
                     # Handle NA values for TyreLife.
                     df['ClassifiedPosition'] = df['ClassifiedPosition'].fillna('U') # for unknown
@@ -104,6 +105,7 @@ class CustomF1Dataloader(Dataset):
                                          'Alfa Romeo': 'Kick Sauber',
                                          'Sauber': 'Kick Sauber'}
                     
+                    encoder = LabelEncoder()
                     df['Team'] = df['Team'].apply(lambda x: OLD_TEAMS_MAPPING[x] if x in OLD_TEAMS_MAPPING.keys() else x)
                     df['Team'] = df['Team'].fillna("UNKNOWN")
                     df['Team'] = encoder.fit_transform(df['Team']).astype(float)
@@ -121,7 +123,7 @@ class CustomF1Dataloader(Dataset):
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str)) 
 
-                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime']
+                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'Compound', 'TyreLife']
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
@@ -132,11 +134,15 @@ class CustomF1Dataloader(Dataset):
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (dfEventDriverRace.shape[0] > 1) and \
                                 (not dfEventDriverRace['LapTime'].isna().any()) and \
+                                (not ((dfEventDriverRace['Compound'] == -1.0).any())) and \
                                 ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
                                 orderedLaps['StintChange'] = (orderedLaps['PitInTime'].isna()).astype(int)
+                                orderedLaps['LapTime'] = orderedLaps['LapTime'].shift(1).fillna(0).astype(float)
+                                orderedLaps['Compound'] = orderedLaps['Compound'].shift(1).fillna(orderedLaps['Compound'].iloc[1]).astype(float)
+                                orderedLaps['TyreLife'] = orderedLaps['TyreLife'].astype('float64')
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy(), dtype=torch.float32))
 
     
@@ -170,18 +176,19 @@ class CustomF1Dataloader(Dataset):
         ------
         CONSTANT DATA
         WEATHER
-        19.AirTemp
-        20.Humidity
-        21.Pressure
-        22.Rainfall
-        23.TrackTemp
-        24.WindDirection
-        25.WindSpeed
+        19.TyreLife
+        20.AirTemp
+        21.Humidity
+        22.Pressure
+        23.Rainfall
+        24.TrackTemp
+        25.WindDirection
+        26.WindSpeed
         --------
         TIMING DATA
-        26. Q1
-        27. Q2
-        28. Q3
+        27. Q1
+        28. Q2
+        29. Q3
         """
         return self.lap_data[idx]
     
