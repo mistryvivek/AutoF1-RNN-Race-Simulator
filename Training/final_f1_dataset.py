@@ -47,6 +47,9 @@ CSV_TO_FAST_F1_CONVERTERS = {
 
 DNFS = ['R', 'D', 'E', 'W', 'F', 'N', 'U']
 
+TRACK_STATUS_ENCODER = LabelEncoder()
+DRIVER_ENCODER = LabelEncoder()
+
 class CustomF1Dataloader(Dataset):
     def __init__(self, dataset_type, file_path):
         # Dataset type - 1, 2, 3 or 4
@@ -102,28 +105,30 @@ class CustomF1Dataloader(Dataset):
                                          'Renault': 'Alpine',
                                          'Force India': 'Aston Martin',
                                          'Racing Point': 'Aston Martin',
+                                         'Alfa Romeo Racing': 'Kick Sauber',
                                          'Alfa Romeo': 'Kick Sauber',
                                          'Sauber': 'Kick Sauber'}
                     
-                    encoder = LabelEncoder()
-                    df['Team'] = df['Team'].apply(lambda x: OLD_TEAMS_MAPPING[x] if x in OLD_TEAMS_MAPPING.keys() else x)
+                    TEAM_MAPPINGS = {'Red Bull Racing': 0, 'Alpine': 1, 'Aston Martin': 2, 'Ferrari': 3, 'Williams': 4, 'Haas F1 Team': 5, 'RB': 6, 'Kick Sauber': 7, 'McLaren': 8, 'Mercedes': 9, 'UNKNOWN': -1}
+                    # HULK FP1
                     df['Team'] = df['Team'].fillna("UNKNOWN")
-                    df['Team'] = encoder.fit_transform(df['Team']).astype(float)
+                    df['Team'] = df['Team'].apply(lambda x: TEAM_MAPPINGS[OLD_TEAMS_MAPPING[x]] if x in OLD_TEAMS_MAPPING.keys() else TEAM_MAPPINGS[x])
                     df['TrackStatus'] = df['TrackStatus'].fillna("UNKNOWN")
-                    df['TrackStatus'] = encoder.fit_transform(df['TrackStatus']).astype(float)
+                    df['TrackStatus'] = TRACK_STATUS_ENCODER.fit_transform(df['TrackStatus']).astype(float)
+                    df['Driver'] = DRIVER_ENCODER.fit_transform(df['Driver']).astype(float)
 
                     # Fill Qualifying times.
                     df['Q1'] = df['Q1'].fillna(0.0)
                     df['Q2'] = df['Q2'].fillna(0.0)
                     df['Q3'] = df['Q3'].fillna(0.0)
 
-                    # Have a seperate unknown class for unknown telemetrics.
+                    """# Have a seperate unknown class for unknown telemetrics.
                     df['Brake'] = df['Brake'].map({True: 1, False: 0, None: -1})
                     TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS', 'X', 'Y', 'Z', 'Status']
                     for col in TELEMETRY_COLUMNS:
-                        df[col] = encoder.fit_transform(df[col].astype(str)) 
+                        df[col] = encoder.fit_transform(df[col].astype(str))"""
 
-                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'Compound', 'TyreLife']
+                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'TyreLife', 'MandatoryPitStop', "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
@@ -139,12 +144,11 @@ class CustomF1Dataloader(Dataset):
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
-                                orderedLaps['StintChange'] = (orderedLaps['PitInTime'].isna()).astype(int)
+                                orderedLaps['StintChange'] = (~orderedLaps['PitInTime'].isna()).astype(int)
                                 orderedLaps['LapTime'] = orderedLaps['LapTime'].shift(1).fillna(0).astype(float)
                                 orderedLaps['Compound'] = orderedLaps['Compound'].shift(1).fillna(orderedLaps['Compound'].iloc[1]).astype(float)
                                 orderedLaps['TyreLife'] = orderedLaps['TyreLife'].astype('float64')
-                                self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy(), dtype=torch.float32))
-
+                                self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
     
     def __len__(self):
         return len(self.lap_data)

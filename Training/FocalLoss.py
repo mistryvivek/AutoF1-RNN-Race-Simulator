@@ -6,7 +6,7 @@ class FocalLoss(nn.Module):
         super(FocalLoss, self).__init__()
         self.gamma = gamma
         self.alpha = alpha
-        self.bce_loss = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([10.0]), reduction="none")
+        self.bce_loss = nn.BCEWithLogitsLoss(reduction="none", pos_weight=torch.tensor([30.0]))
 
     def forward(self, inputs, targets):
         # Calculate BCE Loss
