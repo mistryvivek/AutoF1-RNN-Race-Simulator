@@ -128,11 +128,18 @@ class CustomF1Dataloader(Dataset):
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str))"""
 
-                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'TyreLife', 'MandatoryPitStop', "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
+                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'TyreLife', 'MandatoryPitStop', "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
                         for driver in dfEvent['Driver'].unique():
+                            dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
+                            dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
+                            try:
+                                # Get Q1, Q2, Q3 times.
+                                quali_times = dfEventDriver[dfEventDriver['Session'] == 'Qualifying'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
+                            except IndexError as e:
+                                quali_times = [0.0] * 3
                             dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
                             dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
@@ -144,10 +151,27 @@ class CustomF1Dataloader(Dataset):
                                 (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
                                 (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
                                 orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
-                                orderedLaps['StintChange'] = (~orderedLaps['PitInTime'].isna()).astype(int)
-                                orderedLaps['LapTime'] = orderedLaps['LapTime'].shift(1).fillna(0).astype(float)
-                                orderedLaps['Compound'] = orderedLaps['Compound'].shift(1).fillna(orderedLaps['Compound'].iloc[1]).astype(float)
-                                orderedLaps['TyreLife'] = orderedLaps['TyreLife'].astype('float64')
+                                # Laps till pit
+                                # Identify pit stops (1 if PitInTime exists, else 0)
+                                orderedLaps['StintChange'] = orderedLaps['PitInTime'].notna().astype(int)
+
+                                """last_pit = -1
+                                stint_counts = []
+                                pit_stops = orderedLaps['StintChange'].to_list()
+                                for pit in reversed(pit_stops):
+                                    if pit == 1:
+                                        stint_counts.append(1) 
+                                        last_pit = 1
+                                    elif last_pit == -1:
+                                        stint_counts.append(0)
+                                    else:
+                                        stint_counts.append(stint_counts[-1] + 1 if stint_counts else 0)
+
+                                stint_counts[-1] = 0
+
+                                # Assign reversed values back
+                                orderedLaps['StintChange'] = list(reversed(stint_counts))"""
+                                orderedLaps[["Q1", "Q2", "Q3"]] = quali_times
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
     
     def __len__(self):

@@ -2,11 +2,11 @@ import torch
 import torch.nn as nn
 
 class FocalLoss(nn.Module):
-    def __init__(self, gamma=2, alpha=0.25):
+    def __init__(self, gamma=2, alpha=0.2):
         super(FocalLoss, self).__init__()
         self.gamma = gamma
         self.alpha = alpha
-        self.bce_loss = nn.BCEWithLogitsLoss(reduction="none", pos_weight=torch.tensor([30.0]))
+        self.bce_loss = nn.BCEWithLogitsLoss(reduction="none", pos_weight=torch.tensor([2.0]))
 
     def forward(self, inputs, targets):
         # Calculate BCE Loss
