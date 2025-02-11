@@ -1,107 +1,113 @@
 import torch
 import torch.nn as nn
-import numpy as np
-import random
-from torch.utils.data import random_split, DataLoader, WeightedRandomSampler
-from BinaryPolyLoss import BinaryPolyLoss
-from FocalLoss import FocalLoss
-from sklearn.metrics import r2_score, confusion_matrix, accuracy_score, mean_absolute_percentage_error, precision_score, recall_score, f1_score, roc_auc_score
-
-from earth_movers_distance import torch_wasserstein_loss
+import torch.nn.functional as F
+from torch.utils.data import random_split, DataLoader
 from final_f1_dataset import CustomF1Dataloader
+from earth_movers_distance import torch_wasserstein_loss
+import math
+from torch.utils.data import random_split, DataLoader, WeightedRandomSampler
+import numpy as np
+from sklearn.metrics import r2_score, confusion_matrix, accuracy_score, mean_absolute_percentage_error, precision_score, recall_score, f1_score
+
+DIM_MODEL = 2
+LR = 0.0001
+EPOCHS = 2000
+NUM_TOKENS = 18
+NUM_HEADS = 1
+NUM_ENCODER_LAYERS = 2
+NUM_DECODER_LAYERS = 2
+DROPOUT_P = 0.1
+BATCH_SIZE = 50
+HIDDEN_SIZE = 100
+
+OPTIM = torch.optim.Adam
+PIT_DECISION_LOSS_FN = nn.BCEWithLogitsLoss() # FocalLoss() #BinaryPolyLoss(epsilon=0.9) # # nn.BCEWithLogitsLoss(pos_weight=torch.tensor([35.0]))
+LAP_TIME_LOSS_FN = torch.nn.L1Loss()
+COMPOUND_PREDICTION_LOSS_FN = torch.nn.CrossEntropyLoss()
 
 DATASET = CustomF1Dataloader(4, "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-INPUT_SIZE = 18
-HIDDEN_SIZE = 100
-EPOCHS = 2000
-LR = 0.00001
-BATCH_SIZE = 20
-
-OPTIM = torch.optim.Adam
-PIT_DECISION_LOSS_FN = FocalLoss() # FocalLoss() #BinaryPolyLoss(epsilon=0.9) # # nn.BCEWithLogitsLoss(pos_weight=torch.tensor([35.0]))
-LAP_TIME_LOSS_FN = torch.nn.L1Loss()
-COMPOUND_PREDICTION_LOSS_FN = torch.nn.CrossEntropyLoss()
-
-NUM_COMPOUNDS = 5
-NUM_TRACK_STATUS = 48
-NUM_TEAMS = 10 # Since 2018
-NUM_DRIVERS = 46
-EMBEDDING_DIMS = 32
-
-class AutoF1LSTM(nn.Module):
-    def __init__(self, input_size, hidden_size):
-        super(AutoF1LSTM, self).__init__()
-        self.team_embedding = nn.Embedding(NUM_TEAMS, EMBEDDING_DIMS)
-        self.track_status_embedding = nn.Embedding(NUM_TRACK_STATUS, EMBEDDING_DIMS)
-        self.driver_embedding = nn.Embedding(NUM_DRIVERS, EMBEDDING_DIMS)
-        self.compound_embedding = nn.Embedding(NUM_COMPOUNDS, EMBEDDING_DIMS)
+class PositionalEncoding(nn.Module):
+    def __init__(self, dim_model, dropout_p, max_len):
+        super().__init__()
+        # Modified version from: https://pytorch.org/tutorials/beginner/transformer_tutorial.html
+        # max_len determines how far the position can have an effect on a token (window)
         
-        # Input size vector - any embeddings + what embeddings return
-        self.lstm = nn.LSTM((input_size - 4) + (EMBEDDING_DIMS * 4), hidden_size) #- 1 + 5
+        # Info
+        self.dropout = nn.Dropout(dropout_p)
+        
+        # Encoding - From formula
+        pos_encoding = torch.zeros(max_len, dim_model)
+        positions_list = torch.arange(0, max_len, dtype=torch.float).view(-1, 1) # 0, 1, 2, 3, 4, 5
+        division_term = torch.exp(torch.arange(0, dim_model, 2).float() * (-math.log(10000.0)) / dim_model) # 1000^(2i/dim_model)
+        
+        # PE(pos, 2i) = sin(pos/1000^(2i/dim_model))
+        pos_encoding[:, 0::2] = torch.sin(positions_list * division_term)
+        
+        # PE(pos, 2i + 1) = cos(pos/1000^(2i/dim_model))
+        pos_encoding[:, 1::2] = torch.cos(positions_list * division_term)
+        
+        # Saving buffer (same as parameter without gradients needed)
+        pos_encoding = pos_encoding.unsqueeze(0).transpose(0, 1)
+        self.register_buffer("pos_encoding",pos_encoding)
+        
+    def forward(self, token_embedding: torch.tensor) -> torch.tensor:
+        # Residual connection + pos encoding
+        return self.dropout(token_embedding + self.pos_encoding[:token_embedding.size(0), :])
+    
+# https://towardsdatascience.com/a-detailed-guide-to-pytorchs-nn-transformer-module-c80afbc9ffb1
+class AutoF1Tranformer(nn.Module):
+    def __init__(self, num_tokens, dim_model, num_heads, num_encoder_layers, num_decoder_layers, dropout_p):
+        super(AutoF1Tranformer, self).__init__()
 
-        self.pit_decision = nn.Sequential(
-            nn.Linear(hidden_size, 64),
+        self.dim_model = dim_model
+        
+        self.positional_encoder = PositionalEncoding(
+            dim_model=dim_model, dropout_p=dropout_p, max_len=5000
+        )
+
+        self.embedding = nn.Linear(num_tokens, dim_model)
+
+        self.transformer = nn.Transformer(
+            d_model=dim_model,
+            nhead=num_heads,
+            num_encoder_layers=num_encoder_layers,
+            num_decoder_layers=num_decoder_layers,
+            dropout=dropout_p,
+        )
+        
+        self.fc_pit = nn.Sequential(
+            nn.Linear(dim_model, 64),
             nn.ReLU(),
             nn.Linear(64, 1)
         )
+        
+    def forward(self, src, tgt):
+        src = self.embedding(src) * math.sqrt(self.dim_model)
+        tgt = self.embedding(tgt) * math.sqrt(self.dim_model)
+        src = self.positional_encoder(src)
+        tgt = self.positional_encoder(tgt)
 
-        self.lap_time = nn.Sequential(
-            nn.Linear(hidden_size, 64),
-            nn.ReLU(),
-            nn.Linear(64, 1),
-            nn.ReLU()
-        )
+        src = src.permute(1, 0, 2)
+        tgt = tgt.permute(1, 0, 2)
 
-        """self.compound_prediction = nn.Sequential(
-            nn.Linear(hidden_size, 64),
-            nn.ReLU(),
-            nn.Linear(64, NUM_COMPOUNDS)
-        )"""
+        transformer_out = self.transformer(src, tgt)
 
-    def forward(self, lap, h_s, c_s):
-        """
-        compound_tensor = lap[:, :, 2].long()
-        compound_embedding = self.compound_encoding(compound_tensor) # Embed compounds first.
-        lap = torch.cat((lap[:, :, :2], lap[:, :, 3:]), dim=2) # Remove value without embedding.
-        lap = torch.cat((lap, compound_embedding), dim=2) # Add embedded values.
-        """
-        team_encoded = lap[:, :, -1:].long()
-        track_status_encoded = lap[:, :, -2:-1].long()
-        driver_encoded = lap[:, :, -3:-2].long()
-        compound_encoded = lap[:, :, -4:-3].long()
-        team_embedded = self.team_embedding(team_encoded).view(1, 1, EMBEDDING_DIMS)
-        track_status_embedded = self.track_status_embedding(track_status_encoded).view(1, 1, EMBEDDING_DIMS)
-        driver_embedded = self.driver_embedding(driver_encoded).view(1, 1, EMBEDDING_DIMS)
-        compound_encoded = self.compound_embedding(compound_encoded).view(1, 1, EMBEDDING_DIMS)
-        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4], team_embedded, track_status_embedded, driver_embedded, compound_encoded), dim=-1), (h_s, c_s))      
+        # Final output layers
+        pit_output = self.fc_pit(transformer_out).permute(1, 0, 2)
 
-        pit_decision = self.pit_decision(h_t)
-        lap_time_prediction = self.lap_time(h_t)
-        # compound_prediction = self.compound_prediction(h_t)"""
-
-        return h_s, c_s, pit_decision, lap_time_prediction #, compound_prediction
-
-def testing_loop(model, laps):
-    h_s = torch.zeros(1, 1, HIDDEN_SIZE).to(device)
-    c_s = torch.zeros(1, 1, HIDDEN_SIZE).to(device)
-    model_pit_decisions = []
-    model_time_predictions = []
-    # model_compound_decisions = []"""
-
-    laps_in_race = laps.shape[1]
-
-    for lap in range(laps_in_race - 1):
-        h_s, c_s, pit_decision, time_prediction = model(laps[:,lap].unsqueeze(0), h_s, c_s)
-        model_pit_decisions.append(torch.sigmoid(pit_decision))
-        model_time_predictions.append(time_prediction)
-        # model_compound_decisions.append(torch.argmax(compound_decision))"""
+        return pit_output
     
-    return model_pit_decisions, laps[:,1:,0].squeeze(0), \
-       model_time_predictions, laps[:,1:,1].squeeze(0)
-    # model_compound_decisions, laps[:,1:,2].squeeze(0)"""
+def testing_loop(model, laps):
+    src = laps[:, :-1, :]
+    tgt = torch.zeros_like(laps[:, 1:, :])
+
+    pit_decision = model(src, tgt)
+    pit_decision = torch.sigmoid(pit_decision)  # Convert logits to probabilities
+
+    return pit_decision, tgt[:, :, 0]
 
 def labeling_stats(true_labels, predicted_labels):
     conf_matrix = confusion_matrix(true_labels, predicted_labels, labels=[0.0, 1.0])
@@ -123,9 +129,6 @@ def labeling_stats(true_labels, predicted_labels):
     # F1 Score
     f1 = f1_score(true_labels, predicted_labels, average='weighted')
     print(f"F1 Score: {f1:.4f}")
-
-    auc_score = roc_auc_score(true_labels, predicted_labels)
-    print(f"AUC Score: {auc_score:.4f}")
 
 def continous_stats(true_values, predicted_values):
     mape = mean_absolute_percentage_error(true_values, predicted_values) * 100
@@ -150,17 +153,19 @@ def stats(testing_dataloader, model):
 
     # Run through testing data.
     for race_data in testing_dataloader:
-        model_pit_decisions, real_pit_decisions, model_time_outputs, real_time_outputs = testing_loop(model, race_data)
+        model_pit_decisions, real_pit_decisions = testing_loop(model, race_data)
         pit_true_labels.append(real_pit_decisions.numpy())
-        pit_predicted_labels.append(torch.stack(model_pit_decisions).detach().numpy().flatten())
+        pit_predicted_labels.append(model_pit_decisions.detach().numpy().flatten())
         """time_true_values.append(real_time_outputs.numpy())
         time_predicted_values.append(torch.stack(model_time_outputs).detach().numpy().flatten())""
         compound_true_values.append(real_compound_outputs.numpy())
         compound_predicted_values.append(torch.stack(model_compound_outputs).detach().numpy().flatten())"""
 
+    print(pit_true_labels)
+    print(pit_predicted_labels)
     # PIT DECISIONS
-    pit_true_labels = np.concatenate(pit_true_labels)
-    pit_predicted_labels = np.concatenate(pit_predicted_labels).flatten()
+    pit_true_labels = np.stack(pit_true_labels)
+    pit_predicted_labels = np.stack(pit_predicted_labels)
     # Skilearn needs everything in same format.
     pit_predicted_labels = np.array([1.0 if prediction >= 0.5 else 0.0 for prediction in pit_predicted_labels])
     
@@ -206,12 +211,9 @@ def stats(testing_dataloader, model):
     return pit_decision_loss"""
 
 def training_loop(model, laps):
-    h_s = torch.zeros(1, 1, HIDDEN_SIZE).to(device)
-    c_s = torch.zeros(1, 1, HIDDEN_SIZE).to(device)
     model_pit_decisions = []
-    model_lap_time_predictions = []
-
-    laps_in_race = laps.shape[1]
+    src = laps[:, :-1, :]  # Input sequence (exclude last lap)
+    tgt = laps[:, 1:, :]   # Target sequence (shifted by 1 lap)
     
     """real_decisions = []
 
@@ -252,21 +254,18 @@ def training_loop(model, laps):
 
     real_decisions = torch.cat((real_decisions), dim=1)"""
 
-    for lap in range(laps_in_race - 1):
-        h_s, c_s, pit_decision, lap_time_prediction = model(laps[:,lap].unsqueeze(0), h_s, c_s)
-        model_pit_decisions.append(pit_decision.view(-1))
-        #model_lap_time_predictions.append(lap_time_prediction.view(-1))
+    pit_decision = model(src, tgt)
+        # model_lap_time_predictions.append(lap_time_prediction.view(-1))
 
     #print(model_pit_decisions)
     
-    #print(model_pit_decisions)
-    pit_decision_loss = PIT_DECISION_LOSS_FN(torch.stack(model_pit_decisions).squeeze(1), laps[:, 1:, 0].squeeze(0))
+    pit_decision_loss = PIT_DECISION_LOSS_FN(pit_decision.squeeze(-1), laps[:, 1:, 0])
     # lap_time_loss = LAP_TIME_LOSS_FN(torch.stack(model_lap_time_predictions).squeeze(1), real_decisions[:, :, 1].squeeze(0))
 
     return pit_decision_loss #"""(lap_time_loss / 60) +""" 
 
 def train():
-    model = AutoF1LSTM(INPUT_SIZE, HIDDEN_SIZE)
+    model = AutoF1Tranformer(NUM_TOKENS, DIM_MODEL, NUM_HEADS, NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, DROPOUT_P)
     model.to(device)
 
     optim = OPTIM(model.parameters(), lr=LR)
@@ -295,7 +294,7 @@ def train():
             optim.zero_grad()
             
             loss = training_loop(model, race_data)
-            print(loss)
+            print(epoch, loss)
 
             loss.backward()
 
