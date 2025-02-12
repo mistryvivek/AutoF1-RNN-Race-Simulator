@@ -128,7 +128,7 @@ class CustomF1Dataloader(Dataset):
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str))"""
 
-                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'TyreLife', 'MandatoryPitStop', "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
+                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'TyreLife', 'MandatoryPitStop', "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
