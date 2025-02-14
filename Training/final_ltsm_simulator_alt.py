@@ -118,6 +118,7 @@ def stats(testing_dataloader, model):
 
     real_compound_labels = []
     predicted_compound_labels = []
+    mandatory_stops_made = []
 
     # Run through testing data.
     for race_data in testing_dataloader:
@@ -125,12 +126,18 @@ def stats(testing_dataloader, model):
         real_compound_labels.append(real_compound_decisions.numpy())
         # Convert logits to actual class predictions
         predicted_compound_labels.append(torch.cat(predicted_compound_decisions).cpu().numpy().flatten())
+        # Checking for DSQs.
+        first_value = predicted_compound_decisions[0].item()  # Get the value from the first tensor
+        mandatory_stop_made = any(tensor.item() != first_value for tensor in predicted_compound_decisions)
+        mandatory_stops_made.append(mandatory_stop_made)
     
     real_compound_labels = np.concatenate(real_compound_labels)
     predicted_compound_labels = np.concatenate(predicted_compound_labels).flatten()
     
     print("COMPOUND DECISION METRICS:")
     labeling_stats(real_compound_labels, predicted_compound_labels)
+    print("MANDATORY STOPS MADE:")
+    print(np.mean(mandatory_stops_made))
 
 def training_loop(model, laps):
     h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
