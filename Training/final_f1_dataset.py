@@ -121,14 +121,13 @@ class CustomF1Dataloader(Dataset):
                     df['Q1'] = df['Q1'].fillna(0.0)
                     df['Q2'] = df['Q2'].fillna(0.0)
                     df['Q3'] = df['Q3'].fillna(0.0)
-
                     """# Have a seperate unknown class for unknown telemetrics.
                     df['Brake'] = df['Brake'].map({True: 1, False: 0, None: -1})
                     TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS', 'X', 'Y', 'Z', 'Status']
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str))"""
 
-                    RACE_COLUMNS_TO_EXTRACT = ['StintChange', 'LapTime', 'TyreLife', 'MandatoryPitStop', "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
+                    RACE_COLUMNS_TO_EXTRACT = ["StintChange", "LapTime", "Position", "TyreLife", "MandatoryPitStop", "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]

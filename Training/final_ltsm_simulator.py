@@ -6,6 +6,11 @@ from torch.utils.data import random_split, DataLoader, WeightedRandomSampler
 from BinaryPolyLoss import BinaryPolyLoss
 from FocalLoss import FocalLoss
 from sklearn.metrics import r2_score, confusion_matrix, accuracy_score, mean_absolute_percentage_error, precision_score, recall_score, f1_score, roc_auc_score
+from imblearn.over_sampling import ADASYN
+from torch.utils.data import DataLoader, TensorDataset
+from tslearn.barycenters import dtw_barycenter_averaging
+from tslearn.preprocessing import TimeSeriesResampler
+
 
 from earth_movers_distance import torch_wasserstein_loss
 from final_f1_dataset import CustomF1Dataloader
@@ -14,14 +19,14 @@ DATASET = CustomF1Dataloader(4, "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-INPUT_SIZE = 18
+INPUT_SIZE = 11
 HIDDEN_SIZE = 100
 EPOCHS = 2000
 LR = 0.00001
 BATCH_SIZE = 20
 
 OPTIM = torch.optim.Adam
-PIT_DECISION_LOSS_FN = FocalLoss() # FocalLoss() #BinaryPolyLoss(epsilon=0.9) # # nn.BCEWithLogitsLoss(pos_weight=torch.tensor([35.0]))
+PIT_DECISION_LOSS_FN = FocalLoss(gamma=4.0, alpha=0.6) # FocalLoss() #BinaryPolyLoss(epsilon=0.9) # # nn.BCEWithLogitsLoss(pos_weight=torch.tensor([35.0]))
 LAP_TIME_LOSS_FN = torch.nn.L1Loss()
 COMPOUND_PREDICTION_LOSS_FN = torch.nn.CrossEntropyLoss()
 
@@ -30,6 +35,64 @@ NUM_TRACK_STATUS = 48
 NUM_TEAMS = 10 # Since 2018
 NUM_DRIVERS = 46
 EMBEDDING_DIMS = 32
+
+import numpy as np
+from tslearn.preprocessing import TimeSeriesResampler
+from tslearn.barycenters import dtw_barycenter_averaging
+
+def apply_time_series_resampling(training_dataset):
+    resampled_features = []
+    resampled_labels = []
+
+    for data in training_dataset:
+        # Remove the last item from features and the first item from labels
+        features = data[:-1]
+        labels = data[1:, 0]
+
+        # Step 1: Find DTW-based synthetic samples for each class
+        X_synthetic = []
+        for lbl in np.unique(labels):  # Iterate through unique classes
+            class_samples = features[labels == lbl]  # Select samples of the current class
+            
+            print(f"Handling class {lbl} with {class_samples.shape[0]} samples...")
+
+            # Check if there are at least 2 samples for this class
+            if class_samples.shape[0] < 2:
+                print(f"Skipping class {lbl} due to insufficient samples (less than 2).")
+                continue  # Skip this class if it has less than 2 samples
+
+            # If there are multiple samples in the class, use them directly
+            augmented_samples = class_samples
+
+            # Apply DTW Barycenter Averaging to the augmented samples
+            if augmented_samples.shape[0] > 1:  # Ensure there are at least 2 samples for DTW averaging
+                synthetic_sample = dtw_barycenter_averaging(augmented_samples)
+                X_synthetic.append(synthetic_sample)
+            else:
+                print(f"Skipping class {lbl} due to insufficient samples for DTW averaging.")
+
+        # Convert to NumPy array (if any synthetic samples exist)
+        if X_synthetic:
+            X_synthetic = np.array(X_synthetic)
+
+            # Step 2: Resample to match original shape (optional, depending on your needs)
+            resampler = TimeSeriesResampler(sz=features.shape[1])  # Resize if needed
+            X_synthetic = resampler.fit_transform(X_synthetic)
+
+            print("Synthetic Features Shape:", X_synthetic.shape)  # (num_classes, time_steps, features) after DTW resampling
+
+            # Append resampled features and labels
+            resampled_features.append(X_synthetic)
+            resampled_labels.append(labels)
+
+    # Convert resampled data back to PyTorch tensors
+    resampled_features = torch.tensor(np.concatenate(resampled_features), dtype=torch.float32)
+    resampled_labels = torch.tensor(np.concatenate(resampled_labels), dtype=torch.float32)
+
+    # Create a new dataset with the resampled data
+    resampled_dataset = TensorDataset(resampled_features, resampled_labels)
+
+    return resampled_dataset
 
 class AutoF1LSTM(nn.Module):
     def __init__(self, input_size, hidden_size):
@@ -40,7 +103,7 @@ class AutoF1LSTM(nn.Module):
         self.compound_embedding = nn.Embedding(NUM_COMPOUNDS, EMBEDDING_DIMS)
         
         # Input size vector - any embeddings + what embeddings return
-        self.lstm = nn.LSTM((input_size - 4) + (EMBEDDING_DIMS * 4), hidden_size) #- 1 + 5
+        self.lstm = nn.LSTM(input_size, hidden_size) #(input_size - 4) + (EMBEDDING_DIMS * 4)
 
         self.pit_decision = nn.Sequential(
             nn.Linear(hidden_size, 64),
@@ -67,7 +130,6 @@ class AutoF1LSTM(nn.Module):
         compound_embedding = self.compound_encoding(compound_tensor) # Embed compounds first.
         lap = torch.cat((lap[:, :, :2], lap[:, :, 3:]), dim=2) # Remove value without embedding.
         lap = torch.cat((lap, compound_embedding), dim=2) # Add embedded values.
-        """
         team_encoded = lap[:, :, -1:].long()
         track_status_encoded = lap[:, :, -2:-1].long()
         driver_encoded = lap[:, :, -3:-2].long()
@@ -76,7 +138,9 @@ class AutoF1LSTM(nn.Module):
         track_status_embedded = self.track_status_embedding(track_status_encoded).view(1, 1, EMBEDDING_DIMS)
         driver_embedded = self.driver_embedding(driver_encoded).view(1, 1, EMBEDDING_DIMS)
         compound_encoded = self.compound_embedding(compound_encoded).view(1, 1, EMBEDDING_DIMS)
-        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4], team_embedded, track_status_embedded, driver_embedded, compound_encoded), dim=-1), (h_s, c_s))      
+        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4], team_embedded, track_status_embedded, driver_embedded, compound_encoded), dim=-1), (h_s, c_s)) 
+        """
+        h_t, (h_s, c_s) = self.lstm(lap, (h_s, c_s))      
 
         pit_decision = self.pit_decision(h_t)
         lap_time_prediction = self.lap_time(h_t)
@@ -273,6 +337,8 @@ def train():
 
     # Lets try oversampling.
     training_dataset, _, testing_dataset = random_split(DATASET, [0.8, 0.1, 0.1])
+    resampled_training_dataset = apply_time_series_resampling(training_dataset)
+    exit()
 
     # Extract the label at index 0 for each sequence
     labels = torch.tensor([int(data[1][0]) for data in training_dataset])  # Extract the label from each sequence
