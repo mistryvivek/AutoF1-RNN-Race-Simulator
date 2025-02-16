@@ -51,6 +51,9 @@ TRACK_STATUS_ENCODER = LabelEncoder()
 DRIVER_ENCODER = LabelEncoder()
 
 class CustomF1Dataloader(Dataset):
+    def min_max_scale(column):
+        return (column - column.min()) / (column.max() - column.min())
+
     def __init__(self, dataset_type, file_path):
         # Dataset type - 1, 2, 3 or 4
         # 1: all data ever
@@ -127,20 +130,57 @@ class CustomF1Dataloader(Dataset):
                     for col in TELEMETRY_COLUMNS:
                         df[col] = encoder.fit_transform(df[col].astype(str))"""
 
-                    RACE_COLUMNS_TO_EXTRACT = ["StintChange", "LapTime", "Position", "TyreLife", "MandatoryPitStop", "Q1", "Q2", "Q3", "Compound", "Driver", "TrackStatus", "Team"] #, 'LapTime', 'Compound', 'TyreLife']
+                    RACE_COLUMNS_TO_EXTRACT = [
+                        "LapTime", "DistanceToDriverAhead", "DistanceToDriverBehind", "TyreLife",
+                        "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", 
+                        "AvgLapDiffP", "Position", "MandatoryPitStop", "Q1", "Q2", "Q3", "Position", "Compound", "Driver", 
+                        "TrackStatus", "Team"
+                    ]
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event]
                         for driver in dfEvent['Driver'].unique():
                             dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
-                            dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
+                            dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race'].copy()
+                            # ========== LOOK AT QUALIFYING DATA ========
                             try:
                                 # Get Q1, Q2, Q3 times.
                                 quali_times = dfEventDriver[dfEventDriver['Session'] == 'Qualifying'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
                             except IndexError as e:
                                 quali_times = [0.0] * 3
-                            dfEventDriver = dfEvent[dfEvent['Driver'] == driver]
-                            dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race']
+                            # ========== LOOK AT PRACTICE DATA ========
+                            dfPractice = dfEventDriver[dfEventDriver['Session'].str.contains('Practice', na=False)].copy()
+                            avg_lap_time = dfPractice['LapTime'].mean()
+                            worst_lap_time = dfPractice['LapTime'].max()
+                            lap_time_sd = dfPractice['LapTime'].std()
+                            # Compute Lap-to-Lap Differences
+                            dfPractice.loc[:, 'LapDiff'] = dfPractice['LapTime'].diff() # Difference between consecutive laps
+                            avg_lap_diff = dfPractice['LapDiff'].mean()
+                            # Happens in the rare case there is no data here.
+                            avg_lap_time = 0 if pd.isna(avg_lap_time) else avg_lap_time
+                            worst_lap_time = 0 if pd.isna(worst_lap_time) else worst_lap_time
+                            lap_time_sd = 0 if pd.isna(lap_time_sd) else lap_time_sd
+                            avg_lap_diff = 0 if pd.isna(avg_lap_diff) else avg_lap_diff
+                            
+                            # ========== FFILL DISTANCE DATA ===============
+                            # Fill NaN with 0 if Position is 1 for 'DistanceToDriverAhead'
+                            dfEventDriverRace['DistanceToDriverAhead'] = dfEventDriverRace.apply(
+                                lambda row: 0 if pd.notna(row['Position']) and row['Position'] == 1 and pd.isna(row['DistanceToDriverAhead']) else row['DistanceToDriverAhead'], axis=1)
+
+                            # Fill NaN with 0 if Position is 20 for 'DistanceToDriverBehind'
+                            dfEventDriverRace['DistanceToDriverBehind'] = dfEventDriverRace.apply(
+                                lambda row: 0 if pd.notna(row['Position']) and row['Position']  == 20 and pd.isna(row['DistanceToDriverBehind']) else row['DistanceToDriverBehind'], axis=1)
+
+                            # Supress pd warnings.
+                            pd.set_option('future.no_silent_downcasting', True)
+                            # Apply the forward fill
+                            dfEventDriverRace.loc[:, 'DistanceToDriverAhead'] = dfEventDriverRace['DistanceToDriverAhead'].bfill().ffill().fillna(0)
+                            dfEventDriverRace.loc[:, 'DistanceToDriverBehind'] = dfEventDriverRace['DistanceToDriverBehind'].bfill().ffill().fillna(0)
+                            # If this still contains missing values!
+
+                            # Min Max scaling for stable training.
+                            df_scaled[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]] = df[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]].apply(self.min_max_scale)
+
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
                             if  (dfEventDriverRace.shape[0] > 1) and \
@@ -170,9 +210,12 @@ class CustomF1Dataloader(Dataset):
 
                                 # Assign reversed values back
                                 orderedLaps['StintChange'] = list(reversed(stint_counts))"""
+                                ## =========== CONVERT TO MINS FOR STABLITY =================
                                 orderedLaps[["Q1", "Q2", "Q3"]] = quali_times
+                                orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
+                                orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
-    
+
     def __len__(self):
         return len(self.lap_data)
 
