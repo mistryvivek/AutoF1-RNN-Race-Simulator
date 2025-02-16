@@ -179,7 +179,7 @@ class CustomF1Dataloader(Dataset):
                             # If this still contains missing values!
 
                             # Min Max scaling for stable training.
-                            df_scaled[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]] = df[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]].apply(self.min_max_scale)
+                            dfEventDriverRace[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]] = dfEventDriverRace[["SpeedI1", "SpeedI2", "SpeedFL", "SpeedST"]].apply(self.min_max_scale)
 
                             if dfEventDriverRace.shape[0] > self.largest_sequence_length:
                                 self.largest_sequence_length = dfEventDriverRace.shape[0]
