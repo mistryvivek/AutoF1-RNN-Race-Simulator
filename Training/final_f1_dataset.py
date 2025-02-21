@@ -178,8 +178,8 @@ class CustomF1Dataloader(Dataset):
 
                                     # Apply the forward fill
                                     # Can't fix warning - https://github.com/pandas-dev/pandas/issues/54417
-                                    orderedLaps['DistanceToDriverAhead'] = orderedLaps['DistanceToDriverAhead'].interpolate().ffill().bfill().fillna(df['DistanceToDriverAhead'].mean())
-                                    orderedLaps['DistanceToDriverBehind'] = orderedLaps['DistanceToDriverBehind'].interpolate().ffill().bfill().fillna(df['DistanceToDriverBehind'].mean())
+                                    orderedLaps['DistanceToDriverAhead'] = orderedLaps['DistanceToDriverAhead'].infer_objects(copy=False).interpolate().ffill().bfill().fillna(df['DistanceToDriverAhead'].mean())
+                                    orderedLaps['DistanceToDriverBehind'] = orderedLaps['DistanceToDriverBehind'].infer_objects(copy=False).interpolate().ffill().bfill().fillna(df['DistanceToDriverBehind'].mean())
                                     # If this still contains missing values!
 
                                     # ========= SORT OUT TELEMETRY DATA ==================

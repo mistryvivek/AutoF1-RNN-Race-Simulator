@@ -415,8 +415,8 @@ def stats(testing_dataloader, model):
     print("========COORDINATES=========")
     coordinate_mase = continous_stats(real_coordinates_telemetry_labels, simulated_coordinates_telemetry_labels)
 
-    pred_values = np.append(pred_values, [compound_precision, lap_time_mase, speedi1_mase, speedi2_mase, speedfl_mase, speedst_mase, \
-        speedtelemetry_mase, rpm_mase, gear_precision, throttle_mase, brake_precision, coordinate_mase])    
+    return [compound_precision, lap_time_mase, speedi1_mase, speedi2_mase, speedfl_mase, speedst_mase, \
+        speedtelemetry_mase, rpm_mase, gear_precision, throttle_mase, brake_precision, coordinate_mase]
 
 def training_loop(model, laps):
     h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
@@ -519,11 +519,11 @@ def train(experiment_id):
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
                 optim.step()
                 optim.zero_grad()
-                loss_values = np.append(loss_values, [total_loss])
+                loss_values = np.append(loss_values, [total_loss.cpu().detach().numpy()])
                 print(f"LOSS: total_loss")
                 total_loss = torch.tensor([0.0])
+		pred_values = np.append(pred_values, stats(validation_dataloader, model))
                 plot_graph(experiment_id, loss_values, pred_values)
-                stats(validation_dataloader, model)
                 
             iter_counter += 1
 
