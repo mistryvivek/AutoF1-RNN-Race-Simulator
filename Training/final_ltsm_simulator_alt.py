@@ -15,7 +15,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 INPUT_SIZE = 30
 HIDDEN_SIZE = 128
-EPOCHS = 2
+EPOCHS = 1
 LR = 0.005
 NUM_LAYERS = 2
 DROPOUT = 0.2
@@ -524,8 +524,8 @@ def train(experiment_id):
                 total_loss = torch.tensor([0.0])
                 plot_graph(experiment_id, loss_values, pred_values)
                 stats(validation_dataloader, model)
-
-	iter_counter += 1
+                
+            iter_counter += 1
 
     plot_graph(experiment_id, loss_values, pred_values)
 
