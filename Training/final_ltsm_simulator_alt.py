@@ -174,7 +174,7 @@ class AutoF1LSTM(nn.Module):
         track_status_embedded = self.track_status_embedding(track_status_encoded).view(1, 1, EMBEDDING_DIMS)
         driver_embedded = self.driver_embedding(driver_encoded).view(1, 1, EMBEDDING_DIMS)
         compound_embedded = self.compound_embedding(compound_encoded).view(1, 1, EMBEDDING_DIMS)
-        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4], team_embedded, track_status_embedded, driver_embedded, compound_embedded), dim=-1), (h_s, c_s))      
+        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4].to(device), team_embedded, track_status_embedded, driver_embedded, compound_embedded), dim=-1), (h_s, c_s))      
         h_t = self.layer_norm(h_t)
 
         compound_decision = self.compound_prediction(h_t)
@@ -508,7 +508,7 @@ def train(experiment_id):
     validation_dataloader = DataLoader(validation_dataloader)
 
     model.train()
-    total_loss = torch.tensor([0.0])
+    total_loss = torch.tensor([0.0]).to(device)
 
     for epoch in range(EPOCHS):
         for _, race_data in enumerate(training_dataloader):
@@ -522,8 +522,10 @@ def train(experiment_id):
                 loss_values = np.append(loss_values, [total_loss])
                 print(f"LOSS: total_loss")
                 total_loss = torch.tensor([0.0])
-                
+                plot_graph(experiment_id, loss_values, pred_values)
                 stats(validation_dataloader, model)
+
+	iter_counter += 1
 
     plot_graph(experiment_id, loss_values, pred_values)
 
