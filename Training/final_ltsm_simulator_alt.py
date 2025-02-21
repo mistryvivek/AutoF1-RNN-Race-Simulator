@@ -522,7 +522,7 @@ def train(experiment_id):
                 loss_values = np.append(loss_values, [total_loss.cpu().detach().numpy()])
                 print(f"LOSS: total_loss")
                 total_loss = torch.tensor([0.0])
-		        pred_values = np.append(pred_values, np.array([stats(validation_dataloader, model)]))
+                pred_values = np.append(pred_values, np.array([stats(validation_dataloader, model)]))
                 plot_graph(experiment_id, loss_values, pred_values)
                 
             iter_counter += 1
