@@ -13,7 +13,7 @@ DATASET = CustomF1Dataloader(4, "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-INPUT_SIZE = 27
+INPUT_SIZE = 39
 HIDDEN_SIZE = 128
 EPOCHS = 1
 LR = 0.005
@@ -33,22 +33,22 @@ TELEMETRY_COORD_FN = nn.HuberLoss()
 DISTANCE_LOSS_FN = nn.HuberLoss()
 
 NUM_COMPOUNDS = 5
-NUM_TRACK_STATUS = 48
+NUM_TRACK_STATUS = 8
 NUM_TEAMS = 10 # Since 2018
-NUM_DRIVERS = 46
+NUM_DRIVERS = 40
 NUM_POSITIONS = 20 + 1 #(Due to indexing)
 NUM_GEARS = 9 # (8 forward/1 reverse)
+NUM_STATUS = 5
 EMBEDDING_DIMS = 8
 
-LAP_TIME_SCALE = 1.0
-COMPOUND_SCALE = 3.0
-SPEED_SCALE = 0.1
-TELEMETRY_RPM_SCALE = 0.1
-TELEMETRY_GEAR_SCALE = 3.0
-TELEMETRY_THROTTLE_SCALE = 3.0
-
-TELEMETRY_COORD_SCALE = 0.1
-DISTANCE_SCALE = 0.0
+LAP_TIME_SCALE = 0.1
+COMPOUND_SCALE = 1.0
+SPEED_SCALE = 0.01
+TELEMETRY_RPM_SCALE = 0.01
+TELEMETRY_GEAR_SCALE = 0.01
+TELEMETRY_THROTTLE_SCALE = 0.1
+TELEMETRY_COORD_SCALE = 0.0001
+DISTANCE_SCALE = 0.1
 
 class AutoF1LSTM(nn.Module):
     def __init__(self, input_size, hidden_size):
@@ -57,9 +57,10 @@ class AutoF1LSTM(nn.Module):
         self.track_status_embedding = nn.Embedding(NUM_TRACK_STATUS, EMBEDDING_DIMS)
         self.driver_embedding = nn.Embedding(NUM_DRIVERS, EMBEDDING_DIMS)
         self.compound_embedding = nn.Embedding(NUM_COMPOUNDS, EMBEDDING_DIMS)
+        self.status_embedding = nn.Embedding(NUM_STATUS, EMBEDDING_DIMS)
         
         # Input size vector - any embeddings + what embeddings return
-        self.lstm = nn.LSTM((input_size - 4) + (EMBEDDING_DIMS * 4), hidden_size, num_layers=NUM_LAYERS, dropout=DROPOUT)
+        self.lstm = nn.LSTM((input_size - 9) + (EMBEDDING_DIMS * 9), hidden_size, num_layers=NUM_LAYERS, dropout=DROPOUT)
         self.layer_norm = nn.LayerNorm(hidden_size) 
 
         self.compound_prediction = nn.Sequential(
@@ -167,15 +168,37 @@ class AutoF1LSTM(nn.Module):
         )
 
     def forward(self, lap, h_s, c_s):
+       # Extract categorical values from lap tensor
         team_encoded = lap[:, :, -1:].long().to(device)
-        track_status_encoded = lap[:, :, -2:-1].long().to(device)
-        driver_encoded = lap[:, :, -3:-2].long().to(device)
-        compound_encoded = lap[:, :, -4:-3].long().to(device)
+        track_status1_encoded = lap[:, :, -5:-4].long().to(device)
+        track_status2_encoded = lap[:, :, -4:-3].long().to(device)
+        track_status3_encoded = lap[:, :, -3:-2].long().to(device)
+        track_status4_encoded = lap[:, :, -2:-1].long().to(device)
+        track_status5_encoded = lap[:, :, -6:-5].long().to(device)
+        driver_encoded = lap[:, :, -7:-6].long().to(device)
+        compound_encoded = lap[:, :, -8:-7].long().to(device)
+        status_encoded = lap[:, :, -9:-8].long().to(device)
+
+        track_status1_embedded = self.track_status_embedding(track_status1_encoded).view(1, 1, EMBEDDING_DIMS)
+        track_status2_embedded = self.track_status_embedding(track_status2_encoded).view(1, 1, EMBEDDING_DIMS)
+        track_status3_embedded = self.track_status_embedding(track_status3_encoded).view(1, 1, EMBEDDING_DIMS)
+        track_status4_embedded = self.track_status_embedding(track_status4_encoded).view(1, 1, EMBEDDING_DIMS)
+        track_status5_embedded = self.track_status_embedding(track_status5_encoded).view(1, 1, EMBEDDING_DIMS)
+
         team_embedded = self.team_embedding(team_encoded).view(1, 1, EMBEDDING_DIMS)
-        track_status_embedded = self.track_status_embedding(track_status_encoded).view(1, 1, EMBEDDING_DIMS)
         driver_embedded = self.driver_embedding(driver_encoded).view(1, 1, EMBEDDING_DIMS)
         compound_embedded = self.compound_embedding(compound_encoded).view(1, 1, EMBEDDING_DIMS)
-        h_t, (h_s, c_s) = self.lstm(torch.cat((lap[:, :, :-4].to(device), team_embedded, track_status_embedded, driver_embedded, compound_embedded), dim=-1), (h_s, c_s))      
+        status_embedded = self.status_embedding(status_encoded).view(1, 1, EMBEDDING_DIMS)
+
+        # Concatenate embeddings with raw lap data before feeding into LSTM
+        h_t, (h_s, c_s) = self.lstm(
+            torch.cat((lap[:, :, :-9].to(device),  # Exclude last 9 categorical columns
+                    track_status1_embedded, track_status2_embedded, track_status3_embedded,
+                    track_status4_embedded, track_status5_embedded, 
+                    team_embedded, driver_embedded, compound_embedded, status_embedded), dim=-1), 
+            (h_s, c_s)
+        )
+
         h_t = self.layer_norm(h_t)
 
         compound_decision = self.compound_prediction(h_t)
@@ -230,13 +253,13 @@ def testing_loop(model, laps):
         distance_ahead_simulated.append(d_ahead)
         distance_behind_simulated.append(d_behind)
     
-    return model_compound_decisions, laps[:,1:,-4].squeeze(0).long().to(device), lap_times_simulated, laps[:,1:,0].squeeze(0).to(device), \
+    return model_compound_decisions, laps[:,1:,-8].squeeze(0).long().to(device), lap_times_simulated, laps[:,1:,0].squeeze(0).to(device), \
         speed_i1_simulated, laps[:,1:,1].squeeze(0).to(device), speed_i2_simulated, laps[:,1:,2].squeeze(0).to(device), \
         speed_fl_simulated, laps[:,1:,3].squeeze(0).to(device), speed_st_simulated, laps[:,1:,4].squeeze(0).to(device), \
         speed_telemetry_simulated, laps[:,1:,5].squeeze(0).to(device), rpm_simulated, laps[:,1:,6].squeeze(0).to(device), \
         gear_simulated, laps[:,1:,7].squeeze(0).long().to(device), throttle_simulated, laps[:,1:,8].squeeze(0).to(device), \
         coordinates_simulated, laps[:,1:,9:12].squeeze(0).to(device), \
-        distance_ahead_simulated, laps[:,1:,12], distance_behind_simulated, laps[:,1:,13]
+        distance_ahead_simulated, laps[:,1:,12].squeeze(0).to(device), distance_behind_simulated, laps[:,1:,13].squeeze(0).to(device)
 
 def labeling_stats(true_labels, predicted_labels):
     conf_matrix = confusion_matrix(true_labels, predicted_labels)
@@ -364,10 +387,10 @@ def stats(testing_dataloader, model):
 
         # =========== Distance Prediction =======================
         real_distance_ahead_labels.append(real_d_ahead.cpu().numpy())
-        simulated_distance_ahead_labels(torch.cat(predicted_d_ahead).detach().cpu().numpy().flatten())
+        simulated_distance_ahead_labels.append(torch.cat(predicted_d_ahead).detach().cpu().numpy().flatten())
 
-        real_distance_behind_labels.append(real_b_ahead.cpu().numpy())
-        simulated_distance_behind_labels(torch.cat(predicted_b_ahead).detach().cpu().numpy().flatten())
+        real_distance_behind_labels.append(real_d_behind.cpu().numpy())
+        simulated_distance_behind_labels.append(torch.cat(predicted_d_behind).detach().cpu().numpy().flatten())
 
     real_compound_labels = np.concatenate(real_compound_labels)
     predicted_compound_labels = np.concatenate(predicted_compound_labels).flatten()
@@ -431,8 +454,9 @@ def stats(testing_dataloader, model):
     distance_behind = continous_stats(real_distance_behind_labels, simulated_distance_behind_labels)
 
     model.train()
-    return [compound_precision, lap_time_mase, speedi1_mase, speedi2_mase, speedfl_mase, speedst_mase, \
-        speedtelemetry_mase, rpm_mase, gear_precision, throttle_mase, coordinate_mase]
+    return ([lap_time_mase, speedi1_mase, speedi2_mase, speedfl_mase, speedst_mase, \
+        speedtelemetry_mase, rpm_mase, throttle_mase, coordinate_mase, distance_ahead, distance_behind], \
+        [compound_precision, gear_precision])
 
 def training_loop(model, laps):
     h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
@@ -469,7 +493,7 @@ def training_loop(model, laps):
         distance_ahead_simulations.append(d_ahead)
         distance_behind_simulations.append(d_behind)
 
-    compound_decision_loss = COMPOUND_LOSS_FN(torch.cat(model_compound_decisions).to(device), laps[:, 1:, -4].squeeze(0).long().to(device))
+    compound_decision_loss = COMPOUND_LOSS_FN(torch.cat(model_compound_decisions).to(device), laps[:, 1:, -8].squeeze(0).long().to(device))
     lap_time_loss = LAP_TIME_LOSS_FN(torch.cat(lap_time_simulations).view(-1).to(device), laps[:, 1:, 0].squeeze(0).to(device))
     speedi1_loss = SPEED_LOSS_FN(torch.cat(speedi1_simulations).view(-1).to(device), laps[:, 1:, 1].squeeze(0).to(device))
     speedi2_loss = SPEED_LOSS_FN(torch.cat(speedi2_simulations).view(-1).to(device), laps[:, 1:, 2].squeeze(0).to(device))
@@ -482,53 +506,68 @@ def training_loop(model, laps):
     coordinate_telemetry_loss = TELEMETRY_COORD_FN(torch.cat(coordinates_telemetry_simulations).to(device), laps[:, 1:, 9:12].squeeze(0).to(device))
     distance_ahead_loss = DISTANCE_LOSS_FN(torch.cat(distance_ahead_simulations).view(-1), laps[:,1:,12].squeeze(0).to(device))
     distance_behind_loss = DISTANCE_LOSS_FN(torch.cat(distance_behind_simulations).view(-1), laps[:,1:,13].squeeze(0).to(device))
-    print(compound_decision_loss)
-    print(lap_time_loss)
-    print(speedi1_loss)
-    print(speedi2_loss)
-    print(speedfl_loss)
-    print(speedst_loss)
-    print(speedtelemetry_loss)
-    print(rpm_telemetry_loss)
-    print(gear_telemetry_loss)
-    print(throttle_telemetry_loss)
-    print(coordinate_telemetry_loss)
-    print(distance_ahead_loss)
-    print(distance_behind_loss)
-    exit()
     return lap_time_loss * LAP_TIME_SCALE + compound_decision_loss * COMPOUND_SCALE + speedi1_loss * SPEED_SCALE + speedi2_loss * SPEED_SCALE + speedfl_loss * SPEED_SCALE + speedst_loss * SPEED_SCALE + speedtelemetry_loss * SPEED_SCALE + rpm_telemetry_loss * TELEMETRY_RPM_SCALE + gear_telemetry_loss * TELEMETRY_GEAR_SCALE + throttle_telemetry_loss * TELEMETRY_THROTTLE_SCALE + coordinate_telemetry_loss * TELEMETRY_COORD_SCALE + distance_ahead_loss * DISTANCE_SCALE + distance_behind_loss * DISTANCE_SCALE
 
-def plot_graph(experiment_id, losses, values):
-    plt.figure(figsize=(8,5))
-    LABELS = ["Compound", "LapTime", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed", \
-        "RPM", "nGear", "Throttle", "Telemetry Coordinates"]
-    COLOURS = [
-        'blue', 'red', 'green', 'orange', 'purple', 
-        'brown', 'pink', 'cyan', 'magenta', 'yellow'
-    ]
+def plot_graph(experiment_id, losses, continous_preds, discrete_preds):
+    # Convert lists of 1D arrays to 2D arrays
+    continuous_values = np.vstack(continous_preds)  # Shape: (num_samples, num_features)
+    discrete_values = np.vstack(discrete_preds)    # Shape: (num_samples, num_features)
 
-    for loss_idx in range(len(losses)):
-        print(f"Check shape {len(values[0])}")
-        for values_idx in range(len(values[0])):
-            plt.plot(values[values_idx], losses[loss_idx], marker='o', linestyle='-', color=COLOURS[values_idx], label=LABELS[values_idx])
+    CONTINUOUS_LABELS = ["LapTime", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed", 
+        "RPM",  "Throttle", "Telemetry Coordinates", "Distance Ahead", "Distance Behind"]  # Fill with labels for continuous variables
+    DISCRETE_LABELS = ["Compound", "nGear"]  # Fill with labels for discrete variables
+    CONTINUOUS_COLOURS = ['blue', 'red', 'green', 'orange', 'purple', 
+        'brown', 'pink', 'cyan', 'magenta', 'yellow',
+        'black']  # Fill with colors for continuous variables
+    DISCRETE_COLOURS = ['gray', 'lime']  # Fill with colors for discrete variables
 
-    # Labels and title
-    plt.xlabel('Values')
-    plt.ylabel('Loss')
-    plt.title('Loss vs. Values againist the Validation Dataset')
+    plt.figure(figsize=(16, 6))
 
-    # Explicit legend
-    plt.legend()
+    # Ensure correct shape for losses
+    losses = np.array(losses).squeeze()
 
-    # Show the plot
+    # Create subplots: 1 row, 3 columns (for continuous, discrete, and loss vs time)
+    fig, (ax_cont, ax_disc, ax_loss_time) = plt.subplots(1, 3, figsize=(16, 6))
+
+    # Plot continuous variables
+    for i, var in enumerate(CONTINUOUS_LABELS):
+        ax_cont.plot(losses, continuous_values[:, i], marker='o', linestyle='-', 
+                     color=CONTINUOUS_COLOURS[i], label=var)
+
+    ax_cont.set_title("Loss vs. Continuous Variables")
+    ax_cont.set_xlabel("Loss")
+    ax_cont.set_ylabel("Values")
+    ax_cont.legend()
+
+    # Plot discrete variables
+    for i, var in enumerate(DISCRETE_LABELS):
+        ax_disc.plot(losses, discrete_values[:, i], marker='o', linestyle='-', 
+                     color=DISCRETE_COLOURS[i], label=var)
+
+    ax_disc.set_title("Loss vs. Discrete Variables")
+    ax_disc.set_xlabel("Loss")
+    ax_disc.set_ylabel("Values")
+    ax_disc.legend()
+
+    # Plot loss vs index (time step is implicit as loss is in ascending order)
+    ax_loss_time.plot(np.arange(len(losses)), losses, marker='o', linestyle='-', color='black', label="Loss vs Time")
+    ax_loss_time.set_title("Loss vs Time")
+    ax_loss_time.set_xlabel("Iteration (Index)")
+    ax_loss_time.set_ylabel("Loss")
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Save figure
     plt.savefig(experiment_id)
+    plt.show()
 
 def train(experiment_id):
     model = AutoF1LSTM(INPUT_SIZE, HIDDEN_SIZE)
     model.to(device)
 
     loss_values = []
-    pred_values = []
+    continous_preds, discrete_preds = [], []
 
     optim = OPTIM(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
 
@@ -543,7 +582,7 @@ def train(experiment_id):
 
     for epoch in range(EPOCHS):
         for _, race_data in enumerate(training_dataloader):
-            total_loss += training_loop(model, race_data)
+            total_loss = total_loss + training_loop(model, race_data)
 
             if iter_counter % BATCH_SIZE == 0 or (iter_counter == len(training_dataset) * EPOCHS):
                 total_loss.backward()
@@ -553,14 +592,15 @@ def train(experiment_id):
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
                 optim.step()
                 optim.zero_grad()
-                loss_values.append(total_loss.cpu().detach().numpy())
-                print(f"LOSS: {total_loss}")
-                total_loss.detach_() 
-                total_loss.zero_()
-                pred_values.append(np.array([stats(validation_dataloader, model)]))
+                loss_values.append(total_loss.cpu().detach().numpy().copy())
+                print(f"LOSS: {total_loss}") 
+                total_loss = torch.tensor([0.0], requires_grad=True).to(device)
+                (continous, discrete) = stats(validation_dataloader, model)
+                continous_preds.append(continous)
+                discrete_preds.append(discrete)
                 
             iter_counter += 1
 
-    plot_graph(experiment_id, loss_values, pred_values)
+    plot_graph(experiment_id, loss_values, continous_preds, discrete_preds)
 
 train("TEST")

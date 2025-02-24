@@ -61,6 +61,7 @@ class CustomF1Dataloader(Dataset):
         # Traverse the directory
         self.lap_data = []
         self.largest_sequence_length = 0
+        unique_drivers = set()
         for root, dirs, files in os.walk(file_path):
             for file in files:
                 if file.endswith('.csv'):
@@ -102,46 +103,46 @@ class CustomF1Dataloader(Dataset):
                     # HULK FP1
                     df['Team'] = df['Team'].fillna("UNKNOWN")
                     df['Team'] = df['Team'].apply(lambda team: TEAM_MAPPINGS[OLD_TEAMS_MAPPING[team]] if team in OLD_TEAMS_MAPPING.keys() else TEAM_MAPPINGS[team])
-                    
-                    print(df['Driver'].unique())
-                    print(df['Status'].unique())
                    
                     df['TrackStatus'] = df['TrackStatus'].fillna("00000")
-                    # print(df['TrackStatus'])
                     track_status_split = df['TrackStatus'].apply(lambda x: list(str(x).ljust(5, '0')))
-                    track_status_df = pd.DataFrame(track_status_split.tolist(), columns=[f"TrackStatus_{i+1}" for i in range(5)])
+                    track_status_df = pd.DataFrame(track_status_split.tolist(), columns=[f"TrackStatus{i+1}" for i in range(5)])
                     df = pd.concat([df, track_status_df], axis=1)
-                    # df = df.drop(columns=['TrackStatus']) verify its working first
+                    df = df.drop(columns=['TrackStatus'])
 
-                    DRIVER_MAPPINGS = {
-                        'ALO': 0, 'ALB': 1, 'ARO': 2, 'BEA': 3, 'BEG': 4, 'BOT': 5,
-                        'BOY': 6, 'BRO': 7, 'COH': 8, 'DEV': 9, 'DEN': 10, 'DOO': 11,
-                        'DRU': 12, 'FCO': 13, 'FOR': 14, 'GAS': 15, 'GRA': 16, 'HAM': 17,
-                        'HAD': 18, 'HUL': 19, 'LAW': 20, 'LEC': 21, 'MAG': 22, 'MAN': 23,
-                        'MAR': 24, 'MON': 25, 'NOR': 26, 'OCO': 27, 'OSU': 28, 'PER': 29,
-                        'PIA': 30, 'POU': 31, 'RIC': 32, 'RUS': 33, 'SAR': 34, 'SAI': 35,
-                        'SHI': 36, 'SHW': 37, 'STR': 38, 'TBA': 39, 'TSU': 40, 'VER': 41,
-                        'VIL': 42, 'ZHO': 43, 'VES': 44, 'OWA': 45,
-                        'MSC': 46, 'VET': 47, 'LAT': 48, 'RAI': 49, 'MAZ': 50, 'GIO': 51,
-                        'ILO': 52, 'NIS': 53, 'KUB': 54, 'AIT': 55, 'KVY': 56, 'GRO': 57,
-                        'YAM': 58, 'VIP': 59, 'PAL': 60, 'POU': 61, 'FIT': 62
-                    }
+                    unique_drivers.update(df[df['Session'] == 'Race']['Driver'].unique().tolist())
 
+                    # Any drivers that have not raced are assigned the number 50.
+                    # We could use driver number - but they sometimes change (e.g 1 given to last years winner.)
+                    DRIVERS = ['VET', 'GAS', 'MSC', 'STR', 'ALB', 'FIT', 'SAR', 'GRO', 'ERI', 'PER', 'HAM', 'COL', 'LAW', 'AIT', 'KUB', 'LEC', 'PIA', 'RAI', 'OCO', 'LAT', 'GIO', 'NOR', 'BEA', 'SAI', 'HAR', 'MAG', 'TSU', 'ALO', 'VAN', 'BOT', 'RUS', 'DEV', 'MAZ', 'KVY', 'HUL', 'RIC', 'SIR', 'DOO', 'ZHO', 'VER']
+                    df['Driver'] = df['Driver'].apply(lambda driver: DRIVERS.index(driver) if driver in DRIVERS else 50)
 
-                    df['Driver'] = df['Driver'].apply(lambda driver: DRIVER_MAPPINGS[driver])
-                    
                     STATUS_MAPPINGS = {
-                        pd.NA: 0, 'Retired': 1, 'Finished': 2, 'Brakes': 3, '+1 Lap': 4, 'Accident': 5,
-                        'OnTrack': 6, '+2 Laps': 7, 'Collision damage': 8, 'Electrical': 9, '+3 Laps': 10,
-                        'Wheel nut': 11, 'Driveshaft': 12, 'Turbo': 13, 'Gearbox': 14, 'Engine': 15,
-                        'Collision': 16, 'Vibrations': 17, 'Power Unit': 18, 'Hydraulics': 19, 'Suspension': 20,
-                        'Oil leak': 21, 'Rear wing': 22, 'Mechanical': 23, 'Power loss': 24, 'Puncture': 25,
-                        'Damage': 26, 'Overheating': 27, 'Undertray': 27, 'Steering': 28, 'Technical': 29,
-                        'Illness': 30, 'Radiator': 31, 'Disqualified': 32, 'Withdrew': 33, 'Wheel': 34,
-                        'Out of fuel': 35, 'Transmission': 36, 'Spun off': 36, 'Water pressure': 37,
-                        '+6 Laps': 38, 'Fuel pressure': 39, 'Water pump': 40, 'Cooling system': 41,
-                        'Fuel leak': 42, 'Front wing': 43, 'Water leak': 44, 'Fuel pump': 45,
-                        'Differential': 46, 'OffTrack': 47
+                        # Finished Status (Success)
+                        'Finished': 1, 'OnTrack': 1,
+
+                        # Lap Behind Statuses
+                        '+1 Lap': 2, '+2 Laps': 2, '+3 Laps': 2, '+6 Laps': 2, '+7 Laps': 2,
+
+                        # Mechanical Issues
+                        'Brakes': 3, 'Accident': 3, 'Collision damage': 3, 'Electrical': 3, 
+                        'Wheel nut': 3, 'Driveshaft': 3, 'Turbo': 3, 'Gearbox': 3, 'Engine': 3, 
+                        'Collision': 3, 'Vibrations': 3, 'Power Unit': 3, 'Hydraulics': 3, 'Suspension': 3, 
+                        'Oil leak': 3, 'Rear wing': 3, 'Mechanical': 3, 'Power loss': 3, 'Puncture': 3, 
+                        'Damage': 3, 'Overheating': 3, 'Undertray': 3, 'Steering': 3, 'Technical': 3, 
+                        'Radiator': 3, 'Transmission': 3, 'Water pressure': 3, 'Fuel pressure': 3, 
+                        'Water pump': 3, 'Cooling system': 3, 'Fuel leak': 3, 'Front wing': 3, 
+                        'Water leak': 3, 'Fuel pump': 3, 'Differential': 3, 'Exhaust': 3, 'Battery': 3, 
+                        'Tyre': 3, 'Electronics': 3, 'Debris': 3, 'Retired': 3, 'Wheel': 3,
+
+                        # Driver/Team Error
+                        'Spun off': 4, 'OffTrack': 4, 'Disqualified': 4, 'Out of fuel': 4, 
+
+                        # Illness/Withdrawal
+                        'Illness': 0, 'Withdrew': 0,
+
+                        # Normally for non race events.
+                        pd.NA: 5
                     }
 
                     df['Status'] = df['Status'].apply(lambda status: STATUS_MAPPINGS[status])
@@ -153,96 +154,98 @@ class CustomF1Dataloader(Dataset):
 
                     RACE_COLUMNS_TO_EXTRACT = [
                         "LapTime", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed",
-                        "RPM", "nGear", "Throttle", "X", "Y", "Z", 
+                        "RPM", "nGear", "Throttle", "X", "Y", "Z",  # Telemetry
                         "DistanceToDriverAhead", "DistanceToDriverBehind", "TyreLife",
                         "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", 
-                        "AvgLapDiffP", "MandatoryPitStop", "Q1", "Q2", "Q3",
-                        "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed",
-                        "Status", "Compound", "Driver", "TrackStatus", "Team"
+                        "AvgLapDiffP", "MandatoryPitStop", "Q1", "Q2", "Q3", # Other session data
+                        "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", # Weather
+                        "Status", "Compound", "Driver", "TrackStatus1", "TrackStatus2",
+                        "TrackStatus3", "TrackStatus4", "TrackStatus5", "Team" # Anything that needs encoding
                     ]
 
                     for event in df['EventName'].unique():
                         dfEvent = df[df['EventName'] == event].copy()
-                        for year in dfEvent['Year'].unique():
-                            dfEventYear = dfEvent[dfEvent['Year'] == year].copy()
+                        # ========== FFILL DISTANCE DATA ===============
+                        # Fill NaN with 0 if Position is 1 for 'DistanceToDriverAhead'
+                        dfEvent['DistanceToDriverAhead'] = dfEvent.apply(
+                            lambda row: 0 if pd.notna(row['Position']) and row['Position'] == 1 and pd.isna(row['DistanceToDriverAhead']) else row['DistanceToDriverAhead'], axis=1)
 
-                            # ========== FFILL DISTANCE DATA ===============
-                            # Fill NaN with 0 if Position is 1 for 'DistanceToDriverAhead'
-                            dfEventYear['DistanceToDriverAhead'] = dfEventYear.apply(
-                                lambda row: 0 if pd.notna(row['Position']) and row['Position'] == 1 and pd.isna(row['DistanceToDriverAhead']) else row['DistanceToDriverAhead'], axis=1)
+                        # Fill NaN with 0 if Position is 20 for 'DistanceToDriverBehind'
+                        dfEvent['DistanceToDriverBehind'] = dfEvent.apply(
+                            lambda row: 0 if pd.notna(row['Position']) and row['Position'] == dfEvent['Position'].max() and pd.isna(row['DistanceToDriverBehind']) else row['DistanceToDriverBehind'], axis=1)
 
-                            # Fill NaN with 0 if Position is 20 for 'DistanceToDriverBehind'
-                            dfEventYear['DistanceToDriverBehind'] = dfEventYear.apply(
-                                lambda row: 0 if pd.notna(row['Position']) and row['Position'] == dfEventYear['Position'].max() and pd.isna(row['DistanceToDriverBehind']) else row['DistanceToDriverBehind'], axis=1)
-
-                            for driver in dfEventYear['Driver'].unique():
-                                dfEventDriver = dfEventYear[dfEventYear['Driver'] == driver].copy()
-                                dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race'].copy()
-                                # ========== LOOK AT QUALIFYING DATA ========
+                        for driver in dfEvent['Driver'].unique():
+                            dfEventDriver = dfEvent[dfEvent['Driver'] == driver].copy()
+                            dfEventDriverRace = dfEventDriver[dfEventDriver['Session'] == 'Race'].copy()
+                            # ========== LOOK AT QUALIFYING DATA ========
+                            if 'Sprint Shootout' in dfEventDriver['Session'].unique():
+                                quali_times = dfEventDriver[dfEventDriver['Session'] == 'Sprint Shootout'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
+                            else:
                                 try:
                                     # Get Q1, Q2, Q3 times.
                                     quali_times = dfEventDriver[dfEventDriver['Session'] == 'Qualifying'].iloc[0][['Q1','Q2','Q3']].apply(lambda x: x if x == 0.0 else x.total_seconds()).values
                                 except IndexError as e:
                                     quali_times = [0.0] * 3
-                                # ========== LOOK AT PRACTICE DATA ========
-                                dfPractice = dfEventDriver[dfEventDriver['Session'].str.contains('Practice', na=False)].copy()
-                                avg_lap_time = dfPractice['LapTime'].mean()
-                                worst_lap_time = dfPractice['LapTime'].max()
-                                lap_time_sd = dfPractice['LapTime'].std()
-                                # Compute Lap-to-Lap Differences
-                                dfPractice.loc[:, 'LapDiff'] = dfPractice['LapTime'].diff() # Difference between consecutive laps
-                                avg_lap_diff = dfPractice['LapDiff'].mean()
-                                # Happens in the rare case there is no data here.
-                                avg_lap_time = 0 if pd.isna(avg_lap_time) else avg_lap_time
-                                worst_lap_time = 0 if pd.isna(worst_lap_time) else worst_lap_time
-                                lap_time_sd = 0 if pd.isna(lap_time_sd) else lap_time_sd
-                                avg_lap_diff = 0 if pd.isna(avg_lap_diff) else avg_lap_diff
+                            # ========== LOOK AT PRACTICE DATA ========
+                            dfPractice = dfEventDriver[dfEventDriver['Session'].str.contains('Practice', na=False)].copy().sort_values(by='Time')
+                            avg_lap_time = dfPractice['LapTime'].mean()
+                            worst_lap_time = dfPractice['LapTime'].max()
+                            lap_time_sd = dfPractice['LapTime'].std()
+                            # Compute Lap-to-Lap Differences
+                            dfPractice.loc[:, 'LapDiff'] = dfPractice['LapTime'].diff() # Difference between consecutive laps
+                            avg_lap_diff = dfPractice['LapDiff'].mean()
+                            # Happens in the rare case there is no data here.
+                            avg_lap_time = 0 if pd.isna(avg_lap_time) else avg_lap_time
+                            worst_lap_time = 0 if pd.isna(worst_lap_time) else worst_lap_time
+                            lap_time_sd = 0 if pd.isna(lap_time_sd) else lap_time_sd
+                            avg_lap_diff = 0 if pd.isna(avg_lap_diff) else avg_lap_diff
 
-                                if dfEventDriverRace.shape[0] > self.largest_sequence_length:
-                                    self.largest_sequence_length = dfEventDriverRace.shape[0]
-                                if  (dfEventDriverRace.shape[0] > 1) and \
-                                    (not dfEventDriverRace['LapTime'].isna().any()) and \
-                                    (not ((dfEventDriverRace['Compound'] == -1.0).any())) and \
-                                    ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
-                                    (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
-                                    (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
-                                    orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
+                            if dfEventDriverRace.shape[0] > self.largest_sequence_length:
+                                self.largest_sequence_length = dfEventDriverRace.shape[0]
+                            if  (dfEventDriverRace.shape[0] > 1) and \
+                                (not dfEventDriverRace['LapTime'].isna().any()) and \
+                                (not ((dfEventDriverRace['Compound'] == -1.0).any())) and \
+                                ((dataset_type == 1) or (dataset_type == 2 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS) or \
+                                (dataset_type == 3 and dfEventDriverRace.iloc[0]['Points'] > 0) or \
+                                (dataset_type == 4 and dfEventDriverRace.iloc[0]['ClassifiedPosition'] not in DNFS and dfEventDriverRace.iloc[0]['GridPosition'] <= float(dfEventDriverRace.iloc[0]['ClassifiedPosition']))):
+                                orderedLaps = dfEventDriverRace[(dfEventDriverRace['Driver'].astype(object) == driver)].sort_values(by='LapNumber')
+                                # Apply the forward fill
+                                # Can't fix warning - https://github.com/pandas-dev/pandas/issues/54417
+                                orderedLaps['DistanceToDriverAhead'] = pd.to_numeric(orderedLaps['DistanceToDriverAhead'], errors='coerce').interpolate(method='nearest').fillna(df[df['Position'] == orderedLaps['Position'].iloc[0]]['DistanceToDriverAhead'].mean())
+                                orderedLaps['DistanceToDriverBehind'] = pd.to_numeric(orderedLaps['DistanceToDriverBehind'], errors='coerce').interpolate(method='nearest').fillna(df[df['Position'] == orderedLaps['Position'].iloc[0]]['DistanceToDriverBehind'].mean())
+                                orderedLaps['DistanceToDriverAhead'] = orderedLaps['DistanceToDriverAhead'] / 1000 # Convert to KM.
+                                orderedLaps['DistanceToDriverBehind'] = orderedLaps['DistanceToDriverBehind'] / 1000
 
-                                    # Apply the forward fill
-                                    # Can't fix warning - https://github.com/pandas-dev/pandas/issues/54417
-                                    orderedLaps['DistanceToDriverAhead'] = pd.to_numeric(orderedLaps['DistanceToDriverAhead'], errors='coerce').interpolate(method='nearest').fillna(df[df['Position'] == orderedLaps['Position'].iloc[0]]['DistanceToDriverAhead'].mean())
-                                    orderedLaps['DistanceToDriverBehind'] = pd.to_numeric(orderedLaps['DistanceToDriverBehind'], errors='coerce').interpolate(method='nearest').fillna(df[df['Position'] == orderedLaps['Position'].iloc[0]]['DistanceToDriverBehind'].mean())
-                                    orderedLaps['DistanceToDriverAhead'] = orderedLaps['DistanceToDriverAhead'] / 1000 # Convert to KM.
-                                    orderedLaps['DistanceToDriverBehind'] = orderedLaps['DistanceToDriverBehind'] / 1000
+                                # ========= SORT OUT TELEMETRY DATA ==================
+                                TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'X', 'Y', 'Z']
+                                for col in TELEMETRY_COLUMNS:
+                                    orderedLaps[col] = orderedLaps[col].interpolate(method='nearest').fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
 
-                                    # ========= SORT OUT TELEMETRY DATA ==================
-                                    TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'X', 'Y', 'Z']
-                                    for col in TELEMETRY_COLUMNS:
-                                        orderedLaps[col] = orderedLaps[col].interpolate(method='nearest').fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
+                                # ========= CONVERT RPM TO RPS ========================
+                                orderedLaps['RPM'] = orderedLaps['RPM'] * (1/60)
 
-                                    # ========= CONVERT RPM TO RPS ========================
-                                    orderedLaps['RPM'] = orderedLaps['RPM'] * (1/60)
+                                # ============ SORT OUT SPEED DATA ===================
+                                SPEED_COLUMNS = ['SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST']
+                                for col in SPEED_COLUMNS:
+                                    orderedLaps[col] = orderedLaps[col].bfill().fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
+                                
+                                # ========== TELEMETRY (PERCENTAGE TO.iloc[0]DECIMAL) =========
+                                orderedLaps["Throttle"] = orderedLaps["Throttle"] / 100
 
-                                    # ============ SORT OUT SPEED DATA ===================
-                                    SPEED_COLUMNS = ['SpeedI1', 'SpeedI2', 'SpeedFL', 'SpeedST']
-                                    for col in SPEED_COLUMNS:
-                                        orderedLaps[col] = orderedLaps[col].bfill().fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
-                                    
-                                    # ========== TELEMETRY (PERCENTAGE TO.iloc[0]DECIMAL) =========
-                                    orderedLaps["Throttle"] = orderedLaps["Throttle"] / 100
+                                # ================= WEATHER FILL DATA ==================
+                                # Forwardfill by using the last known point.
+                                WEATHER_COLUMNS = ['AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp', 'WindDirection', 'WindSpeed']
+                                for col in WEATHER_COLUMNS:
+                                    orderedLaps[col] = orderedLaps[col].bfill().fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
 
-                                    # ================= WEATHER FILL DATA ==================
-                                    # Forwardfill by using the last known point.
-                                    weather_fill = ['AirTemp', 'Humidity', 'Pressure', 'Rainfall', 'TrackTemp', 'WindDirection', 'WindSpeed']
-                                    for col in SPEED_COLUMNS:
-                                        orderedLaps[col] = orderedLaps[col].bfill().fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
+                                ## =========== CONVERT TO MINS FOR STABLITY =================
+                                orderedLaps[["Q1", "Q2", "Q3"]] = quali_times
+                                orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
+                                orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
+                                self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
 
-                                    ## =========== CONVERT TO MINS FOR STABLITY =================
-                                    orderedLaps[["Q1", "Q2", "Q3"]] = quali_times
-                                    orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
-                                    orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
-                                    self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
-
+                break
+             
     def __len__(self):
         return len(self.lap_data)
 
