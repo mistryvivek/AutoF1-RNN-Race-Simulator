@@ -49,21 +49,20 @@ def main():
             results = session.results
 
             # Add columns we are expecting for telemetry data.
-            TELEMETRY_DATA_COLUMNS = [
+            GIVEN_TELEMETRY_DATA_COLUMNS = [
                 'Speed', 'RPM', 'nGear', 'Throttle', 'Brake', 'DRS',  # Car data
                 'X', 'Y', 'Z', 'Status',  # Position data
-                'DriverAhead', 'DistanceToDriverAhead', # Compare position
-                'DistanceToDriverBehind', 'DriverBehind' # Custom implementation columns
+                'DriverAhead', 'DistanceToDriverAhead' # Compare position
             ]
 
-            combined_dataset[TELEMETRY_DATA_COLUMNS] = pd.NA
+            combined_dataset[GIVEN_TELEMETRY_DATA_COLUMNS] = pd.NA
 
             for idx, lap in combined_dataset.iterrows():
                 try:
-                    # There are so many telemetry points - we are looking lap by lap so we just take the last one.
+                # There are so many telemetry points - we are looking lap by lap so we just take the last one.
                     telemetry_data = lap.get_telemetry().add_driver_ahead()
-                    telemetry_data = telemetry_data[TELEMETRY_DATA_COLUMNS]
-                    combined_dataset.loc[idx, TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1]
+                    telemetry_data = telemetry_data[GIVEN_TELEMETRY_DATA_COLUMNS]
+                    combined_dataset.loc[idx, GIVEN_TELEMETRY_DATA_COLUMNS] = telemetry_data.iloc[-1][GIVEN_TELEMETRY_DATA_COLUMNS].values
                 except:
                     pass
 
@@ -113,9 +112,6 @@ def main():
             combined_dataset['EventName'] = row['EventName']            
             combined_dataset['Year'] = year
 
-            # Ensure data is sorted by Driver and Timestamp
-            combined_dataset = combined_dataset.sort_values(by=['Driver', 'Time'])
-            combined_dataset[TELEMETRY_DATA_COLUMNS] = combined_dataset.groupby('Driver',group_keys=False)[TELEMETRY_DATA_COLUMNS].apply(lambda group: group.ffill())
             # Reset index if needed (apply can modify the index)
             combined_dataset = combined_dataset.reset_index(drop=True)
             event_dataframes.append(combined_dataset)
@@ -125,8 +121,6 @@ def main():
             combined_dataframes = pd.concat(event_dataframes)
             event_dataframes = [combined_dataframes]
             combined_dataframes.reset_index(drop=True).to_csv(f"dataset{year}.csv")
-
-    combined_dataframes.to_csv("dataset.csv")
    
 if __name__ == "__main__":
     main()
