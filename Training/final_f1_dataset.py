@@ -229,7 +229,7 @@ class CustomF1Dataloader(Dataset):
                                 for col in SPEED_COLUMNS:
                                     orderedLaps[col] = orderedLaps[col].bfill().fillna(df[df['Location'] == orderedLaps['Location'].iloc[0]][col].mean())
                                 
-                                # ========== TELEMETRY (PERCENTAGE TO.iloc[0]DECIMAL) =========
+                                # ========== TELEMETRY (PERCENTAGE) ==================
                                 orderedLaps["Throttle"] = orderedLaps["Throttle"] / 100
 
                                 # ================= WEATHER FILL DATA ==================
@@ -243,8 +243,6 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
                                 orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
-
-                break
              
     def __len__(self):
         return len(self.lap_data)
