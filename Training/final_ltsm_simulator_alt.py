@@ -15,7 +15,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 INPUT_SIZE = 39
 HIDDEN_SIZE = 128
-EPOCHS = 1
+EPOCHS = 50
 LR = 0.005
 NUM_LAYERS = 2
 DROPOUT = 0.2
@@ -282,7 +282,7 @@ def labeling_stats(true_labels, predicted_labels):
     f1 = f1_score(true_labels, predicted_labels, average='weighted', zero_division=1)
     print(f"F1 Score: {f1:.4f}")
 
-    return precision
+    return accuracy
 
 def continous_stats(true_values, predicted_values):
     mae_pred = mean_absolute_error(true_values, predicted_values)
@@ -298,7 +298,7 @@ def continous_stats(true_values, predicted_values):
     mse = np.mean((predicted_values - true_values) ** 2)
     print(f"Mean Squared Error: {mse:.4f}")
 
-    return mase
+    return mse
 
 def stats(testing_dataloader, model):
     model.eval()
@@ -603,4 +603,11 @@ def train(experiment_id):
 
     plot_graph(experiment_id, loss_values, continous_preds, discrete_preds)
 
-train("TEST")
+train("Dataset 4")
+DATASET = CustomF1Dataloader(4, "../Data Gathering")
+train("Dataset 3")
+DATASET = CustomF1Dataloader(3, "../Data Gathering")
+train("Dataset 2")
+DATASET = CustomF1Dataloader(2, "../Data Gathering")
+train("Dataset 1")
+DATASET = CustomF1Dataloader(2, "../Data Gathering")
