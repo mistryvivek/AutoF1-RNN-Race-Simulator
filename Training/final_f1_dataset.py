@@ -52,6 +52,16 @@ DNFS = ['R', 'D', 'E', 'W', 'F', 'N', 'U']
 pd.set_option('future.no_silent_downcasting', True)
 
 class CustomF1Dataloader(Dataset):
+    def generate_countdown_for_stint(self, group):  
+        # Generate a sequence of integers from 1 to len(group)
+        max_length = len(group)
+        countdown = np.arange(1, max_length + 1)
+        
+        # Reverse the countdown sequence
+        countdown = countdown[::-1]
+        
+        return pd.Series(countdown)
+
     def __init__(self, dataset_type, file_path):
         # Dataset type - 1, 2, 3 or 4
         # 1: all data ever
@@ -153,13 +163,13 @@ class CustomF1Dataloader(Dataset):
                     df['Q3'] = df['Q3'].fillna(0.0)
 
                     RACE_COLUMNS_TO_EXTRACT = [
-                        "LapTime", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed",
+                        "LapTime", "LapsTillPit", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed",
                         "RPM", "nGear", "Throttle", "X", "Y", "Z",  # Telemetry
                         "DistanceToDriverAhead", "DistanceToDriverBehind", "TyreLife",
                         "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", 
                         "AvgLapDiffP", "MandatoryPitStop", "Q1", "Q2", "Q3", # Other session data
                         "AirTemp", "Humidity", "Pressure", "Rainfall", "TrackTemp", "WindDirection", "WindSpeed", # Weather
-                        "Status", "Compound", "Driver", "TrackStatus1", "TrackStatus2",
+                        "MandatoryPitStop", "Status", "Compound", "Driver", "TrackStatus1", "TrackStatus2",
                         "TrackStatus3", "TrackStatus4", "TrackStatus5", "Team" # Anything that needs encoding
                     ]
 
@@ -216,6 +226,34 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps['DistanceToDriverAhead'] = orderedLaps['DistanceToDriverAhead'] / 1000 # Convert to KM.
                                 orderedLaps['DistanceToDriverBehind'] = orderedLaps['DistanceToDriverBehind'] / 1000
 
+                                # ============ TRY STINT CHANGE =====================
+                                # Initialize an empty list to store the countdown values
+                                countdown_values = []
+
+                                # Iterate through unique stints except the last stint
+                                unique_stints = orderedLaps["Stint"].unique()
+
+                                for stint in unique_stints[:-1]:  # Exclude the last stint
+                                    # Get the group of rows that belong to this stint
+                                    stint_group = orderedLaps[orderedLaps["Stint"] == stint]
+                                    
+                                    # Generate a sequence from 1 to the length of the stint group
+                                    max_length = len(stint_group)
+                                    countdown = np.arange(1, max_length + 1)  # Sequence from 1 to length of group
+                                    
+                                    # Reverse the countdown sequence (so it goes from max length to 1)
+                                    countdown = countdown[::-1]
+                                    
+                                    # Add the reversed countdown to the list
+                                    countdown_values.extend(countdown)
+
+                                # Add the countdown for the last stint (set to 0)
+                                last_stint = orderedLaps["Stint"].iloc[-1]
+                                countdown_values.extend([0] * len(orderedLaps[orderedLaps["Stint"] == last_stint]))
+
+                                # Set the countdown values for the DataFrame
+                                orderedLaps["LapsTillPit"] = countdown_values
+
                                 # ========= SORT OUT TELEMETRY DATA ==================
                                 TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'X', 'Y', 'Z']
                                 for col in TELEMETRY_COLUMNS:
@@ -243,6 +281,7 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
                                 orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
+                    break
 
     def __len__(self):
         return len(self.lap_data)

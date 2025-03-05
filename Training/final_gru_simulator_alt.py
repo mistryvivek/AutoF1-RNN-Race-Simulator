@@ -6,16 +6,17 @@ from torch.utils.data import random_split, DataLoader
 from sklearn.metrics import confusion_matrix, accuracy_score, mean_absolute_error, precision_score, recall_score, f1_score
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 from final_f1_dataset import CustomF1Dataloader
 
-DATASET = CustomF1Dataloader(4, "../Data Gathering")
+DATASET = CustomF1Dataloader(2, "../Data Gathering")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-INPUT_SIZE = 39
+INPUT_SIZE = 40
 HIDDEN_SIZE = 128
-EPOCHS = 20
+EPOCHS = 3
 LR = 0.005
 NUM_LAYERS = 2
 DROPOUT = 0.2
@@ -27,7 +28,7 @@ COMPOUND_LOSS_FN = nn.CrossEntropyLoss()
 LAP_TIME_LOSS_FN = nn.HuberLoss()
 SPEED_LOSS_FN = nn.HuberLoss()
 TELEMETRY_RPM_FN = nn.HuberLoss()
-TELEMETRY_GEAR_FN = nn.CrossEntropyLoss()
+TELEMETRY_GEAR_FN = nn.MultiMarginLoss()
 TELEMETRY_THROTTLE_FN = nn.HuberLoss()
 DISTANCE_LOSS_FN = nn.HuberLoss()
 
@@ -40,17 +41,17 @@ NUM_GEARS = 9 # (8 forward/1 reverse)
 NUM_STATUS = 5
 EMBEDDING_DIMS = 8
 
-LAP_TIME_SCALE = 0.1
-COMPOUND_SCALE = 1.0
-SPEED_SCALE = 0.01
-TELEMETRY_RPM_SCALE = 0.01
-TELEMETRY_GEAR_SCALE = 0.01
+LAP_TIME_SCALE = 1.0
+COMPOUND_SCALE = 2.5
+SPEED_SCALE = 0.001
+TELEMETRY_RPM_SCALE = 0.001
+TELEMETRY_GEAR_SCALE = 0.25
 TELEMETRY_THROTTLE_SCALE = 0.1
-DISTANCE_SCALE = 0.1
+DISTANCE_SCALE = 1.0
 
-class AutoF1LSTM(nn.Module):
+class AutoF1GRU(nn.Module):
     def __init__(self, input_size, hidden_size):
-        super(AutoF1LSTM, self).__init__()
+        super(AutoF1GRU, self).__init__()
         self.team_embedding = nn.Embedding(NUM_TEAMS, EMBEDDING_DIMS)
         self.track_status_embedding = nn.Embedding(NUM_TRACK_STATUS, EMBEDDING_DIMS)
         self.driver_embedding = nn.Embedding(NUM_DRIVERS, EMBEDDING_DIMS)
@@ -181,7 +182,7 @@ class AutoF1LSTM(nn.Module):
         status_embedded = self.status_embedding(status_encoded).view(1, 1, EMBEDDING_DIMS)
 
         # Concatenate embeddings with raw lap data before feeding into LSTM
-        h_t, h_s = self.lstm(
+        h_t, h_s = self.gru(
             torch.cat((lap[:, :, :-9].to(device),  # Exclude last 9 categorical columns
                     track_status1_embedded, track_status2_embedded, track_status3_embedded,
                     track_status4_embedded, track_status5_embedded, 
@@ -510,6 +511,58 @@ def training_loop(model, laps):
     distance_behind_loss = DISTANCE_LOSS_FN(torch.cat(distance_behind_simulations).view(-1), laps[:,1:,13].squeeze(0).to(device))
     return lap_time_loss * LAP_TIME_SCALE + compound_decision_loss * COMPOUND_SCALE + speedi1_loss * SPEED_SCALE + speedi2_loss * SPEED_SCALE + speedfl_loss * SPEED_SCALE + speedst_loss * SPEED_SCALE + speedtelemetry_loss * SPEED_SCALE + rpm_telemetry_loss * TELEMETRY_RPM_SCALE + gear_telemetry_loss * TELEMETRY_GEAR_SCALE + throttle_telemetry_loss * TELEMETRY_THROTTLE_SCALE + distance_ahead_loss * DISTANCE_SCALE + distance_behind_loss * DISTANCE_SCALE
 
+def validation_loss(model, validation_dataloader):
+    validation_loss = torch.tensor([0.0], requires_grad=True).to(device)
+
+    for _, race_data in enumerate(validation_dataloader):
+        laps_in_race = race_data.shape[1]
+
+        h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
+        model_compound_decisions = []
+        lap_time_simulations = []
+        speedi1_simulations = []
+        speedi2_simulations = []
+        speedfl_simulations = []
+        speedst_simulations = []
+        speedtelemetry_simulations = []
+        rpm_telemetry_simulations = []
+        gear_telemetry_simulations = []
+        throttle_telemetry_simulations = []
+        distance_ahead_simulations = []
+        distance_behind_simulations = []
+
+        for lap in range(laps_in_race - 1):
+            h_s, compound_decisions, lap_times, speedi1, speedi2, speedfl, speedst, speed_telemetry, rpm_telemetry, gear_telemetry, throttle_telemetry, d_ahead, d_behind = model(race_data[:,lap].unsqueeze(0), h_s)
+            model_compound_decisions.append(compound_decisions.view(-1, NUM_COMPOUNDS))
+            lap_time_simulations.append(lap_times)
+            speedi1_simulations.append(speedi1)
+            speedi2_simulations.append(speedi2)
+            speedfl_simulations.append(speedfl)
+            speedst_simulations.append(speedst)
+            speedtelemetry_simulations.append(speed_telemetry)
+            rpm_telemetry_simulations.append(rpm_telemetry)
+            gear_telemetry_simulations.append(gear_telemetry.view(-1, NUM_GEARS))
+            throttle_telemetry_simulations.append(throttle_telemetry)
+            distance_ahead_simulations.append(d_ahead)
+            distance_behind_simulations.append(d_behind)
+
+        compound_decision_loss = COMPOUND_LOSS_FN(torch.cat(model_compound_decisions).to(device), race_data[:, 1:, -8].squeeze(0).long().to(device))
+        lap_time_loss = LAP_TIME_LOSS_FN(torch.cat(lap_time_simulations).view(-1).to(device), race_data[:, 1:, 0].squeeze(0).to(device))
+        speedi1_loss = SPEED_LOSS_FN(torch.cat(speedi1_simulations).view(-1).to(device), race_data[:, 1:, 1].squeeze(0).to(device))
+        speedi2_loss = SPEED_LOSS_FN(torch.cat(speedi2_simulations).view(-1).to(device), race_data[:, 1:, 2].squeeze(0).to(device))
+        speedfl_loss = SPEED_LOSS_FN(torch.cat(speedfl_simulations).view(-1).to(device), race_data[:, 1:, 3].squeeze(0).to(device))
+        speedst_loss = SPEED_LOSS_FN(torch.cat(speedst_simulations).view(-1).to(device), race_data[:, 1:, 4].squeeze(0).to(device))
+        speedtelemetry_loss = SPEED_LOSS_FN(torch.cat(speedtelemetry_simulations).view(-1).to(device), race_data[:, 1:, 5].squeeze(0).to(device))
+        rpm_telemetry_loss = TELEMETRY_RPM_FN(torch.cat(rpm_telemetry_simulations).view(-1).to(device), race_data[:, 1:, 6].squeeze(0).to(device))
+        gear_telemetry_loss = TELEMETRY_GEAR_FN(torch.cat(gear_telemetry_simulations).to(device), race_data[:, 1:, 7].squeeze(0).long().to(device))
+        throttle_telemetry_loss = TELEMETRY_THROTTLE_FN(torch.cat(throttle_telemetry_simulations).view(-1).to(device), race_data[:, 1:, 8].squeeze(0).to(device))
+        distance_ahead_loss = DISTANCE_LOSS_FN(torch.cat(distance_ahead_simulations).view(-1), race_data[:,1:,12].squeeze(0).to(device))
+        distance_behind_loss = DISTANCE_LOSS_FN(torch.cat(distance_behind_simulations).view(-1), race_data[:,1:,13].squeeze(0).to(device))
+        validation_loss = validation_loss + (lap_time_loss * LAP_TIME_SCALE + compound_decision_loss * COMPOUND_SCALE + speedi1_loss * SPEED_SCALE + speedi2_loss * SPEED_SCALE + speedfl_loss * SPEED_SCALE + speedst_loss * SPEED_SCALE + speedtelemetry_loss * SPEED_SCALE + rpm_telemetry_loss * TELEMETRY_RPM_SCALE + gear_telemetry_loss * TELEMETRY_GEAR_SCALE + throttle_telemetry_loss * TELEMETRY_THROTTLE_SCALE + distance_ahead_loss * DISTANCE_SCALE + distance_behind_loss * DISTANCE_SCALE)
+    
+    model.train()
+    return validation_loss
+
 def plot_graph(experiment_id, losses, continous_preds, discrete_preds):
     # Convert lists of 1D arrays to 2D arrays
     continuous_values = np.vstack(continous_preds)  # Shape: (num_samples, num_features)
@@ -565,13 +618,14 @@ def plot_graph(experiment_id, losses, continous_preds, discrete_preds):
     plt.show()
 
 def train(experiment_id):
-    model = AutoF1LSTM(INPUT_SIZE, HIDDEN_SIZE)
+    model = AutoF1GRU(INPUT_SIZE, HIDDEN_SIZE)
     model.to(device)
 
     loss_values = []
     continous_preds, discrete_preds = [], []
 
     optim = OPTIM(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
+    scheduler = ReduceLROnPlateau(optim, mode='min', factor=0.5, patience=2)
 
     training_dataset, validation_dataloader, _ = random_split(DATASET, [0.8, 0.1, 0.1])
     iter_counter = 1
@@ -594,44 +648,21 @@ def train(experiment_id):
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
                 optim.step()
                 optim.zero_grad()
-                loss_values.append(total_loss.cpu().detach().numpy().copy())
+                if iter_counter % (BATCH_SIZE * 8) == 0:
+                    loss_values.append(total_loss.cpu().detach().numpy().copy())
+                    (continous, discrete) = stats(validation_dataloader, model)
+                    continous_preds.append(continous)
+                    discrete_preds.append(discrete)
                 print(f"\n LOSS: {total_loss}") 
-                total_loss = torch.tensor([0.0], requires_grad=True).to(device)
-                (continous, discrete) = stats(validation_dataloader, model)
-                continous_preds.append(continous)
-                discrete_preds.append(discrete)
-                
+                total_loss = torch.tensor([0.0], requires_grad=True).to(device)      
+
+                val_loss = validation_loss(model, validation_dataloader)
+                scheduler.step(val_loss)           
+            
             iter_counter += 1
 
     plot_graph(experiment_id, loss_values, continous_preds, discrete_preds)
 
-print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS}, LAP_TIME_SCALE {LAP_TIME_SCALE}, COMPOUND_SCALE {COMPOUND_SCALE}, SPEED_SCALE {SPEED_SCALE}, TELEMETRY_RPM_SCALE {TELEMETRY_RPM_SCALE}, TELEMETRY_GEAR_SCALE {TELEMETRY_GEAR_SCALE}, TELEMETRY_THROTTLE_SCALE {TELEMETRY_THROTTLE_SCALE}, DISTANCE_SCALE {DISTANCE_SCALE}, OPTIM {OPTIM}, COMPOUND_LOSS_FN {COMPOUND_LOSS_FN}, LAP_TIME_LOSS_FN {LAP_TIME_LOSS_FN}, SPEED_LOSS_FN {SPEED_LOSS_FN}, TELEMETRY_RPM_FN {TELEMETRY_RPM_FN}, TELEMETRY_GEAR_FN {TELEMETRY_GEAR_FN}, TELEMETRY_THROTTLE_FN {TELEMETRY_THROTTLE_FN}, DISTANCE_LOSS_FN {DISTANCE_LOSS_FN} \n")
-
-LOSS_FN_OPTIONS = {
-    "COMPOUND_LOSS_FN": [nn.CrossEntropyLoss(), nn.MultiMarginLoss()],
-    "LAP_TIME_LOSS_FN": [nn.HuberLoss(), nn.MSELoss(), nn.L1Loss()],
-    "SPEED_LOSS_FN": [nn.HuberLoss(), nn.MSELoss(), nn.L1Loss()],
-    "TELEMETRY_RPM_FN": [nn.HuberLoss(), nn.MSELoss(), nn.L1Loss()],
-    "TELEMETRY_GEAR_FN": [nn.CrossEntropyLoss(), nn.MultiMarginLoss()],  # Gear is categorical
-    "TELEMETRY_THROTTLE_FN": [nn.HuberLoss(), nn.MSELoss(), nn.L1Loss()],
-    "DISTANCE_LOSS_FN": [nn.HuberLoss(), nn.MSELoss(), nn.L1Loss()],
-}
-
-
-for key in LOSS_FN_OPTIONS.keys():
-    for loss_fn in LOSS_FN_OPTIONS[key]:
-        globals()[key]  = loss_fn
-        print(f"LOSS FN: {loss_fn} \n")
-        train(f"{key}_{loss_fn}")
-
-print("Dataset 4")
-train("Dataset 4 GRU")
-DATASET = CustomF1Dataloader(3, "../Data Gathering")
-print("Dataset 3")
-train("Dataset 3 GRU")
-DATASET = CustomF1Dataloader(2, "../Data Gathering")
-print("Dataset 2")
-train("Dataset 2 GRU")
-DATASET = CustomF1Dataloader(1, "../Data Gathering")
-print("Dataset 1")
-train("Dataset 1 GRU")
+for COMPOUND_SCALE in [1.0, 1.5]:
+    print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS}, LAP_TIME_SCALE {LAP_TIME_SCALE}, COMPOUND_SCALE {COMPOUND_SCALE}, SPEED_SCALE {SPEED_SCALE}, TELEMETRY_RPM_SCALE {TELEMETRY_RPM_SCALE}, TELEMETRY_GEAR_SCALE {TELEMETRY_GEAR_SCALE}, TELEMETRY_THROTTLE_SCALE {TELEMETRY_THROTTLE_SCALE}, DISTANCE_SCALE {DISTANCE_SCALE}, OPTIM {OPTIM}, COMPOUND_LOSS_FN {COMPOUND_LOSS_FN}, LAP_TIME_LOSS_FN {LAP_TIME_LOSS_FN}, SPEED_LOSS_FN {SPEED_LOSS_FN}, TELEMETRY_RPM_FN {TELEMETRY_RPM_FN}, TELEMETRY_GEAR_FN {TELEMETRY_GEAR_FN}, TELEMETRY_THROTTLE_FN {TELEMETRY_THROTTLE_FN}, DISTANCE_LOSS_FN {DISTANCE_LOSS_FN} \n")
+    train(f"Compound_weight_cel_adjust_{COMPOUND_SCALE}_gru".replace(".", "_"))
