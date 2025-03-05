@@ -71,7 +71,7 @@ class CustomF1Dataloader(Dataset):
         # Traverse the directory
         self.lap_data = []
         self.largest_sequence_length = 0
-        unique_drivers = set()
+        self.countdown_values_overall = []
         for root, dirs, files in os.walk(file_path):
             for file in files:
                 if file.endswith('.csv'):
@@ -119,8 +119,6 @@ class CustomF1Dataloader(Dataset):
                     track_status_df = pd.DataFrame(track_status_split.tolist(), columns=[f"TrackStatus{i+1}" for i in range(5)])
                     df = pd.concat([df, track_status_df], axis=1)
                     df = df.drop(columns=['TrackStatus'])
-
-                    unique_drivers.update(df[df['Session'] == 'Race']['Driver'].unique().tolist())
 
                     # Any drivers that have not raced are assigned the number 50.
                     # We could use driver number - but they sometimes change (e.g 1 given to last years winner.)
@@ -246,10 +244,11 @@ class CustomF1Dataloader(Dataset):
                                     
                                     # Add the reversed countdown to the list
                                     countdown_values.extend(countdown)
+                                    self.countdown_values_overall.extend(countdown)
 
                                 # Add the countdown for the last stint (set to 0)
                                 last_stint = orderedLaps["Stint"].iloc[-1]
-                                countdown_values.extend([0] * len(orderedLaps[orderedLaps["Stint"] == last_stint]))
+                                countdown_values.extend(np.arange(len(orderedLaps[orderedLaps["Stint"] == last_stint]), 0, -1))
 
                                 # Set the countdown values for the DataFrame
                                 orderedLaps["LapsTillPit"] = countdown_values
@@ -281,7 +280,6 @@ class CustomF1Dataloader(Dataset):
                                 orderedLaps[["AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = [avg_lap_time, worst_lap_time, lap_time_sd, avg_lap_diff]
                                 orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] = orderedLaps[["LapTime", "Q1", "Q2", "Q3", "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", "AvgLapDiffP"]] / 60.0
                                 self.lap_data.append(torch.tensor(orderedLaps[RACE_COLUMNS_TO_EXTRACT].to_numpy().astype('float32'), dtype=torch.float32))
-                    break
 
     def __len__(self):
         return len(self.lap_data)

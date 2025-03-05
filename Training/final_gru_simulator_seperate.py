@@ -34,11 +34,11 @@ NUM_DRIVERS = 40
 NUM_POSITIONS = 20 + 1 #(Due to indexing)
 NUM_GEARS = 9 # (8 forward/1 reverse)
 NUM_STATUS = 5
-NUM_BINS = 9
+NUM_BINS = 11
 EMBEDDING_DIMS = 8
 
 LAPS_TILL_PIT_LOSS_FN = CumulativeLinkLoss()
-BIN_EDGES = torch.tensor([0, 2, 4, 8, 12, 16, 20, 30])
+BIN_EDGES = torch.tensor([2, 4, 6, 8, 10, 13, 16, 20, 25, 30])
 
 class AutoF1GRU(nn.Module):
     def __init__(self, input_size, hidden_size):
@@ -111,10 +111,7 @@ def testing_loop(model, laps):
     for lap in range(laps_in_race - 1):
         h_s, lap_till_pit = model(laps[:,lap].unsqueeze(0), h_s)
         # Convert logits to actual class predictions
-        print(lap_till_pit)
-        print(torch.argmax(lap_till_pit, dim=-1))
         laps_till_pit_decisions.append(torch.argmax(lap_till_pit, dim=-1))
-        exit()
     
     return laps_till_pit_decisions, laps[:,1:,1].squeeze(0)
 
@@ -279,7 +276,7 @@ def train(experiment_id):
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
                 optim.step()
                 optim.zero_grad()
-                if iter_counter % (BATCH_SIZE * 8) == 0:
+                if iter_counter % (BATCH_SIZE * 8) == 0 or (iter_counter == len(training_dataset) * EPOCHS):
                     loss_values.append(total_loss.cpu().detach().numpy().copy())
                     laps_till_pred = stats(validation_dataloader, model)
                     stats(training_dataloader, model)
@@ -306,6 +303,8 @@ def train(experiment_id):
     print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
     train(f"Laps_till_layer_{NUM_LAYERS}_gru".replace(".", "_"))"""
 
-for BATCH_SIZE in [12, 24, 48]:
+"""for BATCH_SIZE in [12, 24, 48]:
     print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
-    train(f"Laps_till_batch_{BATCH_SIZE}_gru".replace(".", "_"))
+    train(f"Laps_till_batch_{BATCH_SIZE}_gru".replace(".", "_"))"""
+
+train("test")
