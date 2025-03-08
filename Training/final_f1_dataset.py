@@ -161,7 +161,7 @@ class CustomF1Dataloader(Dataset):
                     df['Q3'] = df['Q3'].fillna(0.0)
 
                     RACE_COLUMNS_TO_EXTRACT = [
-                        "LapTime", "LapsTillPit", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed",
+                        "LapTime", "PitNow", "SpeedI1", "SpeedI2", "SpeedFL", "SpeedST", "Speed",
                         "RPM", "nGear", "Throttle", "X", "Y", "Z",  # Telemetry
                         "DistanceToDriverAhead", "DistanceToDriverBehind", "TyreLife",
                         "AvgLapTimeP", "WorseLapTimeP", "LapTimeP", 
@@ -226,7 +226,7 @@ class CustomF1Dataloader(Dataset):
 
                                 # ============ TRY STINT CHANGE =====================
                                 # Initialize an empty list to store the countdown values
-                                countdown_values = []
+                                """countdown_values = []
 
                                 # Iterate through unique stints except the last stint
                                 unique_stints = orderedLaps["Stint"].unique()
@@ -251,7 +251,9 @@ class CustomF1Dataloader(Dataset):
                                 countdown_values.extend(np.arange(len(orderedLaps[orderedLaps["Stint"] == last_stint]), 0, -1))
 
                                 # Set the countdown values for the DataFrame
-                                orderedLaps["LapsTillPit"] = countdown_values
+                                orderedLaps["LapsTillPit"] = countdown_values"""
+
+                                orderedLaps["PitNow"] = orderedLaps["PitInTime"].apply(lambda x: 1 if pd.notna(x) else 0)
 
                                 # ========= SORT OUT TELEMETRY DATA ==================
                                 TELEMETRY_COLUMNS = ['Speed', 'RPM', 'nGear', 'Throttle', 'X', 'Y', 'Z']

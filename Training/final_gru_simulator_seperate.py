@@ -3,12 +3,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 from torch.utils.data import random_split, DataLoader
-from sklearn.metrics import confusion_matrix, accuracy_score, mean_absolute_error, precision_score, recall_score, f1_score
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-from spacecutter.models import OrdinalLogisticModel
-from spacecutter.losses import CumulativeLinkLoss
 
 from final_f1_dataset import CustomF1Dataloader
 
@@ -37,8 +35,14 @@ NUM_STATUS = 5
 NUM_BINS = 11
 EMBEDDING_DIMS = 8
 
-LAPS_TILL_PIT_LOSS_FN = CumulativeLinkLoss()
-BIN_EDGES = torch.tensor([2, 4, 6, 8, 10, 13, 16, 20, 25, 30])
+def COMPOUND_LOSS_FN(output, target):
+    # Create a weight tensor where class 0 gets weight 0 and class 1 gets weight 25.0
+    weights = torch.where(target == 1, torch.tensor(21.0), torch.tensor(1.0)).to(device)
+
+    # Compute the loss using the 'weight' parameter, applying 25.0 weight to class 1 and zeroing out class 0
+    loss = F.binary_cross_entropy_with_logits(output, target, weight=weights)
+    return loss
+
 
 class AutoF1GRU(nn.Module):
     def __init__(self, input_size, hidden_size):
@@ -53,15 +57,13 @@ class AutoF1GRU(nn.Module):
         self.gru = nn.GRU((input_size - 9) + (EMBEDDING_DIMS * 9), hidden_size, num_layers=NUM_LAYERS, dropout=DROPOUT)
         self.layer_norm = nn.LayerNorm(hidden_size) 
 
-        self.laps_till_pit_predictor = nn.Sequential(
+        self.laps_till_pit = nn.Sequential(
             nn.Dropout(p=DROPOUT),
             nn.Linear(hidden_size, 64),
             nn.ReLU(),
             nn.Dropout(p=DROPOUT),
             nn.Linear(64, 1) # Multiple outputs for multi-class classification
         )
-
-        self.laps_till_pit = OrdinalLogisticModel(self.laps_till_pit_predictor, NUM_BINS)
 
     def forward(self, lap, h_s):
        # Extract categorical values from lap tensor
@@ -98,7 +100,7 @@ class AutoF1GRU(nn.Module):
 
         h_t = self.layer_norm(h_t)
 
-        laps_till_pit_decision = self.laps_till_pit(h_t.squeeze(0))
+        laps_till_pit_decision = self.laps_till_pit(h_t)
 
         return h_s, laps_till_pit_decision
 
@@ -111,7 +113,7 @@ def testing_loop(model, laps):
     for lap in range(laps_in_race - 1):
         h_s, lap_till_pit = model(laps[:,lap].unsqueeze(0), h_s)
         # Convert logits to actual class predictions
-        laps_till_pit_decisions.append(torch.argmax(lap_till_pit, dim=-1))
+        laps_till_pit_decisions.append(F.sigmoid(lap_till_pit) >= 0.5)
     
     return laps_till_pit_decisions, laps[:,1:,1].squeeze(0)
 
@@ -148,7 +150,6 @@ def stats(testing_dataloader, model):
     
     # Run through testing data.
     for race_data in testing_dataloader:
-        race_data[:, :, 1] = torch.bucketize(race_data[:, :, 1].contiguous(), BIN_EDGES)
         predicted_till_pit, real_till_pit = testing_loop(model, race_data)
         predicted_till_pit = torch.cat(predicted_till_pit).cpu().detach().numpy().flatten()
 
@@ -183,11 +184,9 @@ def training_loop(model, laps):
         h_s, lap_till_pit = model(laps[:,lap].unsqueeze(0), h_s)
         model_laps_till_pit.append(lap_till_pit)
 
-    model_laps_till_pit = torch.cat(model_laps_till_pit).to(device)
-
-    laps_till_loss = LAPS_TILL_PIT_LOSS_FN(
-        model_laps_till_pit,
-        laps[:, 1:, 1].view(model_laps_till_pit.shape[0], 1).long().to(device)
+    laps_till_loss = COMPOUND_LOSS_FN(
+        torch.cat(model_laps_till_pit).view(-1).to(device),
+        laps[:, 1:, 1].squeeze(0).to(device)
     )
 
     return laps_till_loss
@@ -196,7 +195,7 @@ def validation_loss(model, validation_dataloader):
     validation_loss = torch.tensor([0.0], requires_grad=True).to(device)
 
     for _, race_data in enumerate(validation_dataloader):
-        race_data[:, :, 1] = torch.bucketize(race_data[:, :, 1].contiguous(), BIN_EDGES)
+        # race_data[:, :, 1] = torch.bucketize(race_data[:, :, 1].contiguous(), BIN_EDGES)
         laps_in_race = race_data.shape[1]
 
         h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
@@ -206,11 +205,9 @@ def validation_loss(model, validation_dataloader):
             h_s, lap_till = model(race_data[:,lap].unsqueeze(0), h_s)
             model_laps_till_pit.append(lap_till)
 
-        model_laps_till_pit = torch.cat(model_laps_till_pit).to(device)
-
-        laps_till_loss = LAPS_TILL_PIT_LOSS_FN(
-            model_laps_till_pit,
-            race_data[:, 1:, 1].view(model_laps_till_pit.shape[0], 1).long().to(device)
+        laps_till_loss = COMPOUND_LOSS_FN(
+            torch.cat(model_laps_till_pit).view(-1).to(device),
+            race_data[:, 1:, 1].squeeze(0).to(device)
         )
         validation_loss = validation_loss + laps_till_loss
     
@@ -265,7 +262,7 @@ def train(experiment_id):
     for epoch in range(EPOCHS):
         for _, race_data in enumerate(training_dataloader):
             # Explain why here
-            race_data[:, :, 1] = torch.bucketize(race_data[:, :, 1].contiguous(), BIN_EDGES)
+            # race_data[:, :, 1] = torch.bucketize(race_data[:, :, 1].contiguous(), BIN_EDGES)
             total_loss = total_loss + training_loop(model, race_data)
 
             if iter_counter % BATCH_SIZE == 0 or (iter_counter == len(training_dataset) * EPOCHS):
@@ -279,7 +276,7 @@ def train(experiment_id):
                 if iter_counter % (BATCH_SIZE * 8) == 0 or (iter_counter == len(training_dataset) * EPOCHS):
                     loss_values.append(total_loss.cpu().detach().numpy().copy())
                     laps_till_pred = stats(validation_dataloader, model)
-                    stats(training_dataloader, model)
+                    # stats(training_dataloader, model)
                     laps_till_preds.append(laps_till_pred)
                 print(f"\n LOSS: {total_loss}") 
                 total_loss = torch.tensor([0.0], requires_grad=True).to(device)      
