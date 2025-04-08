@@ -6,7 +6,7 @@ from torch.utils.data import random_split, DataLoader
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
-from torch.optim.lr_scheduler import ReduceLROnPlateau
+from earth_movers_distance import torch_wasserstein_loss
 
 from final_f1_dataset import CustomF1Dataloader
 
@@ -15,15 +15,15 @@ DATASET = CustomF1Dataloader(2, "../Data Gathering")
 device = torch.device('cpu')#('cuda' if torch.cuda.is_available() else 'cpu')
 
 INPUT_SIZE = 41
-HIDDEN_SIZE = 128
-EPOCHS = 2
-LR = 0.005
-NUM_LAYERS = 2
-DROPOUT = 0.2
-WEIGHT_DECAY = 0.005
+HIDDEN_SIZE = 512  # Increased hidden size
+EPOCHS = 2  # Increased number of epochs
+LR = 0.05  # Adjusted learning rate
+NUM_LAYERS = 2  # Increased number of layers
+DROPOUT = 0.3  # Increased dropout
+WEIGHT_DECAY = 0.01
 BATCH_SIZE = 25
 
-OPTIM = torch.optim.Adam
+OPTIM = torch.optim.Adam  # Changed optimizer to AdamW
 
 NUM_COMPOUNDS = 5
 NUM_TRACK_STATUS = 8
@@ -35,14 +35,15 @@ NUM_STATUS = 5
 NUM_BINS = 11
 EMBEDDING_DIMS = 8
 
-def COMPOUND_LOSS_FN(output, target):
+COMPOUND_LOSS_FN = nn.CrossEntropyLoss()
+
+def PIT_NOW_LOSS_FN(output, target):
     # Create a weight tensor where class 0 gets weight 0 and class 1 gets weight 25.0
-    weights = torch.where(target == 1, torch.tensor(21.0), torch.tensor(1.0)).to(device)
+    weights = torch.where(target == 1.0, torch.tensor(34.0), torch.tensor(1.0)).to(device)
 
     # Compute the loss using the 'weight' parameter, applying 25.0 weight to class 1 and zeroing out class 0
-    loss = F.binary_cross_entropy_with_logits(output, target, weight=weights)
+    loss = torch_wasserstein_loss(output, target, weights=weights)
     return loss
-
 
 class AutoF1GRU(nn.Module):
     def __init__(self, input_size, hidden_size):
@@ -59,14 +60,15 @@ class AutoF1GRU(nn.Module):
 
         self.laps_till_pit = nn.Sequential(
             nn.Dropout(p=DROPOUT),
-            nn.Linear(hidden_size, 64),
+            nn.Linear(hidden_size, 128),  # Increased layer size
             nn.ReLU(),
             nn.Dropout(p=DROPOUT),
-            nn.Linear(64, 1) # Multiple outputs for multi-class classification
+            nn.Linear(128, 1),  # Multiple outputs for multi-class classification,
+            nn.ReLU()
         )
 
     def forward(self, lap, h_s):
-       # Extract categorical values from lap tensor
+        # Extract categorical values from lap tensor
         team_encoded = lap[:, :, -1:].long().to(device)
         track_status1_encoded = lap[:, :, -5:-4].long().to(device)
         track_status2_encoded = lap[:, :, -4:-3].long().to(device)
@@ -97,16 +99,17 @@ class AutoF1GRU(nn.Module):
             h_s
         )
 
-
         h_t = self.layer_norm(h_t)
 
         laps_till_pit_decision = self.laps_till_pit(h_t)
+        # compound_decision = self.compound_prediction(h_t)
 
         return h_s, laps_till_pit_decision
 
 def testing_loop(model, laps):
     h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
     laps_till_pit_decisions = []
+   # model_compound_decisions = []
 
     laps_in_race = laps.shape[1]
 
@@ -114,8 +117,9 @@ def testing_loop(model, laps):
         h_s, lap_till_pit = model(laps[:,lap].unsqueeze(0), h_s)
         # Convert logits to actual class predictions
         laps_till_pit_decisions.append(F.sigmoid(lap_till_pit) >= 0.5)
+       # model_compound_decisions.append(torch.argmax(F.log_softmax(compound_decisions, dim=-1), dim=-1))
     
-    return laps_till_pit_decisions, laps[:,1:,1].squeeze(0)
+    return laps_till_pit_decisions, laps[:,1:,14].squeeze(0) # , model_compound_decisions, laps[:,1:,-8].squeeze(0).long().to(device)
 
 def labeling_stats(true_labels, predicted_labels):
     conf_matrix = confusion_matrix(true_labels, predicted_labels)
@@ -138,58 +142,64 @@ def labeling_stats(true_labels, predicted_labels):
     f1 = f1_score(true_labels, predicted_labels, average='weighted', zero_division=1)
     print(f"F1 Score: {f1:.4f}")
 
-    return accuracy
+    return precision
 
 def stats(testing_dataloader, model):
     model.eval()
 
     real_laps_till_pit_decisions = []
     pred_laps_till_pit_decisions = []
-    mandatory_stops_made = []
-    mandatory_stops_counts = []
+    
+    """real_compound_labels = []
+    predicted_compound_labels = []"""
     
     # Run through testing data.
     for race_data in testing_dataloader:
         predicted_till_pit, real_till_pit = testing_loop(model, race_data)
         predicted_till_pit = torch.cat(predicted_till_pit).cpu().detach().numpy().flatten()
 
-        # ================== Laps Till Pit Prediction ==================
         real_laps_till_pit_decisions.append(real_till_pit.cpu().numpy())
         # Convert logits to actual class predictions
         pred_laps_till_pit_decisions.append(predicted_till_pit)
-        # Checking for DSQs.
-        """mandatory_stops_made.append(any(predicted_till_pit == 1.0))
-        mandatory_stops_counts.append(sum(predicted_till_pit == 1.0))"""
+        
+        """real_compound_labels.append(real_compound_decisions.cpu().numpy())
+        # Convert logits to actual class predictions
+        predicted_compound_labels.append(torch.cat(predicted_compound_decisions).cpu().numpy().flatten())"""
 
     real_laps_till_pit_decisions = np.concatenate(real_laps_till_pit_decisions)
     pred_laps_till_pit_decisions = np.concatenate(pred_laps_till_pit_decisions).flatten()
+    """real_compound_labels = np.concatenate(real_compound_labels)
+    predicted_compound_labels = np.concatenate(predicted_compound_labels).flatten()"""
 
     print("LAP TILL PIT DECISION METRICS:")
-    laps_till_prec = labeling_stats(real_laps_till_pit_decisions, pred_laps_till_pit_decisions)
-    """print("MANDATORY STOPS MADE:")
-    print(np.mean(mandatory_stops_made))
-    print("AVERAGE STOPS MADE:")
-    print(np.mean(mandatory_stops_counts))"""
+    laps_till_pred = labeling_stats(real_laps_till_pit_decisions, pred_laps_till_pit_decisions)
+    """print("COMPOUND DECISION METRICS:")
+    compound_precision = labeling_stats(real_compound_labels, predicted_compound_labels)"""
 
     model.train()
-    return [laps_till_prec]
+    return [laps_till_pred] #, compound_precision]
 
 def training_loop(model, laps):
     h_s = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE).to(device)
     model_laps_till_pit = []
+   # model_compound_decisions = []
 
     laps_in_race = laps.shape[1]
 
     for lap in range(laps_in_race - 1):
         h_s, lap_till_pit = model(laps[:,lap].unsqueeze(0), h_s)
         model_laps_till_pit.append(lap_till_pit)
+        #model_compound_decisions.append(compound_decisions.view(-1, NUM_COMPOUNDS))
 
-    laps_till_loss = COMPOUND_LOSS_FN(
+    laps_till_loss = PIT_NOW_LOSS_FN(
         torch.cat(model_laps_till_pit).view(-1).to(device),
-        laps[:, 1:, 1].squeeze(0).to(device)
+        laps[:, 1:, 14].squeeze(0).to(device)
     )
 
-    return laps_till_loss
+    """compound_decision_loss = COMPOUND_LOSS_FN(torch.cat(model_compound_decisions).to(device), 
+        laps[:, 1:, -8].squeeze(0).long().to(device))"""
+
+    return laps_till_loss #+ compound_decision_loss
 
 def validation_loss(model, validation_dataloader):
     validation_loss = torch.tensor([0.0], requires_grad=True).to(device)
@@ -205,10 +215,11 @@ def validation_loss(model, validation_dataloader):
             h_s, lap_till = model(race_data[:,lap].unsqueeze(0), h_s)
             model_laps_till_pit.append(lap_till)
 
-        laps_till_loss = COMPOUND_LOSS_FN(
+        laps_till_loss = PIT_NOW_LOSS_FN(
             torch.cat(model_laps_till_pit).view(-1).to(device),
-            race_data[:, 1:, 1].squeeze(0).to(device)
+            race_data[:, 1:, 14].squeeze(0).to(device)
         )
+
         validation_loss = validation_loss + laps_till_loss
     
     model.train()
@@ -216,7 +227,10 @@ def validation_loss(model, validation_dataloader):
 
 def plot_graph(experiment_id, losses, laps_till_preds):
     # Convert lists of 1D arrays to 2D arrays
-    laps_till_preds = np.vstack(laps_till_preds)  # Shape: (num_samples, num_features)
+    discrete_values = np.vstack(laps_till_preds)  # Shape: (num_samples, num_features)
+
+    DISCRETE_LABELS = ["PitNow"] #["PitNow", "Compound"]
+    DISCRETE_COLOURS = ['gray'] #['gray', 'blue']
 
     # Ensure correct shape for losses
     losses = np.array(losses).squeeze()
@@ -224,11 +238,12 @@ def plot_graph(experiment_id, losses, laps_till_preds):
     # Create a single plot
     plt.figure(figsize=(8, 6))
 
-    # Plot loss vs. accuracy for "Compound"
-    plt.plot(losses, laps_till_preds, marker='o', linestyle='-', color='blue', label="Laps Till Pit")
+    for i, var in enumerate(DISCRETE_LABELS):
+        plt.plot(losses, discrete_values[:, i], marker='o', linestyle='-', 
+                     color=DISCRETE_COLOURS[i], label=var)
 
     # Set labels and title
-    plt.title("Loss vs. Accuracy for Laps Till Pit Decision")
+    plt.title("Loss vs. Accuracy for Discrete Variables")
     plt.xlabel("Loss")
     plt.ylabel("Accuracy")
     plt.legend()
@@ -247,9 +262,7 @@ def train(experiment_id):
     loss_values = []
     laps_till_preds = []
 
-    optim = OPTIM(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
-    scheduler = ReduceLROnPlateau(optim, mode='min', factor=0.5, patience=2)
-
+    optim = torch.optim.Adam(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY, amsgrad=True)  # Use Adam with amsgrad
     training_dataset, validation_dataloader, _ = random_split(DATASET, [0.8, 0.1, 0.1])
     iter_counter = 1
 
@@ -267,41 +280,30 @@ def train(experiment_id):
 
             if iter_counter % BATCH_SIZE == 0 or (iter_counter == len(training_dataset) * EPOCHS):
                 total_loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)  # Adjusted gradient clipping
                 for name, param in model.named_parameters():
                     if param.grad is None:
                         print(f"No gradient found for {name}")
-                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
                 optim.step()
                 optim.zero_grad()
                 if iter_counter % (BATCH_SIZE * 8) == 0 or (iter_counter == len(training_dataset) * EPOCHS):
                     loss_values.append(total_loss.cpu().detach().numpy().copy())
                     laps_till_pred = stats(validation_dataloader, model)
-                    # stats(training_dataloader, model)
+                    stats(training_dataloader, model)
                     laps_till_preds.append(laps_till_pred)
                 print(f"\n LOSS: {total_loss}") 
                 total_loss = torch.tensor([0.0], requires_grad=True).to(device)      
-
-                val_loss = validation_loss(model, validation_dataloader)
-                scheduler.step(val_loss)           
             
             iter_counter += 1
 
     plot_graph(experiment_id, loss_values, laps_till_preds)
 
-"""for LR in [0.001, 0.005, 0.0001]:
-    print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
-    train(f"Laps_till_lr_{LR}_gru".replace(".", "_"))"""
-
-"""for HIDDEN_SIZE in [64, 128, 256]:
-    print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
-    train(f"Laps_till_hs_{HIDDEN_SIZE}_gru".replace(".", "_"))"""
-
-"""for NUM_LAYERS in [1, 2, 4]:
-    print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
-    train(f"Laps_till_layer_{NUM_LAYERS}_gru".replace(".", "_"))"""
-
-"""for BATCH_SIZE in [12, 24, 48]:
-    print(f"HIDDEN_SIZE {HIDDEN_SIZE}, EPOCHS {EPOCHS}, LR {LR}, NUM_LAYERS {NUM_LAYERS}, DROPOUT {DROPOUT}, WEIGHT_DECAY {WEIGHT_DECAY}, BATCH_SIZE {BATCH_SIZE}, EMBEDDING_DIMS {EMBEDDING_DIMS} \n")
-    train(f"Laps_till_batch_{BATCH_SIZE}_gru".replace(".", "_"))"""
-
-train("test")
+# Loop of experiments with different configurations
+for hidden_size in [256, 512, 1024]:
+    for num_layers in [1, 2, 3]:
+        for dropout in [0.2, 0.3, 0.4]:
+            HIDDEN_SIZE = hidden_size
+            NUM_LAYERS = num_layers
+            DROPOUT = dropout
+            experiment_id = f"gru_h{hidden_size}_l{num_layers}_d{dropout}".replace(".", "_")
+            train(experiment_id)

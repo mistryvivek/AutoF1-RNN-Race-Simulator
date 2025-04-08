@@ -1,0 +1,9 @@
+Final: no scheduler (we settled OnPlateau but the training rate never trained if you track it + write about what Adam does anyway), worth reevaluating if you go to refine this model and run it for more epochs as you might see more of difference here
+
+Key takeaway: where you apply this is key
+
+Graphs:
+
+Final Run with Scheduler (OnPlateau) - this is where you see a similar pattern, LR doesn't decrease according my logging
+
+Which one I tried: StepLR, OnPlateau, Cosine Annealing

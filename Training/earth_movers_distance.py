@@ -1,14 +1,14 @@
 import torch
 
-def torch_wasserstein_loss(tensor_a,tensor_b):
+def torch_wasserstein_loss(tensor_a,tensor_b,weights=None):
     #Compute the first Wasserstein distance between two 1D distributions.
-    return(torch_cdf_loss(tensor_a,tensor_b,p=1))
+    return(torch_cdf_loss(tensor_a,tensor_b,weights=weights,p=1))
 
-def torch_energy_loss(tensor_a,tensor_b):
+def torch_energy_loss(tensor_a,tensor_b,weights=None):
     # Compute the energy distance between two 1D distributions.
-    return((2**0.5)*torch_cdf_loss(tensor_a,tensor_b,p=2))
+    return((2**0.5)*torch_cdf_loss(tensor_a,tensor_b,weights=None,p=2))
 
-def torch_cdf_loss(tensor_a,tensor_b,p=1):
+def torch_cdf_loss(tensor_a,tensor_b,weights,p=1):
     # last-dimension is weight distribution
     # p is the norm of the distance, p=1 --> First Wasserstein Distance
     # to get a positive weight with our normalized distribution
@@ -29,8 +29,10 @@ def torch_cdf_loss(tensor_a,tensor_b,p=1):
     else:
         cdf_distance = torch.pow(torch.sum(torch.pow(torch.abs(cdf_tensor_a-cdf_tensor_b),p),dim=-1),1/p)
 
-    cdf_loss = cdf_distance.mean()
-    return cdf_loss
+    if weights is not None:
+        cdf_distance = cdf_distance * weights
+
+    return cdf_distance.mean()
 
 def torch_validate_distibution(tensor_a,tensor_b):
     # Zero sized dimension is not supported by pytorch, we suppose there is no empty inputs
