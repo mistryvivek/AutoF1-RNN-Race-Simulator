@@ -1,5 +1,0 @@
-we train on a subset of the data, there have many different changes but things that are specific to any model (e.g. lr and optimiser) have been missed out.
-
-want to look at the challenges of my dataset and architecture.
-
-we looked at GRU on Dataset 2 as this was an appropriate subset (why?)
