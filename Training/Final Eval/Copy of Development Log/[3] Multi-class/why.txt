@@ -1,5 +1,0 @@
-I wanted to check whether an automated or hyperparameter approach was more suitable
-
-for the first test, I tried with that, as the loss reduction for pit now still needed work - when I used it for the paper, I removed it as an output temporarily
-
-the first automated one had less processing, then I wanted to try something more powerful (explain why?) - and then say what I found

@@ -1,2 +1,0 @@
-nohup: ignoring input
-python3: can't open file '/shared/storage/cs/studentscratch/vm800/YRKCS-PRBX/Training/final_gru_simulator_seperate.py.py': [Errno 2] No such file or directory
