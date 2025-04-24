@@ -1,0 +1,3171 @@
+nohup: ignoring input
+Loading ../Data Gathering/dataset2023.csv
+Loading ../Data Gathering/dataset2021.csv
+Loading ../Data Gathering/dataset2019.csv
+Loading ../Data Gathering/dataset2022.csv
+Loading ../Data Gathering/dataset2018.csv
+Loading ../Data Gathering/dataset2024.csv
+Loading ../Data Gathering/dataset2020.csv
+
+ LOSS: tensor([766.2358], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([664.9903], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([627.5970], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([608.6785], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([550.3261], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([530.9671], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([559.2670], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[1331    1  203    2    8]
+ [3173    0  358    0   14]
+ [3002    0  600    0    3]
+ [  24    0    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.2215
+Precision: 0.2450
+Recall: 0.2215
+F1 Score: 0.1561
+MANDATORY STOPS MADE:
+0.6857142857142857
+AVERAGE STOPS MADE:
+5.635714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 36.13738250732422
+Mean Signed Deviation: -0.0183
+Mean Squared Error: 0.0033
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0022075435589483405
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 10.991368293762207
+Mean Signed Deviation: -0.2237
+Mean Squared Error: 0.0689
+===========I2============
+Mean Absolute Error: 9.373190879821777
+Mean Signed Deviation: -0.1615
+Mean Squared Error: 0.0485
+===========FL============
+Mean Absolute Error: 22.31757354736328
+Mean Signed Deviation: -0.3127
+Mean Squared Error: 0.1074
+===========ST============
+Mean Absolute Error: 16.23311424255371
+Mean Signed Deviation: -0.4774
+Mean Squared Error: 0.2368
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 7.055717468261719
+Mean Signed Deviation: -0.2957
+Mean Squared Error: 0.1065
+============RPM=============
+Mean Absolute Error: 13.63479995727539
+Mean Signed Deviation: -0.4270
+Mean Squared Error: 0.1895
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0    0    0    0]
+ [   0    0    0    0    0    1    0    2   64]
+ [   0    0    0    0    0    4    0    2  179]
+ [   1    0    0    0    0    0    0    1   21]
+ [   0    0    0    0    0    1    0    1   52]
+ [   0    0    0    1    0   10    0    5  926]
+ [   1    0    0    0    0   25    0    7 1239]
+ [   2    0    0    0    0   42    0   57 4417]
+ [   3    0    0    0    0   33    0   17 1605]]
+Accuracy: 0.1918
+Precision: 0.5472
+Recall: 0.1918
+F1 Score: 0.0749
+==========THROTTLE==========
+Mean Absolute Error: 6.738060474395752
+Mean Signed Deviation: -0.2060
+Mean Squared Error: 0.0616
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 75.9879379272461
+Mean Signed Deviation: 0.0125
+Mean Squared Error: 0.0023
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 123.8208999633789
+Mean Signed Deviation: -0.0483
+Mean Squared Error: 0.0046
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8439   34]
+ [ 244    2]]
+Accuracy: 0.9681
+Precision: 0.9460
+Recall: 0.9681
+F1 Score: 0.9564
+AUC Score: 0.5021
+
+ LOSS: tensor([475.0931], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([506.1441], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([429.9162], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([456.5870], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([414.7101], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([435.2023], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([432.2895], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([379.9996], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 974    4  567    0]
+ [2596    0  949    0]
+ [1756    0 1849    0]
+ [  24    0    0    0]]
+Accuracy: 0.3238
+Precision: 0.2622
+Recall: 0.3238
+F1 Score: 0.2694
+MANDATORY STOPS MADE:
+0.8785714285714286
+AVERAGE STOPS MADE:
+7.228571428571429
+LAP TIME METRICS:
+Mean Absolute Error: 29.409141540527344
+Mean Signed Deviation: -0.0207
+Mean Squared Error: 0.0021
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.001063806322664667
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.645956516265869
+Mean Signed Deviation: -0.0513
+Mean Squared Error: 0.0210
+===========I2============
+Mean Absolute Error: 5.924294471740723
+Mean Signed Deviation: -0.0119
+Mean Squared Error: 0.0210
+===========FL============
+Mean Absolute Error: 8.607223510742188
+Mean Signed Deviation: -0.1030
+Mean Squared Error: 0.0209
+===========ST============
+Mean Absolute Error: 7.710171699523926
+Mean Signed Deviation: -0.2194
+Mean Squared Error: 0.0582
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 3.037193775177002
+Mean Signed Deviation: -0.0939
+Mean Squared Error: 0.0280
+============RPM=============
+Mean Absolute Error: 6.4533233642578125
+Mean Signed Deviation: -0.1955
+Mean Squared Error: 0.0467
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0    4   63]
+ [   0    0    0    0    0    0   10  175]
+ [   0    0    0    0    0    0    3   20]
+ [   0    0    0    0    0    0    6   48]
+ [   0    0    0    0    0    0   22  920]
+ [   0    0    0    0    0    0   29 1243]
+ [   0    0    0    0    0    0  196 4322]
+ [   0    0    0    0    0    0   72 1586]]
+Accuracy: 0.2044
+Precision: 0.6246
+Recall: 0.2044
+F1 Score: 0.1019
+==========THROTTLE==========
+Mean Absolute Error: 2.9519424438476562
+Mean Signed Deviation: -0.0601
+Mean Squared Error: 0.0220
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 68.82293701171875
+Mean Signed Deviation: 0.0150
+Mean Squared Error: 0.0020
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 71.49856567382812
+Mean Signed Deviation: -0.0107
+Mean Squared Error: 0.0021
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7975  498]
+ [ 235   11]]
+Accuracy: 0.9159
+Precision: 0.9446
+Recall: 0.9159
+F1 Score: 0.9299
+AUC Score: 0.4930
+
+ LOSS: tensor([415.7757], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([399.6650], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([400.9570], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([400.8308], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([406.7737], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([385.8553], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([395.1233], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([408.5815], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 105   54 1386    0]
+ [ 274   87 3184    0]
+ [ 131   16 3458    0]
+ [   0    0   24    0]]
+Accuracy: 0.4186
+Precision: 0.4421
+Recall: 0.4186
+F1 Score: 0.2825
+MANDATORY STOPS MADE:
+0.7785714285714286
+AVERAGE STOPS MADE:
+1.9428571428571428
+LAP TIME METRICS:
+Mean Absolute Error: 23.93254852294922
+Mean Signed Deviation: -0.0174
+Mean Squared Error: 0.0013
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.006830981621065543
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.595426082611084
+Mean Signed Deviation: 0.0326
+Mean Squared Error: 0.0185
+===========I2============
+Mean Absolute Error: 5.619406223297119
+Mean Signed Deviation: 0.0370
+Mean Squared Error: 0.0202
+===========FL============
+Mean Absolute Error: 5.479512691497803
+Mean Signed Deviation: -0.0247
+Mean Squared Error: 0.0107
+===========ST============
+Mean Absolute Error: 3.3004136085510254
+Mean Signed Deviation: -0.0772
+Mean Squared Error: 0.0164
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.2329070568084717
+Mean Signed Deviation: -0.0391
+Mean Squared Error: 0.0203
+============RPM=============
+Mean Absolute Error: 2.790342092514038
+Mean Signed Deviation: -0.0655
+Mean Squared Error: 0.0132
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   65    2]
+ [   0    0    0    0    0    0  170   15]
+ [   0    0    0    0    0    0   19    4]
+ [   0    0    0    0    0    0   45    9]
+ [   0    0    0    0    0    0  793  149]
+ [   0    0    0    0    0    0 1132  140]
+ [   0    0    0    0    0    0 4164  354]
+ [   0    0    0    0    0    0 1519  139]]
+Accuracy: 0.4935
+Precision: 0.5971
+Recall: 0.4935
+F1 Score: 0.3687
+==========THROTTLE==========
+Mean Absolute Error: 2.0537734031677246
+Mean Signed Deviation: -0.0121
+Mean Squared Error: 0.0176
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 60.75986099243164
+Mean Signed Deviation: 0.0143
+Mean Squared Error: 0.0016
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 56.102149963378906
+Mean Signed Deviation: -0.0013
+Mean Squared Error: 0.0015
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7532  941]
+ [ 218   28]]
+Accuracy: 0.8671
+Precision: 0.9453
+Recall: 0.8671
+F1 Score: 0.9037
+AUC Score: 0.5014
+
+ LOSS: tensor([359.8066], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([356.8521], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([361.8347], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([386.5013], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([366.6560], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.2482], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([383.7419], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([388.9778], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    2 1543    0]
+ [   7    4 3534    0]
+ [   0    0 3605    0]
+ [   0    0   24    0]]
+Accuracy: 0.4139
+Precision: 0.4450
+Recall: 0.4139
+F1 Score: 0.2431
+MANDATORY STOPS MADE:
+0.07142857142857142
+AVERAGE STOPS MADE:
+0.09285714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 37.21115493774414
+Mean Signed Deviation: -0.0373
+Mean Squared Error: 0.0022
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0009643521159887313
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.59032678604126
+Mean Signed Deviation: 0.0441
+Mean Squared Error: 0.0190
+===========I2============
+Mean Absolute Error: 5.399742603302002
+Mean Signed Deviation: 0.0269
+Mean Squared Error: 0.0183
+===========FL============
+Mean Absolute Error: 5.1184844970703125
+Mean Signed Deviation: -0.0128
+Mean Squared Error: 0.0097
+===========ST============
+Mean Absolute Error: 2.1046767234802246
+Mean Signed Deviation: -0.0190
+Mean Squared Error: 0.0105
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.1058168411254883
+Mean Signed Deviation: -0.0295
+Mean Squared Error: 0.0191
+============RPM=============
+Mean Absolute Error: 2.0829763412475586
+Mean Signed Deviation: -0.0240
+Mean Squared Error: 0.0089
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    7  178    0]
+ [   0    0    0    0    0    1   22    0]
+ [   0    0    0    0    0    3   51    0]
+ [   0    0    0    0    0   10  897   35]
+ [   0    0    0    0    0    3 1249   20]
+ [   0    0    0    0    0   16 4417   85]
+ [   0    0    0    0    0    9 1618   31]]
+Accuracy: 0.5105
+Precision: 0.4585
+Recall: 0.5105
+F1 Score: 0.3588
+==========THROTTLE==========
+Mean Absolute Error: 1.7815933227539062
+Mean Signed Deviation: 0.0022
+Mean Squared Error: 0.0166
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 85.15227508544922
+Mean Signed Deviation: 0.0349
+Mean Squared Error: 0.0024
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 62.966732025146484
+Mean Signed Deviation: -0.0176
+Mean Squared Error: 0.0015
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7490  983]
+ [ 217   29]]
+Accuracy: 0.8624
+Precision: 0.9452
+Recall: 0.8624
+F1 Score: 0.9010
+AUC Score: 0.5009
+
+ LOSS: tensor([352.5570], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([336.3947], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([377.6820], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([376.5682], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([331.5905], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([332.4851], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([316.2564], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([340.9488], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    3 1542    0]
+ [   7    5 3533    0]
+ [   0    0 3605    0]
+ [   0    0   24    0]]
+Accuracy: 0.4140
+Precision: 0.4281
+Recall: 0.4140
+F1 Score: 0.2433
+MANDATORY STOPS MADE:
+0.08571428571428572
+AVERAGE STOPS MADE:
+0.10714285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 40.42684555053711
+Mean Signed Deviation: -0.0419
+Mean Squared Error: 0.0025
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0007406309779201235
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.550452709197998
+Mean Signed Deviation: 0.0318
+Mean Squared Error: 0.0179
+===========I2============
+Mean Absolute Error: 5.2958502769470215
+Mean Signed Deviation: 0.0068
+Mean Squared Error: 0.0167
+===========FL============
+Mean Absolute Error: 4.907594680786133
+Mean Signed Deviation: -0.0006
+Mean Squared Error: 0.0094
+===========ST============
+Mean Absolute Error: 2.0323610305786133
+Mean Signed Deviation: -0.0069
+Mean Squared Error: 0.0101
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.1612143516540527
+Mean Signed Deviation: -0.0371
+Mean Squared Error: 0.0191
+============RPM=============
+Mean Absolute Error: 1.976243257522583
+Mean Signed Deviation: -0.0200
+Mean Squared Error: 0.0082
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    7  178    0]
+ [   0    0    0    0    0    1   22    0]
+ [   0    0    0    0    0    3   51    0]
+ [   0    0    0    0    0   25  914    3]
+ [   0    0    0    0    0   13 1259    0]
+ [   0    0    0    0    0   57 4455    6]
+ [   0    0    0    0    0   23 1634    1]]
+Accuracy: 0.5126
+Precision: 0.4485
+Recall: 0.5126
+F1 Score: 0.3554
+==========THROTTLE==========
+Mean Absolute Error: 1.7570719718933105
+Mean Signed Deviation: -0.0062
+Mean Squared Error: 0.0161
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 67.02661895751953
+Mean Signed Deviation: 0.0246
+Mean Squared Error: 0.0017
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.14522171020508
+Mean Signed Deviation: -0.0120
+Mean Squared Error: 0.0013
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7524  949]
+ [ 219   27]]
+Accuracy: 0.8660
+Precision: 0.9451
+Recall: 0.8660
+F1 Score: 0.9030
+AUC Score: 0.4989
+
+ LOSS: tensor([354.2579], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([335.4018], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([323.9316], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([326.0535], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([353.9267], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([322.8508], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([356.8438], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.9412], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0   15 1530    0]
+ [   6   31 3508    0]
+ [   0    5 3600    0]
+ [   0    0   24    0]]
+Accuracy: 0.4164
+Precision: 0.4217
+Recall: 0.4164
+F1 Score: 0.2497
+MANDATORY STOPS MADE:
+0.3
+AVERAGE STOPS MADE:
+0.34285714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 28.31378936767578
+Mean Signed Deviation: -0.0279
+Mean Squared Error: 0.0015
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0002531653536217553
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.552529811859131
+Mean Signed Deviation: 0.0276
+Mean Squared Error: 0.0175
+===========I2============
+Mean Absolute Error: 5.225602149963379
+Mean Signed Deviation: 0.0288
+Mean Squared Error: 0.0172
+===========FL============
+Mean Absolute Error: 4.9516143798828125
+Mean Signed Deviation: -0.0096
+Mean Squared Error: 0.0092
+===========ST============
+Mean Absolute Error: 2.0122604370117188
+Mean Signed Deviation: 0.0095
+Mean Squared Error: 0.0098
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.228285789489746
+Mean Signed Deviation: -0.0431
+Mean Squared Error: 0.0191
+============RPM=============
+Mean Absolute Error: 1.8569512367248535
+Mean Signed Deviation: -0.0131
+Mean Squared Error: 0.0075
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    7  178    0]
+ [   0    0    0    0    0    1   22    0]
+ [   0    0    0    0    0    3   51    0]
+ [   0    0    0    0    0   39  903    0]
+ [   0    0    0    0    0   27 1245    0]
+ [   0    0    0    0    0   82 4436    0]
+ [   0    0    0    0    0   37 1621    0]]
+Accuracy: 0.5119
+Precision: 0.6257
+Recall: 0.5119
+F1 Score: 0.3579
+==========THROTTLE==========
+Mean Absolute Error: 1.8341395854949951
+Mean Signed Deviation: -0.0163
+Mean Squared Error: 0.0160
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 59.79301071166992
+Mean Signed Deviation: 0.0215
+Mean Squared Error: 0.0014
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 52.33082580566406
+Mean Signed Deviation: -0.0132
+Mean Squared Error: 0.0011
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7562  911]
+ [ 220   26]]
+Accuracy: 0.8703
+Precision: 0.9451
+Recall: 0.8703
+F1 Score: 0.9054
+AUC Score: 0.4991
+
+ LOSS: tensor([307.4461], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([345.2290], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([380.4540], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([338.0360], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([339.9348], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([338.7355], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([315.5193], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([309.9851], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0   46 1499    0]
+ [   6   80 3459    0]
+ [   0   17 3588    0]
+ [   0    0   24    0]]
+Accuracy: 0.4207
+Precision: 0.4033
+Recall: 0.4207
+F1 Score: 0.2613
+MANDATORY STOPS MADE:
+0.5928571428571429
+AVERAGE STOPS MADE:
+0.7071428571428572
+LAP TIME METRICS:
+Mean Absolute Error: 37.05048370361328
+Mean Signed Deviation: -0.0387
+Mean Squared Error: 0.0022
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.006612865644534135
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.662694931030273
+Mean Signed Deviation: 0.0549
+Mean Squared Error: 0.0199
+===========I2============
+Mean Absolute Error: 5.16437292098999
+Mean Signed Deviation: 0.0176
+Mean Squared Error: 0.0162
+===========FL============
+Mean Absolute Error: 4.957808017730713
+Mean Signed Deviation: -0.0120
+Mean Squared Error: 0.0090
+===========ST============
+Mean Absolute Error: 1.9885345697402954
+Mean Signed Deviation: 0.0114
+Mean Squared Error: 0.0096
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.274153470993042
+Mean Signed Deviation: -0.0465
+Mean Squared Error: 0.0190
+============RPM=============
+Mean Absolute Error: 1.7893736362457275
+Mean Signed Deviation: -0.0127
+Mean Squared Error: 0.0071
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    7  178    0]
+ [   0    0    0    0    0    1   22    0]
+ [   0    0    0    0    0    3   51    0]
+ [   0    0    0    0    0   35  907    0]
+ [   0    0    0    0    0   22 1250    0]
+ [   0    0    0    0    0   72 4446    0]
+ [   0    0    0    0    0   33 1625    0]]
+Accuracy: 0.5124
+Precision: 0.6241
+Recall: 0.5124
+F1 Score: 0.3571
+==========THROTTLE==========
+Mean Absolute Error: 1.684178113937378
+Mean Signed Deviation: -0.0098
+Mean Squared Error: 0.0156
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 53.60837173461914
+Mean Signed Deviation: 0.0180
+Mean Squared Error: 0.0011
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 47.039974212646484
+Mean Signed Deviation: -0.0108
+Mean Squared Error: 0.0010
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7593  880]
+ [ 220   26]]
+Accuracy: 0.8738
+Precision: 0.9452
+Recall: 0.8738
+F1 Score: 0.9074
+AUC Score: 0.5009
+
+ LOSS: tensor([300.3904], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([309.5647], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([337.0853], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([333.2571], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([342.1622], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([320.6659], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([305.1603], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([324.5265], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0   43 1502    0]
+ [   6   77 3462    0]
+ [   0   16 3589    0]
+ [   0    0   24    0]]
+Accuracy: 0.4205
+Precision: 0.4060
+Recall: 0.4205
+F1 Score: 0.2606
+MANDATORY STOPS MADE:
+0.5571428571428572
+AVERAGE STOPS MADE:
+0.6714285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 36.90687561035156
+Mean Signed Deviation: -0.0387
+Mean Squared Error: 0.0021
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.006399246389212619
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.544438362121582
+Mean Signed Deviation: 0.0303
+Mean Squared Error: 0.0176
+===========I2============
+Mean Absolute Error: 5.11417818069458
+Mean Signed Deviation: 0.0324
+Mean Squared Error: 0.0165
+===========FL============
+Mean Absolute Error: 4.823673248291016
+Mean Signed Deviation: -0.0031
+Mean Squared Error: 0.0087
+===========ST============
+Mean Absolute Error: 1.9562512636184692
+Mean Signed Deviation: 0.0144
+Mean Squared Error: 0.0093
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.192061185836792
+Mean Signed Deviation: -0.0400
+Mean Squared Error: 0.0182
+============RPM=============
+Mean Absolute Error: 1.688439130783081
+Mean Signed Deviation: -0.0041
+Mean Squared Error: 0.0067
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    5  180    0]
+ [   0    0    0    0    0    0   23    0]
+ [   0    0    0    0    0    1   53    0]
+ [   0    0    0    0    0    9  933    0]
+ [   0    0    0    0    0    0 1272    0]
+ [   0    0    0    0    0    9 4509    0]
+ [   0    0    0    0    0    4 1654    0]]
+Accuracy: 0.5171
+Precision: 0.6048
+Recall: 0.5171
+F1 Score: 0.3538
+==========THROTTLE==========
+Mean Absolute Error: 1.610953450202942
+Mean Signed Deviation: -0.0066
+Mean Squared Error: 0.0153
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 59.11847686767578
+Mean Signed Deviation: 0.0237
+Mean Squared Error: 0.0012
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 44.05897903442383
+Mean Signed Deviation: -0.0105
+Mean Squared Error: 0.0009
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7606  867]
+ [ 220   26]]
+Accuracy: 0.8753
+Precision: 0.9453
+Recall: 0.8753
+F1 Score: 0.9083
+AUC Score: 0.5017
+
+ LOSS: tensor([327.3991], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([368.9552], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([365.3905], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.0248], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([363.9120], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([298.6594], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([263.4246], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([1023.6210], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([807.0500], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([761.6100], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([706.1588], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([660.9249], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([640.3784], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([542.7363], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   3 1613    1    8   39]
+ [   1 2962    3   14   82]
+ [   0 3670    0   22  102]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3452
+Precision: 0.2724
+Recall: 0.3452
+F1 Score: 0.1864
+MANDATORY STOPS MADE:
+0.29285714285714287
+AVERAGE STOPS MADE:
+1.957142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 46.506141662597656
+Mean Signed Deviation: -0.0266
+Mean Squared Error: 0.0035
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0019470732779674497
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 22.357250213623047
+Mean Signed Deviation: -0.4805
+Mean Squared Error: 0.2590
+===========I2============
+Mean Absolute Error: 19.99294090270996
+Mean Signed Deviation: -0.3726
+Mean Squared Error: 0.1570
+===========FL============
+Mean Absolute Error: 17.32573699951172
+Mean Signed Deviation: -0.2223
+Mean Squared Error: 0.0605
+===========ST============
+Mean Absolute Error: 18.838336944580078
+Mean Signed Deviation: -0.5293
+Mean Squared Error: 0.2924
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 6.6398234367370605
+Mean Signed Deviation: -0.2800
+Mean Squared Error: 0.1003
+============RPM=============
+Mean Absolute Error: 21.435062408447266
+Mean Signed Deviation: -0.6807
+Mean Squared Error: 0.4733
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0   10   18   37    4]
+ [   0    0    0    0   32   55  101   12]
+ [   0    0    0    0    0    8    4    4]
+ [   0    0    0    0    8   17   39    6]
+ [   0    0    1    0  167  298  340   31]
+ [   1    0    0    0  193  782  782  100]
+ [   1    0    0    0  912  650 2010  252]
+ [   0    0    0    0  374  536  648  155]]
+Accuracy: 0.3626
+Precision: 0.3934
+Recall: 0.3626
+F1 Score: 0.3501
+==========THROTTLE==========
+Mean Absolute Error: 14.906001091003418
+Mean Signed Deviation: -0.4966
+Mean Squared Error: 0.2695
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 182.37576293945312
+Mean Signed Deviation: -0.0831
+Mean Squared Error: 0.0086
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 80.23896789550781
+Mean Signed Deviation: -0.0305
+Mean Squared Error: 0.0038
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7620  713]
+ [ 244   11]]
+Accuracy: 0.8886
+Precision: 0.9407
+Recall: 0.8886
+F1 Score: 0.9136
+AUC Score: 0.4788
+
+ LOSS: tensor([535.5659], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([545.7614], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([499.6204], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([522.7787], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([458.2910], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([457.5249], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([409.6385], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([453.1315], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   2 1658    1    0    3]
+ [   1 3048    3    0   10]
+ [   0 3783    0    0   11]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3551
+Precision: 0.2641
+Recall: 0.3551
+F1 Score: 0.1875
+MANDATORY STOPS MADE:
+0.07857142857142857
+AVERAGE STOPS MADE:
+0.22857142857142856
+LAP TIME METRICS:
+Mean Absolute Error: 41.51631546020508
+Mean Signed Deviation: -0.0332
+Mean Squared Error: 0.0028
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0015260805508920125
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 10.145543098449707
+Mean Signed Deviation: -0.1870
+Mean Squared Error: 0.0626
+===========I2============
+Mean Absolute Error: 8.10260009765625
+Mean Signed Deviation: -0.1168
+Mean Squared Error: 0.0332
+===========FL============
+Mean Absolute Error: 5.7299628257751465
+Mean Signed Deviation: -0.0119
+Mean Squared Error: 0.0108
+===========ST============
+Mean Absolute Error: 8.200675010681152
+Mean Signed Deviation: -0.2215
+Mean Squared Error: 0.0632
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.96484375
+Mean Signed Deviation: -0.0905
+Mean Squared Error: 0.0273
+============RPM=============
+Mean Absolute Error: 10.460339546203613
+Mean Signed Deviation: -0.3310
+Mean Squared Error: 0.1208
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    1   67    1]
+ [   0    0    0    0    0    6  193    1]
+ [   0    0    0    0    0    2   14    0]
+ [   0    0    0    0    0    4   64    2]
+ [   0    0    1    0    0   35  794    7]
+ [   0    0    0    0    0   53 1786   19]
+ [   0    0    0    0    0   67 3711   47]
+ [   0    0    0    0    0   41 1638   34]]
+Accuracy: 0.4422
+Precision: 0.4528
+Recall: 0.4422
+F1 Score: 0.2919
+==========THROTTLE==========
+Mean Absolute Error: 6.487866401672363
+Mean Signed Deviation: -0.1956
+Mean Squared Error: 0.0627
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 80.75238800048828
+Mean Signed Deviation: -0.0304
+Mean Squared Error: 0.0021
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 75.2109375
+Mean Signed Deviation: -0.0272
+Mean Squared Error: 0.0031
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7129 1204]
+ [ 229   26]]
+Accuracy: 0.8331
+Precision: 0.9407
+Recall: 0.8331
+F1 Score: 0.8827
+AUC Score: 0.4787
+
+ LOSS: tensor([444.2360], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([420.6948], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([443.6158], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([410.5486], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([364.1033], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([387.8026], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([393.5943], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([380.1943], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   1 1662    1    0    0]
+ [   1 3055    5    0    1]
+ [   0 3791    3    0    0]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3562
+Precision: 0.3791
+Recall: 0.3562
+F1 Score: 0.1881
+MANDATORY STOPS MADE:
+0.06428571428571428
+AVERAGE STOPS MADE:
+0.09285714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 47.88307189941406
+Mean Signed Deviation: -0.0464
+Mean Squared Error: 0.0034
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0010382659733295442
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.84824275970459
+Mean Signed Deviation: -0.0075
+Mean Squared Error: 0.0270
+===========I2============
+Mean Absolute Error: 5.8673858642578125
+Mean Signed Deviation: 0.0060
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 5.512666702270508
+Mean Signed Deviation: 0.0172
+Mean Squared Error: 0.0098
+===========ST============
+Mean Absolute Error: 3.157853603363037
+Mean Signed Deviation: -0.0204
+Mean Squared Error: 0.0138
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 1.9479997158050537
+Mean Signed Deviation: 0.0211
+Mean Squared Error: 0.0182
+============RPM=============
+Mean Absolute Error: 3.590867280960083
+Mean Signed Deviation: -0.0968
+Mean Squared Error: 0.0206
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    1   68    0]
+ [   0    0    0    0    0    6  194    0]
+ [   0    0    0    0    0    2   14    0]
+ [   0    0    0    0    0    3   67    0]
+ [   0    0    1    0    0   21  814    1]
+ [   0    0    0    0    0   30 1825    3]
+ [   0    0    0    0    0   34 3786    5]
+ [   0    0    0    0    0   23 1682    8]]
+Accuracy: 0.4453
+Precision: 0.4844
+Recall: 0.4453
+F1 Score: 0.2832
+==========THROTTLE==========
+Mean Absolute Error: 2.8635401725769043
+Mean Signed Deviation: -0.0056
+Mean Squared Error: 0.0233
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 88.2359848022461
+Mean Signed Deviation: -0.0365
+Mean Squared Error: 0.0024
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 92.75373077392578
+Mean Signed Deviation: -0.0449
+Mean Squared Error: 0.0037
+PIT DECISION METRICS:
+Confusion Matrix:
+[[6134 2199]
+ [ 201   54]]
+Accuracy: 0.7205
+Precision: 0.9402
+Recall: 0.7205
+F1 Score: 0.8128
+AUC Score: 0.4739
+
+ LOSS: tensor([372.1793], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([323.2512], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([372.4426], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.7957], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([366.2585], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([358.3138], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([340.7539], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([385.2159], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1657    7    0    0]
+ [   0 3036   25    0    1]
+ [   0 3748   46    0    0]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3589
+Precision: 0.5894
+Recall: 0.3589
+F1 Score: 0.1976
+MANDATORY STOPS MADE:
+0.20714285714285716
+AVERAGE STOPS MADE:
+0.6357142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 47.312381744384766
+Mean Signed Deviation: -0.0466
+Mean Squared Error: 0.0033
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.002288892925051706
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.5716094970703125
+Mean Signed Deviation: 0.0361
+Mean Squared Error: 0.0266
+===========I2============
+Mean Absolute Error: 6.161766052246094
+Mean Signed Deviation: 0.0558
+Mean Squared Error: 0.0212
+===========FL============
+Mean Absolute Error: 5.681931018829346
+Mean Signed Deviation: 0.0369
+Mean Squared Error: 0.0101
+===========ST============
+Mean Absolute Error: 3.168527603149414
+Mean Signed Deviation: 0.0561
+Mean Squared Error: 0.0146
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.003648281097412
+Mean Signed Deviation: 0.0539
+Mean Squared Error: 0.0198
+============RPM=============
+Mean Absolute Error: 2.2112107276916504
+Mean Signed Deviation: 0.0037
+Mean Squared Error: 0.0102
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   69    0]
+ [   0    0    0    0    0    0  200    0]
+ [   0    0    0    0    0    0   16    0]
+ [   0    0    0    0    0    0   70    0]
+ [   0    0    0    0    0    0  836    1]
+ [   0    0    0    0    0    0 1858    0]
+ [   0    0    0    0    0    0 3825    0]
+ [   0    0    0    0    0    0 1713    0]]
+Accuracy: 0.4454
+Precision: 0.5535
+Recall: 0.4454
+F1 Score: 0.2745
+==========THROTTLE==========
+Mean Absolute Error: 2.6821975708007812
+Mean Signed Deviation: 0.0346
+Mean Squared Error: 0.0214
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 59.019287109375
+Mean Signed Deviation: -0.0186
+Mean Squared Error: 0.0012
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 76.69722747802734
+Mean Signed Deviation: -0.0344
+Mean Squared Error: 0.0026
+PIT DECISION METRICS:
+Confusion Matrix:
+[[5927 2406]
+ [ 189   66]]
+Accuracy: 0.6978
+Precision: 0.9411
+Recall: 0.6978
+F1 Score: 0.7975
+AUC Score: 0.4850
+
+ LOSS: tensor([354.3133], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([365.9682], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([341.2259], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([348.8887], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([339.5222], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([332.4385], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([351.7968], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([360.4680], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1651   13    0    0]
+ [   0 3028   33    0    1]
+ [   0 3732   62    0    0]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3598
+Precision: 0.5826
+Recall: 0.3598
+F1 Score: 0.2011
+MANDATORY STOPS MADE:
+0.2642857142857143
+AVERAGE STOPS MADE:
+0.8357142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 42.74915313720703
+Mean Signed Deviation: -0.0415
+Mean Squared Error: 0.0028
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0031801267167825896
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.5968475341796875
+Mean Signed Deviation: 0.0667
+Mean Squared Error: 0.0284
+===========I2============
+Mean Absolute Error: 5.5869669914245605
+Mean Signed Deviation: 0.0402
+Mean Squared Error: 0.0180
+===========FL============
+Mean Absolute Error: 5.4395551681518555
+Mean Signed Deviation: 0.0328
+Mean Squared Error: 0.0094
+===========ST============
+Mean Absolute Error: 3.125530958175659
+Mean Signed Deviation: 0.0674
+Mean Squared Error: 0.0144
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 1.8728598356246948
+Mean Signed Deviation: 0.0418
+Mean Squared Error: 0.0182
+============RPM=============
+Mean Absolute Error: 2.0678768157958984
+Mean Signed Deviation: 0.0135
+Mean Squared Error: 0.0091
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   69    0]
+ [   0    0    0    0    0    0  200    0]
+ [   0    0    0    0    0    0   16    0]
+ [   0    0    0    0    0    0   70    0]
+ [   0    0    0    0    0    0  836    1]
+ [   0    0    0    0    0    0 1857    1]
+ [   0    0    0    0    0    0 3825    0]
+ [   0    0    0    0    0    0 1713    0]]
+Accuracy: 0.4454
+Precision: 0.5536
+Recall: 0.4454
+F1 Score: 0.2745
+==========THROTTLE==========
+Mean Absolute Error: 2.6090784072875977
+Mean Signed Deviation: 0.0517
+Mean Squared Error: 0.0209
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 67.18106842041016
+Mean Signed Deviation: -0.0259
+Mean Squared Error: 0.0015
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 69.9664306640625
+Mean Signed Deviation: -0.0295
+Mean Squared Error: 0.0022
+PIT DECISION METRICS:
+Confusion Matrix:
+[[5592 2741]
+ [ 179   76]]
+Accuracy: 0.6600
+Precision: 0.9410
+Recall: 0.6600
+F1 Score: 0.7709
+AUC Score: 0.4846
+
+ LOSS: tensor([351.5969], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([323.3648], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([378.4833], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([342.7670], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([367.6384], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([335.6984], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([363.4913], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([383.0351], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1578   86    0    0]
+ [   0 2931  130    0    1]
+ [   0 3529  265    0    0]
+ [   0   68    0    0    0]
+ [   0    0    0    0    0]]
+Accuracy: 0.3721
+Precision: 0.5740
+Recall: 0.3721
+F1 Score: 0.2419
+MANDATORY STOPS MADE:
+0.55
+AVERAGE STOPS MADE:
+3.757142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 32.15321731567383
+Mean Signed Deviation: -0.0281
+Mean Squared Error: 0.0017
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.00042636812244641726
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.53617525100708
+Mean Signed Deviation: 0.0747
+Mean Squared Error: 0.0284
+===========I2============
+Mean Absolute Error: 5.769346714019775
+Mean Signed Deviation: 0.0627
+Mean Squared Error: 0.0195
+===========FL============
+Mean Absolute Error: 5.325396537780762
+Mean Signed Deviation: -0.0083
+Mean Squared Error: 0.0082
+===========ST============
+Mean Absolute Error: 2.944312810897827
+Mean Signed Deviation: 0.0668
+Mean Squared Error: 0.0132
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 1.7920937538146973
+Mean Signed Deviation: 0.0168
+Mean Squared Error: 0.0163
+============RPM=============
+Mean Absolute Error: 1.9855873584747314
+Mean Signed Deviation: 0.0221
+Mean Squared Error: 0.0085
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   69    0]
+ [   0    0    0    0    0    0  200    0]
+ [   0    0    0    0    0    0   16    0]
+ [   0    0    0    0    0    0   70    0]
+ [   0    0    0    0    0    0  836    1]
+ [   0    0    0    0    0    0 1858    0]
+ [   0    0    0    0    0    0 3825    0]
+ [   0    0    0    0    0    0 1713    0]]
+Accuracy: 0.4454
+Precision: 0.5535
+Recall: 0.4454
+F1 Score: 0.2745
+==========THROTTLE==========
+Mean Absolute Error: 2.4025771617889404
+Mean Signed Deviation: 0.0531
+Mean Squared Error: 0.0195
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 48.289100646972656
+Mean Signed Deviation: -0.0124
+Mean Squared Error: 0.0008
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.645965576171875
+Mean Signed Deviation: -0.0189
+Mean Squared Error: 0.0015
+PIT DECISION METRICS:
+Confusion Matrix:
+[[5644 2689]
+ [ 179   76]]
+Accuracy: 0.6660
+Precision: 0.9413
+Recall: 0.6660
+F1 Score: 0.7752
+AUC Score: 0.4877
+
+ LOSS: tensor([350.8782], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([345.1451], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.1687], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([278.1830], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([335.8677], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([342.6606], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([359.1425], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([331.8449], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1541  123    0]
+ [   0 2880  182    0]
+ [   0 3397  397    0]
+ [   0   67    1    0]]
+Accuracy: 0.3816
+Precision: 0.5814
+Recall: 0.3816
+F1 Score: 0.2656
+MANDATORY STOPS MADE:
+0.6214285714285714
+AVERAGE STOPS MADE:
+4.964285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 38.36640930175781
+Mean Signed Deviation: -0.0372
+Mean Squared Error: 0.0022
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0006378664026020227
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.128467082977295
+Mean Signed Deviation: 0.0540
+Mean Squared Error: 0.0248
+===========I2============
+Mean Absolute Error: 5.298949718475342
+Mean Signed Deviation: 0.0434
+Mean Squared Error: 0.0166
+===========FL============
+Mean Absolute Error: 5.206704616546631
+Mean Signed Deviation: 0.0238
+Mean Squared Error: 0.0086
+===========ST============
+Mean Absolute Error: 2.7219252586364746
+Mean Signed Deviation: 0.0620
+Mean Squared Error: 0.0117
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 1.7786433696746826
+Mean Signed Deviation: 0.0371
+Mean Squared Error: 0.0171
+============RPM=============
+Mean Absolute Error: 2.00345778465271
+Mean Signed Deviation: 0.0324
+Mean Squared Error: 0.0085
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   69    0]
+ [   0    0    0    0    0    0  200    0]
+ [   0    0    0    0    0    0   16    0]
+ [   0    0    0    0    0    0   70    0]
+ [   0    0    0    0    0    0  836    1]
+ [   0    0    0    0    0    0 1858    0]
+ [   0    0    0    0    0    0 3825    0]
+ [   0    0    0    0    0    0 1713    0]]
+Accuracy: 0.4454
+Precision: 0.5535
+Recall: 0.4454
+F1 Score: 0.2745
+==========THROTTLE==========
+Mean Absolute Error: 2.2786402702331543
+Mean Signed Deviation: 0.0566
+Mean Squared Error: 0.0187
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 50.970916748046875
+Mean Signed Deviation: -0.0179
+Mean Squared Error: 0.0009
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.66194534301758
+Mean Signed Deviation: -0.0202
+Mean Squared Error: 0.0015
+PIT DECISION METRICS:
+Confusion Matrix:
+[[5690 2643]
+ [ 181   74]]
+Accuracy: 0.6712
+Precision: 0.9412
+Recall: 0.6712
+F1 Score: 0.7789
+AUC Score: 0.4865
+
+ LOSS: tensor([291.5629], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([318.8756], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([350.7512], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([336.6468], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([379.9558], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([339.2438], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([302.1027], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([335.2868], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1337  327    0]
+ [   0 2563  499    0]
+ [   0 2497 1297    0]
+ [   0   45   23    0]]
+Accuracy: 0.4495
+Precision: 0.6105
+Recall: 0.4495
+F1 Score: 0.3852
+MANDATORY STOPS MADE:
+0.7428571428571429
+AVERAGE STOPS MADE:
+8.707142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 42.99845504760742
+Mean Signed Deviation: -0.0430
+Mean Squared Error: 0.0026
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.000143457619300794
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.934685230255127
+Mean Signed Deviation: 0.0297
+Mean Squared Error: 0.0219
+===========I2============
+Mean Absolute Error: 5.189630031585693
+Mean Signed Deviation: 0.0358
+Mean Squared Error: 0.0158
+===========FL============
+Mean Absolute Error: 5.108728885650635
+Mean Signed Deviation: 0.0068
+Mean Squared Error: 0.0079
+===========ST============
+Mean Absolute Error: 2.4932637214660645
+Mean Signed Deviation: 0.0534
+Mean Squared Error: 0.0104
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 1.7143539190292358
+Mean Signed Deviation: 0.0260
+Mean Squared Error: 0.0162
+============RPM=============
+Mean Absolute Error: 1.8795486688613892
+Mean Signed Deviation: 0.0280
+Mean Squared Error: 0.0078
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   69    0]
+ [   0    0    0    0    0    0  200    0]
+ [   0    0    0    0    0    0   16    0]
+ [   0    0    0    0    0    0   70    0]
+ [   0    0    0    0    0    0  837    0]
+ [   0    0    0    0    0    0 1858    0]
+ [   0    0    0    0    0    0 3825    0]
+ [   0    0    0    0    0    0 1713    0]]
+Accuracy: 0.4454
+Precision: 0.7530
+Recall: 0.4454
+F1 Score: 0.2745
+==========THROTTLE==========
+Mean Absolute Error: 1.9361337423324585
+Mean Signed Deviation: 0.0436
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 48.08366775512695
+Mean Signed Deviation: -0.0165
+Mean Squared Error: 0.0008
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 67.94113159179688
+Mean Signed Deviation: -0.0306
+Mean Squared Error: 0.0019
+PIT DECISION METRICS:
+Confusion Matrix:
+[[5712 2621]
+ [ 179   76]]
+Accuracy: 0.6740
+Precision: 0.9417
+Recall: 0.6740
+F1 Score: 0.7808
+AUC Score: 0.4918
+
+ LOSS: tensor([361.2579], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([307.5609], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([308.7149], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([361.5604], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([339.8546], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([352.0824], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([268.8845], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([828.9988], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([740.3269], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([681.8664], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([644.5566], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([635.1494], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([588.2379], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([555.8825], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   1    0 1332  247]
+ [   5    0 2709  719]
+ [   0    1 2506  876]
+ [   0    0   74   15]]
+Accuracy: 0.2972
+Precision: 0.1820
+Recall: 0.2972
+F1 Score: 0.2001
+MANDATORY STOPS MADE:
+0.6571428571428571
+AVERAGE STOPS MADE:
+1.542857142857143
+LAP TIME METRICS:
+Mean Absolute Error: 33.10366439819336
+Mean Signed Deviation: 0.0073
+Mean Squared Error: 0.0021
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0010291848539574339
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 15.981707572937012
+Mean Signed Deviation: -0.3388
+Mean Squared Error: 0.1374
+===========I2============
+Mean Absolute Error: 14.35089111328125
+Mean Signed Deviation: -0.2792
+Mean Squared Error: 0.0992
+===========FL============
+Mean Absolute Error: 21.40912628173828
+Mean Signed Deviation: -0.2851
+Mean Squared Error: 0.0920
+===========ST============
+Mean Absolute Error: 12.450918197631836
+Mean Signed Deviation: -0.3554
+Mean Squared Error: 0.1457
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 10.280972480773926
+Mean Signed Deviation: -0.4565
+Mean Squared Error: 0.2266
+============RPM=============
+Mean Absolute Error: 8.64864730834961
+Mean Signed Deviation: -0.2718
+Mean Squared Error: 0.0798
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0    0    0    0]
+ [   0   65    0    0    0    0    0    0    2]
+ [   0  179    0    0    0    0    0    0   10]
+ [   0   32    0    0    0    0    0    0    0]
+ [   0  159    0    0    0    0    0    0    1]
+ [   0  975    1    0    0    0    0    0    4]
+ [   3 1343    0    0    0    0    0    0   93]
+ [  12 3365    1    0    0    2    0    0  128]
+ [   6 2092    0    0    0    1    0    0   11]]
+Accuracy: 0.0090
+Precision: 0.6167
+Recall: 0.0090
+F1 Score: 0.0024
+==========THROTTLE==========
+Mean Absolute Error: 12.069537162780762
+Mean Signed Deviation: -0.3874
+Mean Squared Error: 0.1670
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 158.81764221191406
+Mean Signed Deviation: 0.0394
+Mean Squared Error: 0.0093
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 170.56475830078125
+Mean Signed Deviation: -0.0705
+Mean Squared Error: 0.0097
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7611  621]
+ [ 228   25]]
+Accuracy: 0.8999
+Precision: 0.9431
+Recall: 0.8999
+F1 Score: 0.9206
+AUC Score: 0.5117
+
+ LOSS: tensor([525.4280], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([511.4582], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([483.7257], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([494.3701], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([458.2367], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([438.8779], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([462.6979], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([436.1853], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 42.929691314697266
+Mean Signed Deviation: 0.0383
+Mean Squared Error: 0.0031
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 8.116259574890137
+Mean Signed Deviation: -0.1269
+Mean Squared Error: 0.0384
+===========I2============
+Mean Absolute Error: 7.786975383758545
+Mean Signed Deviation: -0.1147
+Mean Squared Error: 0.0342
+===========FL============
+Mean Absolute Error: 8.627485275268555
+Mean Signed Deviation: -0.0912
+Mean Squared Error: 0.0190
+===========ST============
+Mean Absolute Error: 4.78050422668457
+Mean Signed Deviation: -0.0953
+Mean Squared Error: 0.0288
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 5.233120441436768
+Mean Signed Deviation: -0.2135
+Mean Squared Error: 0.0640
+============RPM=============
+Mean Absolute Error: 3.4442453384399414
+Mean Signed Deviation: -0.0959
+Mean Squared Error: 0.0158
+============GEAR============
+Confusion Matrix:
+[[   5    0    0    0    0   12    0   50]
+ [  20    0    0    0    0   35    0  134]
+ [   3    0    0    0    0    2    0   27]
+ [   8    0    0    0    0    9    0  143]
+ [  70    1    0    0    0  361    0  548]
+ [  91    0    0    0    0  181    0 1167]
+ [ 258    1    0    0    1  328    0 2920]
+ [ 284    0    0    0    1  432    0 1393]]
+Accuracy: 0.1861
+Precision: 0.5130
+Recall: 0.1861
+F1 Score: 0.1036
+==========THROTTLE==========
+Mean Absolute Error: 5.878412246704102
+Mean Signed Deviation: -0.1693
+Mean Squared Error: 0.0459
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 137.76095581054688
+Mean Signed Deviation: 0.0326
+Mean Squared Error: 0.0068
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 112.35722351074219
+Mean Signed Deviation: -0.0195
+Mean Squared Error: 0.0044
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7869  363]
+ [ 242   11]]
+Accuracy: 0.9287
+Precision: 0.9421
+Recall: 0.9287
+F1 Score: 0.9353
+AUC Score: 0.4997
+
+ LOSS: tensor([449.5850], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([400.3999], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([439.9679], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([419.9007], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([406.0506], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([414.8972], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([404.0663], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([372.9836], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 56.476043701171875
+Mean Signed Deviation: 0.0581
+Mean Squared Error: 0.0047
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.431385517120361
+Mean Signed Deviation: -0.0173
+Mean Squared Error: 0.0222
+===========I2============
+Mean Absolute Error: 5.857393264770508
+Mean Signed Deviation: -0.0139
+Mean Squared Error: 0.0210
+===========FL============
+Mean Absolute Error: 5.824143886566162
+Mean Signed Deviation: 0.0053
+Mean Squared Error: 0.0106
+===========ST============
+Mean Absolute Error: 3.535660982131958
+Mean Signed Deviation: 0.0129
+Mean Squared Error: 0.0168
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.7040178775787354
+Mean Signed Deviation: -0.0665
+Mean Squared Error: 0.0232
+============RPM=============
+Mean Absolute Error: 1.8524636030197144
+Mean Signed Deviation: -0.0181
+Mean Squared Error: 0.0070
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0   31    1   35]
+ [   0    0    0    0    0   81    5  103]
+ [   0    0    0    0    0   10    0   22]
+ [   0    0    0    0    0   41    0  119]
+ [   0    1    0    0    0  682    2  295]
+ [   1    0    0    0    0  628    6  804]
+ [   2    1    0    0    0  924  120 2461]
+ [   1    0    0    0    1 1187   78  843]]
+Accuracy: 0.1875
+Precision: 0.3311
+Recall: 0.1875
+F1 Score: 0.1308
+==========THROTTLE==========
+Mean Absolute Error: 2.6725215911865234
+Mean Signed Deviation: -0.0433
+Mean Squared Error: 0.0189
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 113.50912475585938
+Mean Signed Deviation: 0.0187
+Mean Squared Error: 0.0046
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 98.0311279296875
+Mean Signed Deviation: 0.0019
+Mean Squared Error: 0.0031
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7939  293]
+ [ 248    5]]
+Accuracy: 0.9362
+Precision: 0.9413
+Recall: 0.9362
+F1 Score: 0.9388
+AUC Score: 0.4921
+
+ LOSS: tensor([394.1354], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([397.4224], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([413.1291], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([385.3750], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([350.2981], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([414.4597], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([384.6451], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([371.8372], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 56.499244689941406
+Mean Signed Deviation: 0.0587
+Mean Squared Error: 0.0047
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.061553001403809
+Mean Signed Deviation: 0.0324
+Mean Squared Error: 0.0229
+===========I2============
+Mean Absolute Error: 5.630569934844971
+Mean Signed Deviation: 0.0122
+Mean Squared Error: 0.0200
+===========FL============
+Mean Absolute Error: 6.01095724105835
+Mean Signed Deviation: 0.0386
+Mean Squared Error: 0.0121
+===========ST============
+Mean Absolute Error: 3.7446939945220947
+Mean Signed Deviation: 0.0708
+Mean Squared Error: 0.0192
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.0867223739624023
+Mean Signed Deviation: 0.0048
+Mean Squared Error: 0.0190
+============RPM=============
+Mean Absolute Error: 1.6922204494476318
+Mean Signed Deviation: 0.0038
+Mean Squared Error: 0.0065
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0   22   12   33]
+ [   0    0    0    0    0   61   32   96]
+ [   0    0    0    0    0    7    3   22]
+ [   0    0    0    0    0   35    6  119]
+ [   0    1    0    0    0  584  118  277]
+ [   1    0    0    0    0  528  167  743]
+ [   1    0    0    0    0  714  536 2257]
+ [   0    0    0    0    1  683  674  752]]
+Accuracy: 0.2140
+Precision: 0.2433
+Recall: 0.2140
+F1 Score: 0.1900
+==========THROTTLE==========
+Mean Absolute Error: 2.0317533016204834
+Mean Signed Deviation: 0.0103
+Mean Squared Error: 0.0167
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 94.55442810058594
+Mean Signed Deviation: 0.0167
+Mean Squared Error: 0.0033
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 93.8746109008789
+Mean Signed Deviation: 0.0122
+Mean Squared Error: 0.0028
+PIT DECISION METRICS:
+Confusion Matrix:
+[[7989  243]
+ [ 248    5]]
+Accuracy: 0.9421
+Precision: 0.9416
+Recall: 0.9421
+F1 Score: 0.9419
+AUC Score: 0.4951
+
+ LOSS: tensor([389.4089], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([356.9425], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([394.6137], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([371.7313], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([399.5164], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([387.0000], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([377.5049], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([377.6371], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 50.21928787231445
+Mean Signed Deviation: 0.0518
+Mean Squared Error: 0.0038
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.01577091217041
+Mean Signed Deviation: 0.0331
+Mean Squared Error: 0.0227
+===========I2============
+Mean Absolute Error: 5.5115180015563965
+Mean Signed Deviation: 0.0133
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 6.8914899826049805
+Mean Signed Deviation: 0.0687
+Mean Squared Error: 0.0153
+===========ST============
+Mean Absolute Error: 3.4130349159240723
+Mean Signed Deviation: 0.0660
+Mean Squared Error: 0.0166
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.020705461502075
+Mean Signed Deviation: 0.0306
+Mean Squared Error: 0.0199
+============RPM=============
+Mean Absolute Error: 1.665113091468811
+Mean Signed Deviation: -0.0027
+Mean Squared Error: 0.0063
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   65    2]
+ [   0    0    0    0    0    1  176   12]
+ [   0    0    0    0    0    0   32    0]
+ [   0    0    0    0    0    0  158    2]
+ [   0    1    0    0    0    2  970    7]
+ [   1    0    0    0    0   14 1287  137]
+ [   0    0    0    0    0   24 3265  219]
+ [   0    0    0    0    1    6 2076   27]]
+Accuracy: 0.3896
+Precision: 0.2578
+Recall: 0.3896
+F1 Score: 0.2425
+==========THROTTLE==========
+Mean Absolute Error: 1.9416824579238892
+Mean Signed Deviation: 0.0119
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 91.11431121826172
+Mean Signed Deviation: 0.0252
+Mean Squared Error: 0.0030
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 88.56889343261719
+Mean Signed Deviation: 0.0151
+Mean Squared Error: 0.0025
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8067  165]
+ [ 251    2]]
+Accuracy: 0.9510
+Precision: 0.9413
+Recall: 0.9510
+F1 Score: 0.9461
+AUC Score: 0.4939
+
+ LOSS: tensor([347.9827], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([393.6167], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([375.2222], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([362.7891], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([369.0426], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([360.4903], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([343.2530], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([373.6461], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 56.81536102294922
+Mean Signed Deviation: 0.0596
+Mean Squared Error: 0.0046
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.992527961730957
+Mean Signed Deviation: 0.0432
+Mean Squared Error: 0.0231
+===========I2============
+Mean Absolute Error: 5.417216777801514
+Mean Signed Deviation: 0.0097
+Mean Squared Error: 0.0187
+===========FL============
+Mean Absolute Error: 6.929150581359863
+Mean Signed Deviation: 0.0706
+Mean Squared Error: 0.0155
+===========ST============
+Mean Absolute Error: 3.3210442066192627
+Mean Signed Deviation: 0.0709
+Mean Squared Error: 0.0162
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.0428032875061035
+Mean Signed Deviation: 0.0434
+Mean Squared Error: 0.0208
+============RPM=============
+Mean Absolute Error: 1.6535197496414185
+Mean Signed Deviation: 0.0182
+Mean Squared Error: 0.0065
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   66    1]
+ [   0    0    0    0    0    1  185    3]
+ [   0    0    0    0    0    0   32    0]
+ [   0    0    0    0    0    0  159    1]
+ [   0    1    0    0    0    4  974    1]
+ [   1    0    0    0    0   30 1352   56]
+ [   0    0    0    0    0   53 3429   26]
+ [   0    0    0    0    1    9 2098    2]]
+Accuracy: 0.4079
+Precision: 0.2515
+Recall: 0.4079
+F1 Score: 0.2473
+==========THROTTLE==========
+Mean Absolute Error: 1.92643404006958
+Mean Signed Deviation: 0.0281
+Mean Squared Error: 0.0167
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 71.60599517822266
+Mean Signed Deviation: 0.0167
+Mean Squared Error: 0.0020
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 88.01970672607422
+Mean Signed Deviation: 0.0194
+Mean Squared Error: 0.0024
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8095  137]
+ [ 251    2]]
+Accuracy: 0.9543
+Precision: 0.9414
+Recall: 0.9543
+F1 Score: 0.9478
+AUC Score: 0.4956
+
+ LOSS: tensor([374.5068], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([326.5563], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([370.0261], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([347.1878], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([396.3285], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([401.9077], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([342.2006], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([377.1792], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 58.673221588134766
+Mean Signed Deviation: 0.0618
+Mean Squared Error: 0.0048
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.247223854064941
+Mean Signed Deviation: 0.0709
+Mean Squared Error: 0.0260
+===========I2============
+Mean Absolute Error: 5.436863899230957
+Mean Signed Deviation: -0.0151
+Mean Squared Error: 0.0182
+===========FL============
+Mean Absolute Error: 7.26054573059082
+Mean Signed Deviation: 0.0790
+Mean Squared Error: 0.0167
+===========ST============
+Mean Absolute Error: 2.8202321529388428
+Mean Signed Deviation: 0.0481
+Mean Squared Error: 0.0125
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.0604467391967773
+Mean Signed Deviation: 0.0496
+Mean Squared Error: 0.0213
+============RPM=============
+Mean Absolute Error: 1.6280440092086792
+Mean Signed Deviation: 0.0178
+Mean Squared Error: 0.0064
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   66    1]
+ [   0    0    0    0    0    1  185    3]
+ [   0    0    0    0    0    0   32    0]
+ [   0    0    0    0    0    0  159    1]
+ [   0    1    0    0    0    3  975    1]
+ [   0    0    0    0    0   24 1375   40]
+ [   0    0    0    0    0   36 3451   21]
+ [   0    0    0    0    1    7 2101    1]]
+Accuracy: 0.4097
+Precision: 0.2625
+Recall: 0.4097
+F1 Score: 0.2464
+==========THROTTLE==========
+Mean Absolute Error: 1.8280022144317627
+Mean Signed Deviation: 0.0237
+Mean Squared Error: 0.0162
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 60.155147552490234
+Mean Signed Deviation: 0.0139
+Mean Squared Error: 0.0015
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 75.85494232177734
+Mean Signed Deviation: 0.0125
+Mean Squared Error: 0.0018
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8151   81]
+ [ 252    1]]
+Accuracy: 0.9608
+Precision: 0.9415
+Recall: 0.9608
+F1 Score: 0.9509
+AUC Score: 0.4971
+
+ LOSS: tensor([367.7385], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([379.9517], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([340.7962], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([371.3981], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([360.9389], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([348.1558], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([346.3554], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([346.4977], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1580    0]
+ [   3    0 3430    0]
+ [   0    1 3382    0]
+ [   0    0   89    0]]
+Accuracy: 0.3986
+Precision: 0.1695
+Recall: 0.3986
+F1 Score: 0.2273
+MANDATORY STOPS MADE:
+0.02857142857142857
+AVERAGE STOPS MADE:
+0.02857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 62.90876770019531
+Mean Signed Deviation: 0.0667
+Mean Squared Error: 0.0054
+AVERAGE PIT STOP TIME DIFFERENCE:
+0.0
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 4.967331886291504
+Mean Signed Deviation: 0.0529
+Mean Squared Error: 0.0235
+===========I2============
+Mean Absolute Error: 5.343891620635986
+Mean Signed Deviation: -0.0061
+Mean Squared Error: 0.0177
+===========FL============
+Mean Absolute Error: 7.0650506019592285
+Mean Signed Deviation: 0.0751
+Mean Squared Error: 0.0160
+===========ST============
+Mean Absolute Error: 2.740074396133423
+Mean Signed Deviation: 0.0522
+Mean Squared Error: 0.0121
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.0817668437957764
+Mean Signed Deviation: 0.0565
+Mean Squared Error: 0.0218
+============RPM=============
+Mean Absolute Error: 1.581773281097412
+Mean Signed Deviation: 0.0158
+Mean Squared Error: 0.0062
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   67    0]
+ [   0    0    0    0    0    1  188    0]
+ [   0    0    0    0    0    0   32    0]
+ [   0    0    0    0    0    1  159    0]
+ [   0    1    0    0    0    2  977    0]
+ [   0    0    0    0    0   30 1402    7]
+ [   0    0    0    0    0   37 3470    1]
+ [   0    0    0    0    1    3 2106    0]]
+Accuracy: 0.4125
+Precision: 0.2700
+Recall: 0.4125
+F1 Score: 0.2477
+==========THROTTLE==========
+Mean Absolute Error: 1.9137604236602783
+Mean Signed Deviation: 0.0377
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 44.4151496887207
+Mean Signed Deviation: 0.0031
+Mean Squared Error: 0.0010
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 71.38963317871094
+Mean Signed Deviation: 0.0113
+Mean Squared Error: 0.0016
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8170   62]
+ [ 252    1]]
+Accuracy: 0.9630
+Precision: 0.9416
+Recall: 0.9630
+F1 Score: 0.9521
+AUC Score: 0.4982
+
+ LOSS: tensor([319.1984], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([345.4109], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([362.6674], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([355.8636], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([356.5839], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([391.5929], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([333.4448], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([786.2935], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([721.4882], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([719.2003], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([693.8288], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([674.9098], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([686.2620], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([636.7911], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 251 1289    0    0]
+ [ 405 2851    0    4]
+ [ 254 3530    0    2]
+ [   1   44    0    0]]
+Accuracy: 0.3594
+Precision: 0.6274
+Recall: 0.3594
+F1 Score: 0.2328
+MANDATORY STOPS MADE:
+0.4357142857142857
+AVERAGE STOPS MADE:
+1.4142857142857144
+LAP TIME METRICS:
+Mean Absolute Error: 224.81666564941406
+Mean Signed Deviation: -0.2210
+Mean Squared Error: 0.0609
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.004549557951889126
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 33.59809112548828
+Mean Signed Deviation: -0.6906
+Mean Squared Error: 0.4990
+===========I2============
+Mean Absolute Error: 32.75045394897461
+Mean Signed Deviation: -0.6166
+Mean Squared Error: 0.3992
+===========FL============
+Mean Absolute Error: 43.13428497314453
+Mean Signed Deviation: -0.5807
+Mean Squared Error: 0.3486
+===========ST============
+Mean Absolute Error: 19.413150787353516
+Mean Signed Deviation: -0.5214
+Mean Squared Error: 0.2865
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 17.39740562438965
+Mean Signed Deviation: -0.7595
+Mean Squared Error: 0.6022
+============RPM=============
+Mean Absolute Error: 23.77843475341797
+Mean Signed Deviation: -0.7401
+Mean Squared Error: 0.5579
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0    0    0    0]
+ [   0    0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0    1  134    0]
+ [   0    0    0    0    0    0    1  977    0]
+ [   2    0    0    0    0    0    7 1729    0]
+ [  11    0    0    0    0    0   68 3445    0]
+ [  10    0    0    0    0    0   10 1943    0]]
+Accuracy: 0.4000
+Precision: 0.5714
+Recall: 0.4000
+F1 Score: 0.2351
+==========THROTTLE==========
+Mean Absolute Error: 21.931108474731445
+Mean Signed Deviation: -0.6933
+Mean Squared Error: 0.4958
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 152.0128173828125
+Mean Signed Deviation: -0.0025
+Mean Squared Error: 0.0074
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 180.00648498535156
+Mean Signed Deviation: 0.0604
+Mean Squared Error: 0.0133
+PIT DECISION METRICS:
+Confusion Matrix:
+[[  75 8310]
+ [   1  245]]
+Accuracy: 0.0371
+Precision: 0.9595
+Recall: 0.0371
+F1 Score: 0.0188
+AUC Score: 0.5024
+
+ LOSS: tensor([684.8266], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([658.3024], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([632.2328], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([618.1646], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([602.3934], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([641.7500], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([600.6359], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([568.3671], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 259 1281    0    0]
+ [ 428 2828    0    4]
+ [ 289 3495    0    2]
+ [   2   43    0    0]]
+Accuracy: 0.3577
+Precision: 0.6256
+Recall: 0.3577
+F1 Score: 0.2326
+MANDATORY STOPS MADE:
+0.44285714285714284
+AVERAGE STOPS MADE:
+1.4357142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 194.7418670654297
+Mean Signed Deviation: -0.1886
+Mean Squared Error: 0.0468
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.004747388407953882
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 29.66766929626465
+Mean Signed Deviation: -0.6098
+Mean Squared Error: 0.3936
+===========I2============
+Mean Absolute Error: 29.285259246826172
+Mean Signed Deviation: -0.5514
+Mean Squared Error: 0.3229
+===========FL============
+Mean Absolute Error: 37.915889739990234
+Mean Signed Deviation: -0.5104
+Mean Squared Error: 0.2718
+===========ST============
+Mean Absolute Error: 17.34697723388672
+Mean Signed Deviation: -0.4654
+Mean Squared Error: 0.2303
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 15.09927749633789
+Mean Signed Deviation: -0.6591
+Mean Squared Error: 0.4589
+============RPM=============
+Mean Absolute Error: 21.39051055908203
+Mean Signed Deviation: -0.6658
+Mean Squared Error: 0.4536
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0    0    0    0]
+ [   0    0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0    1  134    0]
+ [   0    0    0    0    0    0    2  976    0]
+ [   0    0    0    0    0    0   10 1728    0]
+ [   3    0    0    0    0    0   67 3454    0]
+ [   1    0    0    0    0    0   12 1950    0]]
+Accuracy: 0.4013
+Precision: 0.5772
+Recall: 0.4013
+F1 Score: 0.2361
+==========THROTTLE==========
+Mean Absolute Error: 19.300750732421875
+Mean Signed Deviation: -0.6083
+Mean Squared Error: 0.3857
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 154.4293670654297
+Mean Signed Deviation: -0.0019
+Mean Squared Error: 0.0075
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 163.94625854492188
+Mean Signed Deviation: 0.0405
+Mean Squared Error: 0.0109
+PIT DECISION METRICS:
+Confusion Matrix:
+[[  59 8326]
+ [   1  245]]
+Accuracy: 0.0352
+Precision: 0.9561
+Recall: 0.0352
+F1 Score: 0.0152
+AUC Score: 0.5015
+
+ LOSS: tensor([595.3894], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([563.7017], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([579.2936], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([550.7629], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([589.2730], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([529.0104], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([570.3582], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([594.5029], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 290 1250    0    0]
+ [ 465 2792    0    3]
+ [ 353 3431    0    2]
+ [   2   43    0    0]]
+Accuracy: 0.3571
+Precision: 0.6256
+Recall: 0.3571
+F1 Score: 0.2348
+MANDATORY STOPS MADE:
+0.45714285714285713
+AVERAGE STOPS MADE:
+1.6142857142857143
+LAP TIME METRICS:
+Mean Absolute Error: 172.5194549560547
+Mean Signed Deviation: -0.1641
+Mean Squared Error: 0.0375
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.004778042646025174
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 26.624528884887695
+Mean Signed Deviation: -0.5472
+Mean Squared Error: 0.3210
+===========I2============
+Mean Absolute Error: 26.470693588256836
+Mean Signed Deviation: -0.4983
+Mean Squared Error: 0.2673
+===========FL============
+Mean Absolute Error: 33.88676834106445
+Mean Signed Deviation: -0.4562
+Mean Squared Error: 0.2192
+===========ST============
+Mean Absolute Error: 15.689181327819824
+Mean Signed Deviation: -0.4204
+Mean Squared Error: 0.1899
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 13.240046501159668
+Mean Signed Deviation: -0.5772
+Mean Squared Error: 0.3568
+============RPM=============
+Mean Absolute Error: 19.383981704711914
+Mean Signed Deviation: -0.6034
+Mean Squared Error: 0.3745
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    1  977    0]
+ [   0    0    0    0    0    5 1733    0]
+ [   0    0    0    0    0   23 3501    0]
+ [   0    0    0    0    0    3 1960    0]]
+Accuracy: 0.4062
+Precision: 0.5871
+Recall: 0.4062
+F1 Score: 0.2370
+==========THROTTLE==========
+Mean Absolute Error: 17.193498611450195
+Mean Signed Deviation: -0.5399
+Mean Squared Error: 0.3076
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 156.69766235351562
+Mean Signed Deviation: 0.0005
+Mean Squared Error: 0.0077
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 158.61532592773438
+Mean Signed Deviation: 0.0332
+Mean Squared Error: 0.0101
+PIT DECISION METRICS:
+Confusion Matrix:
+[[  44 8341]
+ [   1  245]]
+Accuracy: 0.0335
+Precision: 0.9507
+Recall: 0.0335
+F1 Score: 0.0117
+AUC Score: 0.5006
+
+ LOSS: tensor([537.6824], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([550.9982], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([567.9274], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([556.4732], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([520.6844], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([525.8262], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([553.3671], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([541.1561], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 274 1266    0    0]
+ [ 453 2804    0    3]
+ [ 347 3436    1    2]
+ [   2   43    0    0]]
+Accuracy: 0.3567
+Precision: 0.6244
+Recall: 0.3567
+F1 Score: 0.2336
+MANDATORY STOPS MADE:
+0.4642857142857143
+AVERAGE STOPS MADE:
+1.6785714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 153.59681701660156
+Mean Signed Deviation: -0.1427
+Mean Squared Error: 0.0303
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.004557878123822385
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 24.24991798400879
+Mean Signed Deviation: -0.4977
+Mean Squared Error: 0.2688
+===========I2============
+Mean Absolute Error: 24.0737361907959
+Mean Signed Deviation: -0.4530
+Mean Squared Error: 0.2239
+===========FL============
+Mean Absolute Error: 30.42236328125
+Mean Signed Deviation: -0.4095
+Mean Squared Error: 0.1787
+===========ST============
+Mean Absolute Error: 14.030139923095703
+Mean Signed Deviation: -0.3752
+Mean Squared Error: 0.1531
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 11.960989952087402
+Mean Signed Deviation: -0.5200
+Mean Squared Error: 0.2939
+============RPM=============
+Mean Absolute Error: 17.777406692504883
+Mean Signed Deviation: -0.5533
+Mean Squared Error: 0.3171
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    0  978    0]
+ [   0    0    0    0    0    4 1734    0]
+ [   0    0    0    0    0   12 3512    0]
+ [   0    0    0    0    0    2 1961    0]]
+Accuracy: 0.4074
+Precision: 0.5992
+Recall: 0.4074
+F1 Score: 0.2372
+==========THROTTLE==========
+Mean Absolute Error: 15.333651542663574
+Mean Signed Deviation: -0.4793
+Mean Squared Error: 0.2460
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 158.0728302001953
+Mean Signed Deviation: 0.0015
+Mean Squared Error: 0.0077
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 151.12730407714844
+Mean Signed Deviation: 0.0180
+Mean Squared Error: 0.0090
+PIT DECISION METRICS:
+Confusion Matrix:
+[[  28 8357]
+ [   1  245]]
+Accuracy: 0.0316
+Precision: 0.9388
+Recall: 0.0316
+F1 Score: 0.0080
+AUC Score: 0.4996
+
+ LOSS: tensor([534.4904], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([549.5494], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([498.7576], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([510.2787], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([528.7788], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([516.5934], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([517.0994], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([495.5960], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 269 1271    0    0]
+ [ 452 2803    2    3]
+ [ 342 3441    1    2]
+ [   2   43    0    0]]
+Accuracy: 0.3560
+Precision: 0.3314
+Recall: 0.3560
+F1 Score: 0.2328
+MANDATORY STOPS MADE:
+0.4785714285714286
+AVERAGE STOPS MADE:
+1.6857142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 139.94712829589844
+Mean Signed Deviation: -0.1269
+Mean Squared Error: 0.0255
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0049429685725564405
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 21.991003036499023
+Mean Signed Deviation: -0.4496
+Mean Squared Error: 0.2231
+===========I2============
+Mean Absolute Error: 21.77753257751465
+Mean Signed Deviation: -0.4096
+Mean Squared Error: 0.1862
+===========FL============
+Mean Absolute Error: 27.338022232055664
+Mean Signed Deviation: -0.3678
+Mean Squared Error: 0.1463
+===========ST============
+Mean Absolute Error: 12.80343246459961
+Mean Signed Deviation: -0.3417
+Mean Squared Error: 0.1285
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 10.698436737060547
+Mean Signed Deviation: -0.4627
+Mean Squared Error: 0.2369
+============RPM=============
+Mean Absolute Error: 16.324132919311523
+Mean Signed Deviation: -0.5081
+Mean Squared Error: 0.2692
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    0  978    0]
+ [   0    0    0    0    0    0 1738    0]
+ [   0    0    0    0    0    4 3520    0]
+ [   0    0    0    0    0    0 1963    0]]
+Accuracy: 0.4078
+Precision: 0.5569
+Recall: 0.4078
+F1 Score: 0.2366
+==========THROTTLE==========
+Mean Absolute Error: 13.834589004516602
+Mean Signed Deviation: -0.4303
+Mean Squared Error: 0.2016
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 159.14993286132812
+Mean Signed Deviation: 0.0001
+Mean Squared Error: 0.0078
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 148.61285400390625
+Mean Signed Deviation: 0.0131
+Mean Squared Error: 0.0086
+PIT DECISION METRICS:
+Confusion Matrix:
+[[  12 8373]
+ [   0  246]]
+Accuracy: 0.0299
+Precision: 0.9723
+Recall: 0.0299
+F1 Score: 0.0044
+AUC Score: 0.5007
+
+ LOSS: tensor([505.7146], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([500.6108], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([510.8392], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([440.1795], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([474.1153], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([484.7975], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([458.6296], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([492.8045], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 268 1272    0    0]
+ [ 454 2800    3    3]
+ [ 346 3432    6    2]
+ [   2   43    0    0]]
+Accuracy: 0.3562
+Precision: 0.4773
+Recall: 0.3562
+F1 Score: 0.2338
+MANDATORY STOPS MADE:
+0.4857142857142857
+AVERAGE STOPS MADE:
+1.7285714285714286
+LAP TIME METRICS:
+Mean Absolute Error: 126.0941390991211
+Mean Signed Deviation: -0.1102
+Mean Squared Error: 0.0210
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.004850007182851966
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 20.18476104736328
+Mean Signed Deviation: -0.4109
+Mean Squared Error: 0.1896
+===========I2============
+Mean Absolute Error: 20.088157653808594
+Mean Signed Deviation: -0.3775
+Mean Squared Error: 0.1609
+===========FL============
+Mean Absolute Error: 24.901376724243164
+Mean Signed Deviation: -0.3348
+Mean Squared Error: 0.1230
+===========ST============
+Mean Absolute Error: 11.590934753417969
+Mean Signed Deviation: -0.3085
+Mean Squared Error: 0.1064
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 9.628240585327148
+Mean Signed Deviation: -0.4137
+Mean Squared Error: 0.1934
+============RPM=============
+Mean Absolute Error: 15.035139083862305
+Mean Signed Deviation: -0.4680
+Mean Squared Error: 0.2303
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    0  978    0]
+ [   0    0    0    0    0    0 1738    0]
+ [   0    0    0    0    0    2 3522    0]
+ [   0    0    0    0    0    0 1963    0]]
+Accuracy: 0.4081
+Precision: 0.5570
+Recall: 0.4081
+F1 Score: 0.2367
+==========THROTTLE==========
+Mean Absolute Error: 12.627595901489258
+Mean Signed Deviation: -0.3906
+Mean Squared Error: 0.1692
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 160.287109375
+Mean Signed Deviation: 0.0014
+Mean Squared Error: 0.0079
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 146.71224975585938
+Mean Signed Deviation: 0.0102
+Mean Squared Error: 0.0084
+PIT DECISION METRICS:
+Confusion Matrix:
+[[   8 8377]
+ [   0  246]]
+Accuracy: 0.0294
+Precision: 0.9723
+Recall: 0.0294
+F1 Score: 0.0034
+AUC Score: 0.5005
+
+ LOSS: tensor([494.0004], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([439.5194], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([475.5999], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([433.8979], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([523.2944], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([446.4286], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([479.4341], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([492.4781], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 255 1285    0    0]
+ [ 430 2820    7    3]
+ [ 309 3454   21    2]
+ [   2   43    0    0]]
+Accuracy: 0.3587
+Precision: 0.5148
+Recall: 0.3587
+F1 Score: 0.2368
+MANDATORY STOPS MADE:
+0.4857142857142857
+AVERAGE STOPS MADE:
+1.7857142857142858
+LAP TIME METRICS:
+Mean Absolute Error: 118.57415008544922
+Mean Signed Deviation: -0.1009
+Mean Squared Error: 0.0187
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0050404608561491065
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 18.609928131103516
+Mean Signed Deviation: -0.3770
+Mean Squared Error: 0.1629
+===========I2============
+Mean Absolute Error: 18.335180282592773
+Mean Signed Deviation: -0.3441
+Mean Squared Error: 0.1369
+===========FL============
+Mean Absolute Error: 22.58626365661621
+Mean Signed Deviation: -0.3031
+Mean Squared Error: 0.1027
+===========ST============
+Mean Absolute Error: 10.549083709716797
+Mean Signed Deviation: -0.2797
+Mean Squared Error: 0.0893
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 8.617597579956055
+Mean Signed Deviation: -0.3669
+Mean Squared Error: 0.1561
+============RPM=============
+Mean Absolute Error: 13.752580642700195
+Mean Signed Deviation: -0.4280
+Mean Squared Error: 0.1943
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    0  978    0]
+ [   0    0    0    0    0    0 1738    0]
+ [   0    0    0    0    0    1 3523    0]
+ [   0    0    0    0    0    0 1963    0]]
+Accuracy: 0.4082
+Precision: 0.5570
+Recall: 0.4082
+F1 Score: 0.2367
+==========THROTTLE==========
+Mean Absolute Error: 11.513538360595703
+Mean Signed Deviation: -0.3538
+Mean Squared Error: 0.1420
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 162.09182739257812
+Mean Signed Deviation: 0.0070
+Mean Squared Error: 0.0079
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 146.2758026123047
+Mean Signed Deviation: 0.0130
+Mean Squared Error: 0.0083
+PIT DECISION METRICS:
+Confusion Matrix:
+[[   5 8380]
+ [   0  246]]
+Accuracy: 0.0291
+Precision: 0.9723
+Recall: 0.0291
+F1 Score: 0.0027
+AUC Score: 0.5003
+
+ LOSS: tensor([474.8232], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([436.8410], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([436.3758], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([429.9700], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([444.1096], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([440.9583], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([430.6159], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([418.2705], device='cuda:0', grad_fn=<AddBackward0>)
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[ 223 1316    1    0]
+ [ 405 2845    7    3]
+ [ 268 3490   26    2]
+ [   2   43    0    0]]
+Accuracy: 0.3585
+Precision: 0.5194
+Recall: 0.3585
+F1 Score: 0.2348
+MANDATORY STOPS MADE:
+0.4714285714285714
+AVERAGE STOPS MADE:
+1.6928571428571428
+LAP TIME METRICS:
+Mean Absolute Error: 111.18709564208984
+Mean Signed Deviation: -0.0916
+Mean Squared Error: 0.0166
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.005540663367615447
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 16.8962459564209
+Mean Signed Deviation: -0.3401
+Mean Squared Error: 0.1364
+===========I2============
+Mean Absolute Error: 17.104625701904297
+Mean Signed Deviation: -0.3207
+Mean Squared Error: 0.1213
+===========FL============
+Mean Absolute Error: 20.524770736694336
+Mean Signed Deviation: -0.2746
+Mean Squared Error: 0.0861
+===========ST============
+Mean Absolute Error: 9.63461685180664
+Mean Signed Deviation: -0.2544
+Mean Squared Error: 0.0754
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 7.7574543952941895
+Mean Signed Deviation: -0.3269
+Mean Squared Error: 0.1280
+============RPM=============
+Mean Absolute Error: 12.590222358703613
+Mean Signed Deviation: -0.3918
+Mean Squared Error: 0.1646
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   47    0]
+ [   0    0    0    0    0    1  206    0]
+ [   0    0    0    0    0    0   39    0]
+ [   0    0    0    0    0    0  135    0]
+ [   0    0    0    0    0    0  978    0]
+ [   0    0    0    0    0    0 1738    0]
+ [   0    0    0    0    0    3 3521    0]
+ [   0    0    0    0    0    0 1963    0]]
+Accuracy: 0.4079
+Precision: 0.5570
+Recall: 0.4079
+F1 Score: 0.2366
+==========THROTTLE==========
+Mean Absolute Error: 10.500859260559082
+Mean Signed Deviation: -0.3202
+Mean Squared Error: 0.1195
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 161.9012908935547
+Mean Signed Deviation: 0.0072
+Mean Squared Error: 0.0079
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 145.1114044189453
+Mean Signed Deviation: 0.0059
+Mean Squared Error: 0.0082
+PIT DECISION METRICS:
+Confusion Matrix:
+[[   2 8383]
+ [   0  246]]
+Accuracy: 0.0287
+Precision: 0.9723
+Recall: 0.0287
+F1 Score: 0.0020
+AUC Score: 0.5001
+
+ LOSS: tensor([475.5236], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([456.4685], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([442.8102], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([438.4523], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([425.7749], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([463.8708], device='cuda:0', grad_fn=<AddBackward0>)
+
+ LOSS: tensor([375.9933], device='cuda:0', grad_fn=<AddBackward0>)

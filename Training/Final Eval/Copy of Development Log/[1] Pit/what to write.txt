@@ -1,0 +1,6 @@
+could be viewed as a regression or classification problem
+
+classification -> focal loss or bce weighted (issue here is sparse inputs) 
+continuous -> ordinal regression or normal regression (issue here is the range of values)
+
+test this on a smaller scale first

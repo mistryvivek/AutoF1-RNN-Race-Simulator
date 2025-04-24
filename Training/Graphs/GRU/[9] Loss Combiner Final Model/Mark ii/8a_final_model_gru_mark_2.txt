@@ -1,0 +1,1460 @@
+nohup: ignoring input
+Loading ../Data Gathering/dataset2023.csv
+Loading ../Data Gathering/dataset2021.csv
+Loading ../Data Gathering/dataset2019.csv
+Loading ../Data Gathering/dataset2022.csv
+Loading ../Data Gathering/dataset2018.csv
+Loading ../Data Gathering/dataset2024.csv
+Loading ../Data Gathering/dataset2020.csv
+
+ LOSS: 4030.09814453125
+
+ LOSS: 2784.69091796875
+
+ LOSS: 2099.615234375
+
+ LOSS: 1859.4140625
+
+ LOSS: 1545.919677734375
+
+ LOSS: 1522.557861328125
+
+ LOSS: 1513.6956787109375
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0 1402  126    0]
+ [   0 3017   41    0]
+ [   0 3414  602    0]
+ [   0   49    6    0]]
+Accuracy: 0.4180
+Precision: 0.6784
+Recall: 0.4180
+F1 Score: 0.3114
+MANDATORY STOPS MADE:
+0.5357142857142857
+AVERAGE STOPS MADE:
+2.5642857142857145
+LAP TIME METRICS:
+Mean Absolute Error: 32.241058349609375
+Mean Signed Deviation: 0.0306
+Mean Squared Error: 0.0015
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.00017209387515322306
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.388472557067871
+Mean Signed Deviation: -0.0050
+Mean Squared Error: 0.0216
+===========I2============
+Mean Absolute Error: 5.580415725708008
+Mean Signed Deviation: -0.0396
+Mean Squared Error: 0.0147
+===========FL============
+Mean Absolute Error: 11.879804611206055
+Mean Signed Deviation: -0.1366
+Mean Squared Error: 0.0271
+===========ST============
+Mean Absolute Error: 3.692103147506714
+Mean Signed Deviation: -0.0906
+Mean Squared Error: 0.0158
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.97076416015625
+Mean Signed Deviation: -0.0903
+Mean Squared Error: 0.0234
+============RPM=============
+Mean Absolute Error: 1.1832222938537598
+Mean Signed Deviation: 0.0138
+Mean Squared Error: 0.0045
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1863    1]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5711
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 4.065023422241211
+Mean Signed Deviation: -0.1016
+Mean Squared Error: 0.0239
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 645.523193359375
+Mean Signed Deviation: 0.3009
+Mean Squared Error: 0.0913
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 261.77996826171875
+Mean Signed Deviation: 0.1220
+Mean Squared Error: 0.0153
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    1 12700  1052     0     0]
+ [    0 25352   494     0     0]
+ [    0 25026  3577     0     0]
+ [    0   374    73     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.4213
+Precision: 0.6435
+Recall: 0.4213
+F1 Score: 0.3019
+MANDATORY STOPS MADE:
+0.4597495527728086
+AVERAGE STOPS MADE:
+2.3059033989266546
+LAP TIME METRICS:
+Mean Absolute Error: 35.182090759277344
+Mean Signed Deviation: 0.0317
+Mean Squared Error: 0.0017
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0004271678044037693
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.491997718811035
+Mean Signed Deviation: -0.0174
+Mean Squared Error: 0.0203
+===========I2============
+Mean Absolute Error: 5.629183292388916
+Mean Signed Deviation: -0.0406
+Mean Squared Error: 0.0152
+===========FL============
+Mean Absolute Error: 10.574556350708008
+Mean Signed Deviation: -0.1286
+Mean Squared Error: 0.0265
+===========ST============
+Mean Absolute Error: 3.66178822517395
+Mean Signed Deviation: -0.0835
+Mean Squared Error: 0.0142
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.890852212905884
+Mean Signed Deviation: -0.0834
+Mean Squared Error: 0.0234
+============RPM=============
+Mean Absolute Error: 1.1808403730392456
+Mean Signed Deviation: 0.0130
+Mean Squared Error: 0.0046
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     1   800     0]
+ [    0     0     0     0     0     1     0  7457     0]
+ [    0     0     0     0     0     0     0 14288     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     4     2 14257     0]]
+Accuracy: 0.4298
+Precision: 0.2522
+Recall: 0.4298
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 3.830721139907837
+Mean Signed Deviation: -0.0998
+Mean Squared Error: 0.0239
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 627.9786987304688
+Mean Signed Deviation: 0.2983
+Mean Squared Error: 0.0898
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 243.19432067871094
+Mean Signed Deviation: 0.1212
+Mean Squared Error: 0.0151
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66664     2]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9427
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1548.91259765625
+
+ LOSS: 1453.361572265625
+
+ LOSS: 1469.0950927734375
+
+ LOSS: 1297.671875
+
+ LOSS: 1591.175537109375
+
+ LOSS: 1334.5218505859375
+
+ LOSS: 1355.3643798828125
+
+ LOSS: 1386.503173828125
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  466 1062    0]
+ [   0 1471 1587    0]
+ [   0  378 3638    0]
+ [   0    0   55    0]]
+Accuracy: 0.5902
+Precision: 0.6734
+Recall: 0.5902
+F1 Score: 0.5193
+MANDATORY STOPS MADE:
+0.9928571428571429
+AVERAGE STOPS MADE:
+1.6714285714285715
+LAP TIME METRICS:
+Mean Absolute Error: 47.21265411376953
+Mean Signed Deviation: 0.0484
+Mean Squared Error: 0.0027
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0007697618674033687
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.750154972076416
+Mean Signed Deviation: -0.0929
+Mean Squared Error: 0.0282
+===========I2============
+Mean Absolute Error: 5.7796149253845215
+Mean Signed Deviation: -0.0467
+Mean Squared Error: 0.0155
+===========FL============
+Mean Absolute Error: 10.202140808105469
+Mean Signed Deviation: -0.1130
+Mean Squared Error: 0.0206
+===========ST============
+Mean Absolute Error: 3.7138445377349854
+Mean Signed Deviation: -0.0920
+Mean Squared Error: 0.0151
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.2765724658966064
+Mean Signed Deviation: -0.0518
+Mean Squared Error: 0.0172
+============RPM=============
+Mean Absolute Error: 2.898907423019409
+Mean Signed Deviation: -0.0797
+Mean Squared Error: 0.0109
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 1.701233148574829
+Mean Signed Deviation: -0.0128
+Mean Squared Error: 0.0133
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 610.454345703125
+Mean Signed Deviation: 0.2845
+Mean Squared Error: 0.0813
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 48.74021911621094
+Mean Signed Deviation: 0.0158
+Mean Squared Error: 0.0008
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4341  9412     0     0]
+ [    0 11002 14844     0     0]
+ [    0  3375 25228     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5277
+Precision: 0.6387
+Recall: 0.5277
+F1 Score: 0.4535
+MANDATORY STOPS MADE:
+0.9973166368515206
+AVERAGE STOPS MADE:
+1.5903398926654742
+LAP TIME METRICS:
+Mean Absolute Error: 50.29676818847656
+Mean Signed Deviation: 0.0499
+Mean Squared Error: 0.0029
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.000834680593148547
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 7.243821620941162
+Mean Signed Deviation: -0.1077
+Mean Squared Error: 0.0298
+===========I2============
+Mean Absolute Error: 5.797855377197266
+Mean Signed Deviation: -0.0479
+Mean Squared Error: 0.0159
+===========FL============
+Mean Absolute Error: 9.17802906036377
+Mean Signed Deviation: -0.1065
+Mean Squared Error: 0.0205
+===========ST============
+Mean Absolute Error: 3.7332847118377686
+Mean Signed Deviation: -0.0860
+Mean Squared Error: 0.0138
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.301668167114258
+Mean Signed Deviation: -0.0470
+Mean Squared Error: 0.0180
+============RPM=============
+Mean Absolute Error: 2.913594961166382
+Mean Signed Deviation: -0.0791
+Mean Squared Error: 0.0108
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     2 14286     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     4 14258     1]]
+Accuracy: 0.4299
+Precision: 0.4604
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 1.6414260864257812
+Mean Signed Deviation: -0.0129
+Mean Squared Error: 0.0137
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 596.250244140625
+Mean Signed Deviation: 0.2832
+Mean Squared Error: 0.0805
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 46.97100067138672
+Mean Signed Deviation: 0.0158
+Mean Squared Error: 0.0009
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1373.480712890625
+
+ LOSS: 1346.5330810546875
+
+ LOSS: 1338.716552734375
+
+ LOSS: 1241.2705078125
+
+ LOSS: 1350.3070068359375
+
+ LOSS: 1244.4105224609375
+
+ LOSS: 1265.5577392578125
+
+ LOSS: 1239.325927734375
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  659  869    0]
+ [   0 2067  991    0]
+ [   0  689 3327    0]
+ [   0    1   54    0]]
+Accuracy: 0.6231
+Precision: 0.6911
+Recall: 0.6231
+F1 Score: 0.5590
+MANDATORY STOPS MADE:
+0.9571428571428572
+AVERAGE STOPS MADE:
+2.2714285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 14.562824249267578
+Mean Signed Deviation: 0.0010
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.00036606579033104936
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.766610145568848
+Mean Signed Deviation: -0.0464
+Mean Squared Error: 0.0218
+===========I2============
+Mean Absolute Error: 6.5924272537231445
+Mean Signed Deviation: -0.0770
+Mean Squared Error: 0.0191
+===========FL============
+Mean Absolute Error: 8.368843078613281
+Mean Signed Deviation: -0.0833
+Mean Squared Error: 0.0146
+===========ST============
+Mean Absolute Error: 3.9764132499694824
+Mean Signed Deviation: -0.1006
+Mean Squared Error: 0.0167
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.5890491008758545
+Mean Signed Deviation: -0.0710
+Mean Squared Error: 0.0196
+============RPM=============
+Mean Absolute Error: 2.3498730659484863
+Mean Signed Deviation: -0.0598
+Mean Squared Error: 0.0079
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.803159475326538
+Mean Signed Deviation: -0.0563
+Mean Squared Error: 0.0162
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 558.6155395507812
+Mean Signed Deviation: 0.2604
+Mean Squared Error: 0.0680
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 59.796634674072266
+Mean Signed Deviation: 0.0256
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  6200  7553     0     0]
+ [    0 16222  9624     0     0]
+ [    0  5698 22905     0     0]
+ [    0    20   427     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5698
+Precision: 0.6595
+Recall: 0.5698
+F1 Score: 0.5023
+MANDATORY STOPS MADE:
+0.9677996422182469
+AVERAGE STOPS MADE:
+2.2057245080500896
+LAP TIME METRICS:
+Mean Absolute Error: 15.469656944274902
+Mean Signed Deviation: 0.0024
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0003839632140983267
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.152627468109131
+Mean Signed Deviation: -0.0610
+Mean Squared Error: 0.0220
+===========I2============
+Mean Absolute Error: 6.611842155456543
+Mean Signed Deviation: -0.0776
+Mean Squared Error: 0.0195
+===========FL============
+Mean Absolute Error: 7.656642913818359
+Mean Signed Deviation: -0.0771
+Mean Squared Error: 0.0151
+===========ST============
+Mean Absolute Error: 4.01552677154541
+Mean Signed Deviation: -0.0947
+Mean Squared Error: 0.0153
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.570274829864502
+Mean Signed Deviation: -0.0662
+Mean Squared Error: 0.0202
+============RPM=============
+Mean Absolute Error: 2.368435859680176
+Mean Signed Deviation: -0.0597
+Mean Squared Error: 0.0080
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     1   800     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     3 14285     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     3 14258     2]]
+Accuracy: 0.4299
+Precision: 0.5123
+Recall: 0.4299
+F1 Score: 0.2586
+==========THROTTLE==========
+Mean Absolute Error: 2.6826648712158203
+Mean Signed Deviation: -0.0563
+Mean Squared Error: 0.0167
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 546.3441162109375
+Mean Signed Deviation: 0.2597
+Mean Squared Error: 0.0677
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.52840805053711
+Mean Signed Deviation: 0.0259
+Mean Squared Error: 0.0013
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1198.5771484375
+
+ LOSS: 1281.2867431640625
+
+ LOSS: 1242.44775390625
+
+ LOSS: 1196.0498046875
+
+ LOSS: 1309.2861328125
+
+ LOSS: 1320.2442626953125
+
+ LOSS: 1264.6416015625
+
+ LOSS: 1241.955810546875
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  466 1062    0]
+ [   0 1427 1631    0]
+ [   0  305 3711    0]
+ [   0    0   55    0]]
+Accuracy: 0.5935
+Precision: 0.6787
+Recall: 0.5935
+F1 Score: 0.5205
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.6357142857142857
+LAP TIME METRICS:
+Mean Absolute Error: 15.105544090270996
+Mean Signed Deviation: 0.0035
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.001254926
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.912504196166992
+Mean Signed Deviation: -0.0547
+Mean Squared Error: 0.0226
+===========I2============
+Mean Absolute Error: 6.589168071746826
+Mean Signed Deviation: -0.0770
+Mean Squared Error: 0.0190
+===========FL============
+Mean Absolute Error: 8.899014472961426
+Mean Signed Deviation: -0.0921
+Mean Squared Error: 0.0162
+===========ST============
+Mean Absolute Error: 3.974003791809082
+Mean Signed Deviation: -0.1005
+Mean Squared Error: 0.0167
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.8369739055633545
+Mean Signed Deviation: -0.0855
+Mean Squared Error: 0.0218
+============RPM=============
+Mean Absolute Error: 2.1049997806549072
+Mean Signed Deviation: -0.0504
+Mean Squared Error: 0.0068
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.8398072719573975
+Mean Signed Deviation: -0.0577
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 555.471923828125
+Mean Signed Deviation: 0.2589
+Mean Squared Error: 0.0673
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.4755973815918
+Mean Signed Deviation: 0.0239
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4229  9524     0     0]
+ [    0 10805 15041     0     0]
+ [    0  2571 26032     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5365
+Precision: 0.6504
+Recall: 0.5365
+F1 Score: 0.4595
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.6243291592128801
+LAP TIME METRICS:
+Mean Absolute Error: 16.123964309692383
+Mean Signed Deviation: 0.0049
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0008603907
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.317324638366699
+Mean Signed Deviation: -0.0692
+Mean Squared Error: 0.0230
+===========I2============
+Mean Absolute Error: 6.589029788970947
+Mean Signed Deviation: -0.0777
+Mean Squared Error: 0.0195
+===========FL============
+Mean Absolute Error: 8.048908233642578
+Mean Signed Deviation: -0.0859
+Mean Squared Error: 0.0165
+===========ST============
+Mean Absolute Error: 4.013988494873047
+Mean Signed Deviation: -0.0946
+Mean Squared Error: 0.0153
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.782735586166382
+Mean Signed Deviation: -0.0805
+Mean Squared Error: 0.0223
+============RPM=============
+Mean Absolute Error: 2.1206376552581787
+Mean Signed Deviation: -0.0503
+Mean Squared Error: 0.0069
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     1 14287     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     2 14259     2]]
+Accuracy: 0.4299
+Precision: 0.4846
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 2.708066463470459
+Mean Signed Deviation: -0.0576
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 544.369140625
+Mean Signed Deviation: 0.2583
+Mean Squared Error: 0.0669
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.61244201660156
+Mean Signed Deviation: 0.0243
+Mean Squared Error: 0.0013
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1210.565185546875
+
+ LOSS: 1258.1522216796875
+
+ LOSS: 1222.907958984375
+
+ LOSS: 1270.884033203125
+
+ LOSS: 1282.1185302734375
+
+ LOSS: 1347.694580078125
+
+ LOSS: 1242.0487060546875
+
+ LOSS: 1318.1806640625
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  481 1047    0]
+ [   0 1490 1568    0]
+ [   0  345 3671    0]
+ [   0    0   55    0]]
+Accuracy: 0.5962
+Precision: 0.6787
+Recall: 0.5962
+F1 Score: 0.5247
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.8214285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 15.224156379699707
+Mean Signed Deviation: 0.0039
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0012135886
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.905669212341309
+Mean Signed Deviation: -0.0543
+Mean Squared Error: 0.0225
+===========I2============
+Mean Absolute Error: 6.562721252441406
+Mean Signed Deviation: -0.0762
+Mean Squared Error: 0.0189
+===========FL============
+Mean Absolute Error: 8.913312911987305
+Mean Signed Deviation: -0.0923
+Mean Squared Error: 0.0162
+===========ST============
+Mean Absolute Error: 3.929682731628418
+Mean Signed Deviation: -0.0991
+Mean Squared Error: 0.0164
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.8479459285736084
+Mean Signed Deviation: -0.0861
+Mean Squared Error: 0.0219
+============RPM=============
+Mean Absolute Error: 2.0849645137786865
+Mean Signed Deviation: -0.0496
+Mean Squared Error: 0.0068
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.8477940559387207
+Mean Signed Deviation: -0.0579
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 556.3348999023438
+Mean Signed Deviation: 0.2593
+Mean Squared Error: 0.0675
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.21510696411133
+Mean Signed Deviation: 0.0238
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4398  9355     0     0]
+ [    0 11329 14517     0     0]
+ [    0  2819 25784     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5405
+Precision: 0.6513
+Recall: 0.5405
+F1 Score: 0.4650
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.6726296958855098
+LAP TIME METRICS:
+Mean Absolute Error: 16.293895721435547
+Mean Signed Deviation: 0.0053
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.000823169
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.319618225097656
+Mean Signed Deviation: -0.0689
+Mean Squared Error: 0.0230
+===========I2============
+Mean Absolute Error: 6.562467575073242
+Mean Signed Deviation: -0.0769
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 8.082131385803223
+Mean Signed Deviation: -0.0861
+Mean Squared Error: 0.0165
+===========ST============
+Mean Absolute Error: 3.9690985679626465
+Mean Signed Deviation: -0.0932
+Mean Squared Error: 0.0150
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.7931888103485107
+Mean Signed Deviation: -0.0812
+Mean Squared Error: 0.0224
+============RPM=============
+Mean Absolute Error: 2.101771116256714
+Mean Signed Deviation: -0.0496
+Mean Squared Error: 0.0069
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     1 14287     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     2 14259     2]]
+Accuracy: 0.4299
+Precision: 0.4846
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 2.713533878326416
+Mean Signed Deviation: -0.0579
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 545.0125732421875
+Mean Signed Deviation: 0.2587
+Mean Squared Error: 0.0672
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.37419128417969
+Mean Signed Deviation: 0.0242
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1315.8372802734375
+
+ LOSS: 1235.4761962890625
+
+ LOSS: 1244.0379638671875
+
+ LOSS: 1439.6282958984375
+
+ LOSS: 1166.0123291015625
+
+ LOSS: 1233.08447265625
+
+ LOSS: 1378.9061279296875
+
+ LOSS: 1151.861572265625
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  481 1047    0]
+ [   0 1485 1573    0]
+ [   0  342 3674    0]
+ [   0    0   55    0]]
+Accuracy: 0.5959
+Precision: 0.6786
+Recall: 0.5959
+F1 Score: 0.5244
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.8214285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 15.22677230834961
+Mean Signed Deviation: 0.0039
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0012981162
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.901312351226807
+Mean Signed Deviation: -0.0541
+Mean Squared Error: 0.0225
+===========I2============
+Mean Absolute Error: 6.559316635131836
+Mean Signed Deviation: -0.0761
+Mean Squared Error: 0.0189
+===========FL============
+Mean Absolute Error: 8.902606964111328
+Mean Signed Deviation: -0.0922
+Mean Squared Error: 0.0162
+===========ST============
+Mean Absolute Error: 3.929948091506958
+Mean Signed Deviation: -0.0991
+Mean Squared Error: 0.0164
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.8476622104644775
+Mean Signed Deviation: -0.0861
+Mean Squared Error: 0.0219
+============RPM=============
+Mean Absolute Error: 2.0868914127349854
+Mean Signed Deviation: -0.0497
+Mean Squared Error: 0.0068
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.8464956283569336
+Mean Signed Deviation: -0.0579
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 556.4317626953125
+Mean Signed Deviation: 0.2593
+Mean Squared Error: 0.0675
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.169036865234375
+Mean Signed Deviation: 0.0237
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4387  9366     0     0]
+ [    0 11296 14550     0     0]
+ [    0  2797 25806     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5404
+Precision: 0.6513
+Recall: 0.5404
+F1 Score: 0.4648
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.665474060822898
+LAP TIME METRICS:
+Mean Absolute Error: 16.367420196533203
+Mean Signed Deviation: 0.0053
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0008320126
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.329601287841797
+Mean Signed Deviation: -0.0686
+Mean Squared Error: 0.0229
+===========I2============
+Mean Absolute Error: 6.5708746910095215
+Mean Signed Deviation: -0.0768
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 8.09548282623291
+Mean Signed Deviation: -0.0859
+Mean Squared Error: 0.0165
+===========ST============
+Mean Absolute Error: 3.966946601867676
+Mean Signed Deviation: -0.0932
+Mean Squared Error: 0.0150
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.7943530082702637
+Mean Signed Deviation: -0.0811
+Mean Squared Error: 0.0224
+============RPM=============
+Mean Absolute Error: 2.103865385055542
+Mean Signed Deviation: -0.0497
+Mean Squared Error: 0.0069
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     1 14287     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     2 14259     2]]
+Accuracy: 0.4299
+Precision: 0.4846
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 2.727989912033081
+Mean Signed Deviation: -0.0578
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 544.654296875
+Mean Signed Deviation: 0.2588
+Mean Squared Error: 0.0672
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.32398223876953
+Mean Signed Deviation: 0.0241
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1335.245361328125
+
+ LOSS: 1238.3583984375
+
+ LOSS: 1221.6224365234375
+
+ LOSS: 1247.3095703125
+
+ LOSS: 1342.8167724609375
+
+ LOSS: 1256.564453125
+
+ LOSS: 1288.5655517578125
+
+ LOSS: 1201.370849609375
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  480 1048    0]
+ [   0 1484 1574    0]
+ [   0  342 3674    0]
+ [   0    0   55    0]]
+Accuracy: 0.5958
+Precision: 0.6785
+Recall: 0.5958
+F1 Score: 0.5243
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.8214285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 15.228153228759766
+Mean Signed Deviation: 0.0039
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0013004537
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.900516033172607
+Mean Signed Deviation: -0.0541
+Mean Squared Error: 0.0225
+===========I2============
+Mean Absolute Error: 6.556565761566162
+Mean Signed Deviation: -0.0760
+Mean Squared Error: 0.0189
+===========FL============
+Mean Absolute Error: 8.900327682495117
+Mean Signed Deviation: -0.0921
+Mean Squared Error: 0.0162
+===========ST============
+Mean Absolute Error: 3.9298903942108154
+Mean Signed Deviation: -0.0991
+Mean Squared Error: 0.0164
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.847536325454712
+Mean Signed Deviation: -0.0861
+Mean Squared Error: 0.0219
+============RPM=============
+Mean Absolute Error: 2.086704730987549
+Mean Signed Deviation: -0.0497
+Mean Squared Error: 0.0068
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.8465442657470703
+Mean Signed Deviation: -0.0579
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 556.457763671875
+Mean Signed Deviation: 0.2594
+Mean Squared Error: 0.0675
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.15420150756836
+Mean Signed Deviation: 0.0237
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4384  9369     0     0]
+ [    0 11287 14559     0     0]
+ [    0  2796 25807     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5402
+Precision: 0.6512
+Recall: 0.5402
+F1 Score: 0.4646
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.6663685152057246
+LAP TIME METRICS:
+Mean Absolute Error: 16.2668514251709
+Mean Signed Deviation: 0.0053
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.000827296
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.293594837188721
+Mean Signed Deviation: -0.0686
+Mean Squared Error: 0.0229
+===========I2============
+Mean Absolute Error: 6.567363739013672
+Mean Signed Deviation: -0.0767
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 8.08946418762207
+Mean Signed Deviation: -0.0859
+Mean Squared Error: 0.0165
+===========ST============
+Mean Absolute Error: 3.9621615409851074
+Mean Signed Deviation: -0.0932
+Mean Squared Error: 0.0150
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.7919704914093018
+Mean Signed Deviation: -0.0811
+Mean Squared Error: 0.0224
+============RPM=============
+Mean Absolute Error: 2.102558135986328
+Mean Signed Deviation: -0.0496
+Mean Squared Error: 0.0069
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     1 14287     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     2 14259     2]]
+Accuracy: 0.4299
+Precision: 0.4846
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 2.7110393047332764
+Mean Signed Deviation: -0.0578
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 544.8037719726562
+Mean Signed Deviation: 0.2588
+Mean Squared Error: 0.0672
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.30635452270508
+Mean Signed Deviation: 0.0241
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1317.5401611328125
+
+ LOSS: 1312.087890625
+
+ LOSS: 1172.4747314453125
+
+ LOSS: 1243.7498779296875
+
+ LOSS: 1314.590576171875
+
+ LOSS: 1152.6441650390625
+
+ LOSS: 1307.315673828125
+
+ LOSS: 1200.8267822265625
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  480 1048    0]
+ [   0 1484 1574    0]
+ [   0  341 3675    0]
+ [   0    0   55    0]]
+Accuracy: 0.5959
+Precision: 0.6787
+Recall: 0.5959
+F1 Score: 0.5244
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.8214285714285714
+LAP TIME METRICS:
+Mean Absolute Error: 15.228484153747559
+Mean Signed Deviation: 0.0039
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.001309839
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 5.900442600250244
+Mean Signed Deviation: -0.0541
+Mean Squared Error: 0.0225
+===========I2============
+Mean Absolute Error: 6.556370258331299
+Mean Signed Deviation: -0.0760
+Mean Squared Error: 0.0189
+===========FL============
+Mean Absolute Error: 8.900147438049316
+Mean Signed Deviation: -0.0921
+Mean Squared Error: 0.0162
+===========ST============
+Mean Absolute Error: 3.929885149002075
+Mean Signed Deviation: -0.0991
+Mean Squared Error: 0.0164
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.84751296043396
+Mean Signed Deviation: -0.0861
+Mean Squared Error: 0.0219
+============RPM=============
+Mean Absolute Error: 2.086745262145996
+Mean Signed Deviation: -0.0497
+Mean Squared Error: 0.0068
+============GEAR============
+Confusion Matrix:
+[[   0    0    0    0    0    0   60    0]
+ [   0    0    0    0    0    0  197    0]
+ [   0    0    0    0    0    0   18    0]
+ [   0    0    0    0    0    0   80    0]
+ [   0    0    0    0    0    0  658    0]
+ [   0    0    0    0    0    1 1862    2]
+ [   0    0    0    0    0    0 4229    0]
+ [   0    0    0    0    0    0 1550    0]]
+Accuracy: 0.4886
+Precision: 0.5712
+Recall: 0.4886
+F1 Score: 0.3209
+==========THROTTLE==========
+Mean Absolute Error: 2.846398115158081
+Mean Signed Deviation: -0.0579
+Mean Squared Error: 0.0164
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 556.45849609375
+Mean Signed Deviation: 0.2594
+Mean Squared Error: 0.0675
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 57.153564453125
+Mean Signed Deviation: 0.0237
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[8405    0]
+ [ 252    0]]
+Accuracy: 0.9709
+Precision: 0.9717
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[    0  4384  9369     0     0]
+ [    0 11286 14560     0     0]
+ [    0  2796 25807     0     0]
+ [    0     1   446     0     0]
+ [    0     0    13     0     0]]
+Accuracy: 0.5402
+Precision: 0.6512
+Recall: 0.5402
+F1 Score: 0.4646
+MANDATORY STOPS MADE:
+1.0
+AVERAGE STOPS MADE:
+1.6663685152057246
+LAP TIME METRICS:
+Mean Absolute Error: 16.280576705932617
+Mean Signed Deviation: 0.0053
+Mean Squared Error: 0.0004
+AVERAGE PIT STOP TIME DIFFERENCE:
+-0.0008260458
+SPEED METRICS:
+===========I1============
+Mean Absolute Error: 6.305535316467285
+Mean Signed Deviation: -0.0686
+Mean Squared Error: 0.0229
+===========I2============
+Mean Absolute Error: 6.558531761169434
+Mean Signed Deviation: -0.0767
+Mean Squared Error: 0.0193
+===========FL============
+Mean Absolute Error: 8.08283805847168
+Mean Signed Deviation: -0.0859
+Mean Squared Error: 0.0165
+===========ST============
+Mean Absolute Error: 3.9633805751800537
+Mean Signed Deviation: -0.0932
+Mean Squared Error: 0.0150
+TELEMETRY METRICS:
+===========SPEED============
+Mean Absolute Error: 2.792703151702881
+Mean Signed Deviation: -0.0811
+Mean Squared Error: 0.0224
+============RPM=============
+Mean Absolute Error: 2.101980686187744
+Mean Signed Deviation: -0.0496
+Mean Squared Error: 0.0069
+============GEAR============
+Confusion Matrix:
+[[    0     0     0     0     0     0     0     1     0]
+ [    0     0     0     0     0     0     0   485     0]
+ [    0     0     0     0     0     0     0  1588     0]
+ [    0     0     0     0     0     0     0   263     0]
+ [    0     0     0     0     0     0     0   801     0]
+ [    0     0     0     0     0     0     0  7457     1]
+ [    0     0     0     0     0     0     1 14287     1]
+ [    0     0     0     0     0     0     2 29512     0]
+ [    0     0     0     0     0     0     2 14259     2]]
+Accuracy: 0.4299
+Precision: 0.4846
+Recall: 0.4299
+F1 Score: 0.2585
+==========THROTTLE==========
+Mean Absolute Error: 2.7133538722991943
+Mean Signed Deviation: -0.0578
+Mean Squared Error: 0.0168
+DISTANCE TO DRIVER AHEAD METRICS:
+Mean Absolute Error: 544.642822265625
+Mean Signed Deviation: 0.2588
+Mean Squared Error: 0.0672
+DISTANCE TO DRIVER BEHIND METRICS:
+Mean Absolute Error: 55.312530517578125
+Mean Signed Deviation: 0.0241
+Mean Squared Error: 0.0012
+PIT DECISION METRICS:
+Confusion Matrix:
+[[66666     0]
+ [ 1996     0]]
+Accuracy: 0.9709
+Precision: 0.9718
+Recall: 0.9709
+F1 Score: 0.9566
+AUC Score: 0.5000
+
+ LOSS: 1394.0120849609375
+
+ LOSS: 1164.755859375
+
+ LOSS: 1184.92724609375
+
+ LOSS: 1271.1474609375
+
+ LOSS: 1181.8275146484375
+
+ LOSS: 1309.2589111328125
+
+ LOSS: 1061.6556396484375

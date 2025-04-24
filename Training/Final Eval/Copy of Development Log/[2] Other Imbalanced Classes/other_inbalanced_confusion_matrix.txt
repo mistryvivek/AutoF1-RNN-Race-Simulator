@@ -1,0 +1,379 @@
+Unnormalised:
+
+Epoch 10:
+
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[  0  55 120   0]
+ [  0 146 574   0]
+ [  0  15 759   0]
+ [  0   0  48   0]]
+Accuracy: 0.5271
+Precision: 0.6413
+Recall: 0.5271
+F1 Score: 0.4316
+MANDATORY STOPS MADE:
+0.9655172413793104
+AVERAGE STOPS MADE:
+0.9655172413793104
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  342  746    0]
+ [   0 1233 3629    0]
+ [   0  220 7785    0]
+ [   0    0  167    0]]
+Accuracy: 0.6386
+Precision: 0.6833
+Recall: 0.6386
+F1 Score: 0.5616
+MANDATORY STOPS MADE:
+0.9704641350210971
+AVERAGE STOPS MADE:
+0.9789029535864979
+
+Epoch 8:
+
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[  0  36 139   0]
+ [  0  72 648   0]
+ [  0   9 765   0]
+ [  0   0  48   0]]
+Accuracy: 0.4875
+Precision: 0.6035
+Recall: 0.4875
+F1 Score: 0.3627
+MANDATORY STOPS MADE:
+0.9310344827586207
+AVERAGE STOPS MADE:
+0.9310344827586207
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  224  864    0]
+ [   0  737 4125    0]
+ [   0  113 7892    0]
+ [   0    0  167    0]]
+Accuracy: 0.6110
+Precision: 0.6680
+Recall: 0.6110
+F1 Score: 0.5105
+MANDATORY STOPS MADE:
+0.9662447257383966
+AVERAGE STOPS MADE:
+0.9662447257383966
+
+No weights:
+
+Epoch 10:
+
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[  0  36 139   0]
+ [  0  72 648   0]
+ [  0   9 765   0]
+ [  0   0  48   0]]
+Accuracy: 0.4875
+Precision: 0.6035
+Recall: 0.4875
+F1 Score: 0.3627
+MANDATORY STOPS MADE:
+0.9310344827586207
+AVERAGE STOPS MADE:
+0.9310344827586207
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  224  864    0]
+ [   0  737 4125    0]
+ [   0  113 7892    0]
+ [   0    0  167    0]]
+Accuracy: 0.6110
+Precision: 0.6680
+Recall: 0.6110
+F1 Score: 0.5105
+MANDATORY STOPS MADE:
+0.9662447257383966
+AVERAGE STOPS MADE:
+0.9662447257383966
+
+Epoch 8:
+
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[  0  15 117   0]
+ [  0 103 496   0]
+ [  0  21 958   0]
+ [  0   0  25   0]]
+Accuracy: 0.6115
+Precision: 0.6850
+Recall: 0.6115
+F1 Score: 0.5162
+MANDATORY STOPS MADE:
+0.896551724137931
+AVERAGE STOPS MADE:
+0.9655172413793104
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  230  938    0]
+ [   0  831 4098    0]
+ [   0  100 7654    0]
+ [   0    0  192    0]]
+Accuracy: 0.6042
+Precision: 0.6761
+Recall: 0.6042
+F1 Score: 0.5054
+MANDATORY STOPS MADE:
+0.9282700421940928
+AVERAGE STOPS MADE:
+0.9535864978902954
+
+Normalised Weights:
+
+Epoch 10:
+
+Confusion Matrix:
+[[  0  52  83  14]
+ [  0 113 371  34]
+ [  0  67 854   0]
+ [  0   0   7  15]]
+Accuracy: 0.6099
+Precision: 0.6240
+Recall: 0.6099
+F1 Score: 0.5387
+MANDATORY STOPS MADE:
+0.9655172413793104
+AVERAGE STOPS MADE:
+1.206896551724138
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  481  631   21]
+ [   0 1471 3247  150]
+ [   0  332 7651    0]
+ [   0    0   93   89]]
+Accuracy: 0.6502
+Precision: 0.6767
+Recall: 0.6502
+F1 Score: 0.5864
+MANDATORY STOPS MADE:
+0.9493670886075949
+AVERAGE STOPS MADE:
+1.3375527426160339
+
+Epoch 8:
+
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[  0  46 103   0]
+ [  0  80 438   0]
+ [  0  33 888   0]
+ [  0   0  22   0]]
+Accuracy: 0.6012
+Precision: 0.6182
+Recall: 0.6012
+F1 Score: 0.5044
+MANDATORY STOPS MADE:
+0.9655172413793104
+AVERAGE STOPS MADE:
+0.9655172413793104
+COMPOUND DECISION METRICS:
+Confusion Matrix:
+[[   0  392  741    0]
+ [   0  983 3885    0]
+ [   0  184 7799    0]
+ [   0    0  182    0]]
+Accuracy: 0.6199
+Precision: 0.6581
+Recall: 0.6199
+F1 Score: 0.5320
+MANDATORY STOPS MADE:
+0.9324894514767933
+AVERAGE STOPS MADE:
+1.2531645569620253
+
+Gear:
+
+Normalised Scales:
+
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[  0   0   0   1   0   6   8]
+ [  0   2   0   1  12  16   2]
+ [  0   0   0   2   1   1   0]
+ [  0   0   0  94  35   4   0]
+ [  0   2   0  16 425 101   0]
+ [  0   0   0   0  21 533   2]
+ [  0  35   0   0   0  51 405]]
+Accuracy: 0.8215
+Precision: 0.8398
+Recall: 0.8215
+F1 Score: 0.8187
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0    4    0    0    4   13   33   21]
+ [   0   35    0    0   18   87  177   31]
+ [   0    0    0    0    1    4    9    0]
+ [   0    0    0    0    1    9   23    0]
+ [   0  103    0    0  674  416   42    1]
+ [   0   94    0    0   94 2408 1029    0]
+ [   0    5    0    0    9  249 5583   15]
+ [   0  445    0    0    2    0  339 2060]]
+Accuracy: 0.7665
+Precision: 0.7975
+Recall: 0.7665
+F1 Score: 0.7664
+
+Epoch 8:
+
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[  0   1   0   1   0   6   7]
+ [  0   8   0   1   6  16   2]
+ [  0   0   0   2   1   1   0]
+ [  0  13   0  94  22   4   0]
+ [  0 110   0  16 317 101   0]
+ [  0   3   0   0  18 533   2]
+ [  0  49   0   1   0  52 389]]
+Accuracy: 0.7551
+Precision: 0.8424
+Recall: 0.7551
+F1 Score: 0.7764
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0   11    0    0    4    6   33   21]
+ [   0   79    0    0   18   47  178   26]
+ [   0    0    0    0    1    4    9    0]
+ [   0    1    0    0    1    8   23    0]
+ [   0  418    0    0  669  100   48    1]
+ [   0  680    0    0   94 1821 1030    0]
+ [   0   64    0    0    1  187 5595   14]
+ [   0  883    0    0    1    0  358 1604]]
+Accuracy: 0.6958
+Precision: 0.8170
+Recall: 0.6958
+F1 Score: 0.7218
+
+Unnormalized Scale:
+
+Epoch 10:
+
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[  0   0   0   0   0   1   5   1]
+ [  0   1   0   0   1  12  29   6]
+ [  0   0   0   0   0   0   2   0]
+ [  0   0   0   0   1   1   4   0]
+ [  0   0   0   0  55  61   1   0]
+ [  0   0   0   0   0 332  41   0]
+ [  0  17   0   0   0  24 776   0]
+ [  0  34   0   0   0   0  88 180]]
+Accuracy: 0.8033
+Precision: 0.8231
+Recall: 0.8033
+F1 Score: 0.7917
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0    3    0    0    5   15   32   31]
+ [   0   26    0    0   16   96  155   40]
+ [   0    0    0    0    1    4    8    0]
+ [   0    0    0    0    2    6   23    0]
+ [   0   36    0    0  575  447   60   28]
+ [   0    6    0    0  110 2528  999    2]
+ [   0  251    0    0    0  210 5199   16]
+ [   0  392    0    0    0    0  360 2406]]
+Accuracy: 0.7619
+Precision: 0.7941
+Recall: 0.7619
+F1 Score: 0.7645
+
+Epoch 8:
+
+Confusion Matrix:
+[[  0   0   0   0   0   1   5   1]
+ [  0   2   0   0   1  12  29   5]
+ [  0   0   0   0   0   0   2   0]
+ [  0   0   0   0   1   1   4   0]
+ [  0   0   0   0  48  61   1   7]
+ [  0   0   0   0   0 332  41   0]
+ [  0  21   0   0   0  24 772   0]
+ [  0  36   0   0   0   2 101 163]]
+Accuracy: 0.7872
+Precision: 0.8100
+Recall: 0.7872
+F1 Score: 0.7736
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0    5    0    0    5   15   33   28]
+ [   0   33    0    0   13   96  159   32]
+ [   0    0    0    0    1    4    8    0]
+ [   0    0    0    0    2    6   23    0]
+ [   0    0    0    0  484  448  104  110]
+ [   0    0    0    0   99 2536 1001    9]
+ [   0  223    0    0    0  210 5227   16]
+ [   0  710    0    0    0   36  369 2043]]
+Accuracy: 0.7328
+Precision: 0.7798
+Recall: 0.7328
+F1 Score: 0.7378
+
+No weights:
+
+Epoch 10:
+
+Confusion Matrix:
+[[  0   0   0   0   4   1   4   3]
+ [  0   0   0   0   2   8  23   4]
+ [  0   0   0   0   0   0   1   0]
+ [  0   0   0   0   0   1   3   0]
+ [  0   0   0   0 158  13   5  14]
+ [  0   0   0   0  46 211  95   1]
+ [  0   0   0   0   0  25 737   9]
+ [  0   0   0   0   0   0 117 275]]
+Accuracy: 0.7847
+Precision: 0.8032
+Recall: 0.7847
+F1 Score: 0.7668
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0    0    0    0    1   11   36   27]
+ [   0    0    0    0   13  101  178   52]
+ [   0    0    0    0    1    4    9    0]
+ [   0    0    0    0    1   10   22    0]
+ [   0    0    0    0  496  508   80   47]
+ [   0    0    0    0   53 2624  985   16]
+ [   0    0    0    0    0  183 5539   14]
+ [   0    0    0    0    0    0  383 2594]]
+Accuracy: 0.8045
+Precision: 0.8196
+Recall: 0.8045
+F1 Score: 0.7842
+
+Epoch 8:
+
+Confusion Matrix:
+[[  0   0   0   0   0   1   8   3]
+ [  0   0   0   0   0   8  26   3]
+ [  0   0   0   0   0   0   1   0]
+ [  0   0   0   0   0   1   3   0]
+ [  0   0   0   0   0  13 176   1]
+ [  0   0   0   0   0 211 142   0]
+ [  0   0   0   0   0  25 737   9]
+ [  0   0   0   0   0   0 125 267]]
+Accuracy: 0.6903
+Precision: 0.7772
+Recall: 0.6903
+F1 Score: 0.6391
+GEAR DECISION METRICS:
+Confusion Matrix:
+[[   0    0    0    0    0   11   37   27]
+ [   0    0    0    0    0  101  191   52]
+ [   0    0    0    0    0    4   10    0]
+ [   0    0    0    0    0    8   25    0]
+ [   0    0    0    0    0  495  622   14]
+ [   0    0    0    0    0 2623 1044   11]
+ [   0    0    0    0    0  175 5550   11]
+ [   0    0    0    0    0    0  429 2548]]
+Accuracy: 0.7664
+Precision: 0.8074
+Recall: 0.7664
+F1 Score: 0.7203
+
+* Add the model diagrams.

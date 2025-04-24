@@ -1,0 +1,3152 @@
+nohup: ignoring input
+Loading ../Data Gathering/dataset2023.csv
+Loading ../Data Gathering/dataset2021.csv
+Loading ../Data Gathering/dataset2019.csv
+Loading ../Data Gathering/dataset2022.csv
+Loading ../Data Gathering/dataset2018.csv
+Loading ../Data Gathering/dataset2024.csv
+Loading ../Data Gathering/dataset2020.csv
+HIDDEN_SIZE 128, EPOCHS 2, LR 0.005, NUM_LAYERS 2, DROPOUT 0.2, WEIGHT_DECAY 0.005, BATCH_SIZE 12, EMBEDDING_DIMS 8 
+
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([34.4340], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.8646], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.3345], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.9099], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.3378], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.2730], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.2086], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1287    0 1980  496    0    0    0    0    0]
+ [ 102    0  302   65    0    0    0    0    0]
+ [  96    0  304   64    0    0    0    0    0]
+ [ 178    0  603  130    0    0    0    0    0]
+ [ 156    0  533  126    0    0    0    0    0]
+ [ 134    0  431  107    0    0    0    0    0]
+ [ 115    0  306   89    0    0    0    0    0]
+ [ 172    0  414  148    0    0    0    0    0]
+ [  50    0   86   46    0    0    0    0    0]]
+Accuracy: 0.2020
+Precision: 0.6594
+Recall: 0.2020
+F1 Score: 0.2067
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[11209     0 15856  3157     0     0     0     0     0]
+ [  916     0  2479   464     0     0     0     0     0]
+ [  861     0  2445   433     0     0     0     0     0]
+ [ 1635     0  4723   859     0     0     0     0     0]
+ [ 1452     0  4274   816     0     0     0     0     0]
+ [ 1255     0  3529   670     0     0     0     0     0]
+ [ 1019     0  2688   584     0     0     0     0     0]
+ [ 1384     0  3343   799     0     0     0     0     0]
+ [  568     0  1144   229     0     0     0     0     0]]
+Accuracy: 0.2110
+Precision: 0.6585
+Recall: 0.2110
+F1 Score: 0.2128
+
+ LOSS: tensor([26.9386], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.9544], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9206], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9591], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.8803], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.2689], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.4591], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.2284], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[   0    0 1250 2329  184    0    0    0    0]
+ [   0    0   93  350   26    0    0    0    0]
+ [   0    0   90  347   27    0    0    0    0]
+ [   0    0  172  672   67    0    0    0    0]
+ [   0    0  138  617   60    0    0    0    0]
+ [   0    0  113  510   49    0    0    0    0]
+ [   0    0   92  373   45    0    0    0    0]
+ [   0    0  144  556   34    0    0    0    0]
+ [   0    0   19  163    0    0    0    0    0]]
+Accuracy: 0.0965
+Precision: 0.7691
+Recall: 0.0965
+F1 Score: 0.0336
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[    0     0  9772 18941  1509     0     0     0     0]
+ [    0     0   733  2799   327     0     0     0     0]
+ [    0     0   701  2714   324     0     0     0     0]
+ [    0     0  1252  5326   639     0     0     0     0]
+ [    0     0  1034  4892   616     0     0     0     0]
+ [    0     0   896  4073   485     0     0     0     0]
+ [    0     0   659  3212   420     0     0     0     0]
+ [    0     0   772  4088   666     0     0     0     0]
+ [    0     0   125  1614   202     0     0     0     0]]
+Accuracy: 0.0966
+Precision: 0.7710
+Recall: 0.0966
+F1 Score: 0.0342
+
+ LOSS: tensor([30.5738], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.1488], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.7322], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.1615], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.8435], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.0035], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.4536], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.1510], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2676    0  805  282    0    0    0    0    0]
+ [ 274    0  111   84    0    0    0    0    0]
+ [ 257    0  120   87    0    0    0    0    0]
+ [ 475    0  227  209    0    0    0    0    0]
+ [ 409    0  195  211    0    0    0    0    0]
+ [ 326    0  166  180    0    0    0    0    0]
+ [ 268    0  109  133    0    0    0    0    0]
+ [ 408    0  151  175    0    0    0    0    0]
+ [  80    0   56   46    0    0    0    0    0]]
+Accuracy: 0.3527
+Precision: 0.6447
+Recall: 0.3527
+F1 Score: 0.2892
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[22027     0  5549  2646     0     0     0     0     0]
+ [ 2209     0  1044   606     0     0     0     0     0]
+ [ 2152     0   975   612     0     0     0     0     0]
+ [ 3931     0  1959  1326     1     0     0     0     0]
+ [ 3365     0  1746  1431     0     0     0     0     0]
+ [ 2744     0  1503  1206     1     0     0     0     0]
+ [ 2051     0  1236  1004     0     0     0     0     0]
+ [ 2398     0  1667  1461     0     0     0     0     0]
+ [  845     0   554   542     0     0     0     0     0]]
+Accuracy: 0.3537
+Precision: 0.5544
+Recall: 0.3537
+F1 Score: 0.2897
+
+ LOSS: tensor([22.9579], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.9954], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.5321], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.5703], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.6242], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([30.0642], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.8717], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.0764], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1646    0  753 1364    0    0    0    0    0]
+ [ 108    0   85  274    2    0    0    0    0]
+ [ 102    0   86  270    6    0    0    0    0]
+ [ 195    0  160  544   12    0    0    0    0]
+ [ 162    0  138  496   19    0    0    0    0]
+ [ 138    0  108  402   24    0    0    0    0]
+ [ 102    0   86  306   16    0    0    0    0]
+ [ 182    0  103  427   22    0    0    0    0]
+ [  45    0   20  104   13    0    0    0    0]]
+Accuracy: 0.2694
+Precision: 0.6054
+Recall: 0.2694
+F1 Score: 0.2571
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[12328     0  6649 11234    11     0     0     0     0]
+ [  816     0   830  2184    29     0     0     0     0]
+ [  777     0   810  2097    55     0     0     0     0]
+ [ 1377     0  1520  4199   121     0     0     0     0]
+ [ 1151     0  1310  3902   179     0     0     0     0]
+ [ 1000     0  1021  3260   173     0     0     0     0]
+ [  803     0   787  2547   154     0     0     0     0]
+ [ 1156     0   933  3169   268     0     0     0     0]
+ [  640     0   240   937   124     0     0     0     0]]
+Accuracy: 0.2546
+Precision: 0.6080
+Recall: 0.2546
+F1 Score: 0.2465
+
+ LOSS: tensor([26.5931], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.6981], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.0255], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.3613], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.4392], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.5669], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9878], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.4826], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1526    0  404 1833    0    0    0    0    0]
+ [  89    0   41  329   10    0    0    0    0]
+ [  85    0   39  330   10    0    0    0    0]
+ [ 159    0   60  668   24    0    0    0    0]
+ [ 141    0   45  595   34    0    0    0    0]
+ [ 119    0   37  475   41    0    0    0    0]
+ [  98    0   18  354   40    0    0    0    0]
+ [ 175    0   29  486   44    0    0    0    0]
+ [  46    0    9  102   25    0    0    0    0]]
+Accuracy: 0.2661
+Precision: 0.6089
+Recall: 0.2661
+F1 Score: 0.2508
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[ 9977     0  3995 16235    15     0     0     0     0]
+ [  562     0   397  2814    86     0     0     0     0]
+ [  539     0   359  2759    82     0     0     0     0]
+ [ 1004     0   672  5347   194     0     0     0     0]
+ [  868     0   562  4806   306     0     0     0     0]
+ [  763     0   422  3980   289     0     0     0     0]
+ [  588     0   331  3102   270     0     0     0     0]
+ [  932     0   380  3730   484     0     0     0     0]
+ [  631     0    83  1024   203     0     0     0     0]]
+Accuracy: 0.2324
+Precision: 0.6132
+Recall: 0.2324
+F1 Score: 0.2226
+
+ LOSS: tensor([26.8735], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.9507], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.8380], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7321], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.3553], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.1937], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.1840], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5546], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1848    0  868 1047    0    0    0    0    0]
+ [ 122    0  103  242    2    0    0    0    0]
+ [ 110    0  106  244    4    0    0    0    0]
+ [ 204    0  204  489   14    0    0    0    0]
+ [ 176    0  162  457   20    0    0    0    0]
+ [ 139    0  137  368   28    0    0    0    0]
+ [ 113    0   94  278   25    0    0    0    0]
+ [ 204    0  111  390   29    0    0    0    0]
+ [  50    0   27   88   17    0    0    0    0]]
+Accuracy: 0.2891
+Precision: 0.6079
+Recall: 0.2891
+F1 Score: 0.2748
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[13736     0  6183 10298     5     0     0     0     0]
+ [  857     0   763  2214    25     0     0     0     0]
+ [  792     0   752  2157    38     0     0     0     0]
+ [ 1410     0  1397  4302   108     0     0     0     0]
+ [ 1215     0  1118  4061   148     0     0     0     0]
+ [ 1038     0   863  3383   170     0     0     0     0]
+ [  811     0   651  2658   171     0     0     0     0]
+ [ 1191     0   712  3338   285     0     0     0     0]
+ [  668     0   184   964   125     0     0     0     0]]
+Accuracy: 0.2753
+Precision: 0.6140
+Recall: 0.2753
+F1 Score: 0.2633
+
+ LOSS: tensor([26.6734], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.4605], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7979], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7662], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7361], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.4192], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.7078], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7795], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2450    0  572  741    0    0    0    0    0]
+ [ 165    0   95  209    0    0    0    0    0]
+ [ 155    0   88  218    3    0    0    0    0]
+ [ 268    0  195  437   11    0    0    0    0]
+ [ 227    0  172  403   13    0    0    0    0]
+ [ 184    0  140  325   23    0    0    0    0]
+ [ 143    0  104  245   18    0    0    0    0]
+ [ 243    0  139  332   20    0    0    0    0]
+ [  68    0   17   87   10    0    0    0    0]]
+Accuracy: 0.3507
+Precision: 0.6100
+Recall: 0.3507
+F1 Score: 0.3138
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[17878     0  4215  8126     3     0     0     0     0]
+ [ 1152     0   801  1896    10     0     0     0     0]
+ [ 1083     0   748  1880    28     0     0     0     0]
+ [ 1873     0  1511  3745    88     0     0     0     0]
+ [ 1574     0  1288  3575   105     0     0     0     0]
+ [ 1316     0   992  3012   134     0     0     0     0]
+ [ 1005     0   706  2454   126     0     0     0     0]
+ [ 1359     0   873  3074   220     0     0     0     0]
+ [  733     0   205   912    91     0     0     0     0]]
+Accuracy: 0.3267
+Precision: 0.6168
+Recall: 0.3267
+F1 Score: 0.2999
+
+ LOSS: tensor([24.8935], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.6384], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.5005], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.0077], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.3104], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.2994], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([21.5603], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.0389], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2642    0  495  626    0    0    0    0    0]
+ [ 192    0   80  197    0    0    0    0    0]
+ [ 181    0   74  206    3    0    0    0    0]
+ [ 321    0  154  425   11    0    0    0    0]
+ [ 263    0  143  396   13    0    0    0    0]
+ [ 208    0  125  317   22    0    0    0    0]
+ [ 158    0   93  242   17    0    0    0    0]
+ [ 262    0  127  326   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3702
+Precision: 0.6053
+Recall: 0.3702
+F1 Score: 0.3213
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19260     0  3366  7593     3     0     0     0     0]
+ [ 1307     0   693  1852     7     0     0     0     0]
+ [ 1224     0   671  1816    28     0     0     0     0]
+ [ 2125     0  1356  3650    86     0     0     0     0]
+ [ 1772     0  1195  3472   103     0     0     0     0]
+ [ 1486     0   883  2954   131     0     0     0     0]
+ [ 1148     0   622  2396   125     0     0     0     0]
+ [ 1507     0   778  3024   217     0     0     0     0]
+ [  767     0   194   890    90     0     0     0     0]]
+Accuracy: 0.3443
+Precision: 0.6128
+Recall: 0.3443
+F1 Score: 0.3083
+
+ LOSS: tensor([28.1105], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.0686], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.5314], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.0037], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.3121], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.4079], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.7371], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.2800], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2654    0  502  607    0    0    0    0    0]
+ [ 201    0   79  189    0    0    0    0    0]
+ [ 190    0   72  199    3    0    0    0    0]
+ [ 332    0  150  418   11    0    0    0    0]
+ [ 274    0  135  393   13    0    0    0    0]
+ [ 213    0  120  317   22    0    0    0    0]
+ [ 161    0   91  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  69    0   18   85   10    0    0    0    0]]
+Accuracy: 0.3705
+Precision: 0.6024
+Recall: 0.3705
+F1 Score: 0.3201
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19365     0  3355  7499     3     0     0     0     0]
+ [ 1350     0   668  1834     7     0     0     0     0]
+ [ 1273     0   639  1799    28     0     0     0     0]
+ [ 2194     0  1310  3628    85     0     0     0     0]
+ [ 1830     0  1164  3447   101     0     0     0     0]
+ [ 1515     0   868  2942   129     0     0     0     0]
+ [ 1179     0   605  2385   122     0     0     0     0]
+ [ 1554     0   735  3024   213     0     0     0     0]
+ [  770     0   192   890    89     0     0     0     0]]
+Accuracy: 0.3450
+Precision: 0.6104
+Recall: 0.3450
+F1 Score: 0.3076
+
+ LOSS: tensor([21.3464], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.8203], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.7825], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5946], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.7891], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.7665], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.9377], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([22.6198], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   79  189    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 332    0  151  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 161    0   91  241   17    0    0    0    0]
+ [ 264    0  128  323   19    0    0    0    0]
+ [  69    0   18   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6025
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19377     0  3354  7488     3     0     0     0     0]
+ [ 1354     0   665  1833     7     0     0     0     0]
+ [ 1276     0   642  1794    27     0     0     0     0]
+ [ 2203     0  1303  3626    85     0     0     0     0]
+ [ 1834     0  1163  3445   100     0     0     0     0]
+ [ 1515     0   871  2940   128     0     0     0     0]
+ [ 1183     0   601  2385   122     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([24.9864], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.1421], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5009], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.8622], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9912], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.3417], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.8176], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.1736], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 264    0  128  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1515     0   873  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([26.6579], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.9546], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.3993], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.3677], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.7925], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.1543], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([29.0512], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.6731], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1515     0   873  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([27.9728], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9057], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5889], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.7363], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.3374], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.8995], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.3739], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.5548], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1515     0   873  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([27.0076], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.8153], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.9592], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.2499], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.6185], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.7473], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.4748], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.0634], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1515     0   873  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([25.1321], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7057], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.4858], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.9448], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7800], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.9638], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.4042], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.2195], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  134  393   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1558     0   733  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([23.6515], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.7421], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.8109], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.6029], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.4124], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.7785], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([21.1626], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.3709], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([22.3956], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.2035], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.2787], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7024], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.2577], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.5994], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.9366], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.0232], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([25.2193], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.3213], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.0010], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.6063], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.3132], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.4550], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.7398], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([22.0360], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([25.5620], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.6356], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.6161], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.1025], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7362], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.3447], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.4425], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.0721], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2655    0  504  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3708
+Precision: 0.6024
+Recall: 0.3708
+F1 Score: 0.3202
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   666  1832     7     0     0     0     0]
+ [ 1277     0   645  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1183     0   602  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6101
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([23.9715], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.4372], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.6762], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.0346], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.3162], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.2607], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5488], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.5371], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2656    0  503  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3709
+Precision: 0.6024
+Recall: 0.3709
+F1 Score: 0.3203
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   667  1831     7     0     0     0     0]
+ [ 1278     0   644  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1184     0   601  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6100
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([24.8309], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.1601], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.9144], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.7844], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.3920], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.2314], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.0986], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.5083], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2656    0  503  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3709
+Precision: 0.6024
+Recall: 0.3709
+F1 Score: 0.3203
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   667  1831     7     0     0     0     0]
+ [ 1278     0   644  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1184     0   601  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6100
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([25.4067], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.1966], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.2689], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([24.6076], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.1549], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.3529], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.5827], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([30.5944], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2656    0  503  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3709
+Precision: 0.6024
+Recall: 0.3709
+F1 Score: 0.3203
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   667  1831     7     0     0     0     0]
+ [ 1278     0   644  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1184     0   601  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6100
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([26.0206], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.4404], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.5038], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([26.4034], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.2809], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([27.1171], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.4776], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([23.8900], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2656    0  503  604    0    0    0    0    0]
+ [ 201    0   80  188    0    0    0    0    0]
+ [ 190    0   74  197    3    0    0    0    0]
+ [ 333    0  150  417   11    0    0    0    0]
+ [ 275    0  135  392   13    0    0    0    0]
+ [ 214    0  120  316   22    0    0    0    0]
+ [ 162    0   90  241   17    0    0    0    0]
+ [ 265    0  127  323   19    0    0    0    0]
+ [  68    0   19   85   10    0    0    0    0]]
+Accuracy: 0.3709
+Precision: 0.6024
+Recall: 0.3709
+F1 Score: 0.3203
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19379     0  3353  7487     3     0     0     0     0]
+ [ 1354     0   667  1831     7     0     0     0     0]
+ [ 1278     0   644  1790    27     0     0     0     0]
+ [ 2207     0  1299  3626    85     0     0     0     0]
+ [ 1836     0  1161  3445   100     0     0     0     0]
+ [ 1516     0   872  2938   128     0     0     0     0]
+ [ 1184     0   601  2385   121     0     0     0     0]
+ [ 1559     0   732  3022   213     0     0     0     0]
+ [  772     0   190   890    89     0     0     0     0]]
+Accuracy: 0.3452
+Precision: 0.6100
+Recall: 0.3452
+F1 Score: 0.3076
+
+ LOSS: tensor([26.7594], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([25.6815], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([28.2081], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([7.6125], grad_fn=<AddBackward0>)
+HIDDEN_SIZE 128, EPOCHS 2, LR 0.005, NUM_LAYERS 2, DROPOUT 0.2, WEIGHT_DECAY 0.005, BATCH_SIZE 24, EMBEDDING_DIMS 8 
+
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([68.7332], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([61.7777], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.7198], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.4785], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([53.4962], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.8341], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.3521], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[ 221    0 1770 1683    0    0    0    0    0]
+ [  11    0  214  276    0    0    0    0    0]
+ [  10    0  201  272    0    0    0    0    0]
+ [  20    0  391  532    0    0    0    0    0]
+ [  18    0  341  479    0    0    0    0    0]
+ [  17    0  284  406    0    0    0    0    0]
+ [  16    0  209  337    0    0    0    0    0]
+ [  41    0  277  426    0    0    0    0    0]
+ [  65    0   79  108    0    0    0    0    0]]
+Accuracy: 0.1096
+Precision: 0.6524
+Recall: 0.1096
+F1 Score: 0.0719
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[ 2708     0 14928 12486     0     0     0     0     0]
+ [  140     0  1761  1969     0     0     0     0     0]
+ [  134     0  1714  1897     0     0     0     0     0]
+ [  253     0  3302  3679     0     0     0     0     0]
+ [  231     0  2921  3428     0     0     0     0     0]
+ [  211     0  2348  2940     0     0     0     0     0]
+ [  204     0  1775  2319     0     0     0     0     0]
+ [  452     0  2174  2920     0     0     0     0     0]
+ [  448     0   512   806     0     0     0     0     0]]
+Accuracy: 0.1180
+Precision: 0.6648
+Recall: 0.1180
+F1 Score: 0.0929
+
+ LOSS: tensor([59.3691], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.4261], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([58.0875], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([58.3297], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.3923], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([53.0488], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.9831], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([58.2181], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1911    0 1763    0    0    0    0    0    0]
+ [ 195    0  302    4    0    0    0    0    0]
+ [ 182    0  297    4    0    0    0    0    0]
+ [ 340    0  575   28    0    0    0    0    0]
+ [ 285    0  514   39    0    0    0    0    0]
+ [ 222    0  448   37    0    0    0    0    0]
+ [ 154    0  371   37    0    0    0    0    0]
+ [ 191    0  469   84    0    0    0    0    0]
+ [  96    0  118   38    0    0    0    0    0]]
+Accuracy: 0.2569
+Precision: 0.6542
+Recall: 0.2569
+F1 Score: 0.2337
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[16578     0 13541     3     0     0     0     0     0]
+ [ 1557     0  2260    53     0     0     0     0     0]
+ [ 1489     0  2188    68     0     0     0     0     0]
+ [ 2680     0  4323   231     0     0     0     0     0]
+ [ 2329     0  3949   302     0     0     0     0     0]
+ [ 1921     0  3274   304     0     0     0     0     0]
+ [ 1450     0  2534   314     0     0     0     0     0]
+ [ 1869     0  3124   553     0     0     0     0     0]
+ [  775     0   736   255     0     0     0     0     0]]
+Accuracy: 0.2767
+Precision: 0.6537
+Recall: 0.2767
+F1 Score: 0.2506
+
+ LOSS: tensor([52.4058], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.6074], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([51.0271], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.9323], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.2600], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([52.4140], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.4142], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([50.8861], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2151    0 1523    0    0    0    0    0    0]
+ [ 200    0  293    8    0    0    0    0    0]
+ [ 183    0  287   13    0    0    0    0    0]
+ [ 335    0  541   67    0    0    0    0    0]
+ [ 294    0  460   84    0    0    0    0    0]
+ [ 239    0  398   70    0    0    0    0    0]
+ [ 165    0  330   67    0    0    0    0    0]
+ [ 220    0  363  161    0    0    0    0    0]
+ [ 117    0   83   52    0    0    0    0    0]]
+Accuracy: 0.2878
+Precision: 0.6643
+Recall: 0.2878
+F1 Score: 0.2562
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[19569     0 10547     6     0     0     0     0     0]
+ [ 1635     0  2132   103     0     0     0     0     0]
+ [ 1543     0  2064   138     0     0     0     0     0]
+ [ 2763     0  3913   558     0     0     0     0     0]
+ [ 2329     0  3494   757     0     0     0     0     0]
+ [ 1873     0  3025   601     0     0     0     0     0]
+ [ 1404     0  2311   583     0     0     0     0     0]
+ [ 1843     0  2750   953     0     0     0     0     0]
+ [  739     0   633   394     0     0     0     0     0]]
+Accuracy: 0.3232
+Precision: 0.6742
+Recall: 0.3232
+F1 Score: 0.2859
+
+ LOSS: tensor([53.1546], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([50.5033], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([53.0982], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.9112], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([53.2001], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.5088], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([50.3911], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([51.5889], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1538    0 2135    1    0    0    0    0    0]
+ [  91    0  337   71    2    0    0    0    0]
+ [  89    0  320   74    0    0    0    0    0]
+ [ 167    0  594  181    1    0    0    0    0]
+ [ 137    0  504  192    5    0    0    0    0]
+ [ 104    0  413  185    5    0    0    0    0]
+ [  88    0  282  184    8    0    0    0    0]
+ [ 126    0  290  322    6    0    0    0    0]
+ [  84    0   80   85    3    0    0    0    0]]
+Accuracy: 0.2348
+Precision: 0.6204
+Recall: 0.2348
+F1 Score: 0.2381
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[13740     0 16240   142     0     0     0     0     0]
+ [  855     0  2397   610     8     0     0     0     0]
+ [  826     0  2258   658     3     0     0     0     0]
+ [ 1490     0  4149  1578    17     0     0     0     0]
+ [ 1232     0  3516  1779    53     0     0     0     0]
+ [  992     0  2887  1580    40     0     0     0     0]
+ [  798     0  2129  1333    38     0     0     0     0]
+ [ 1175     0  2332  1970    69     0     0     0     0]
+ [  569     0   510   664    23     0     0     0     0]]
+Accuracy: 0.2568
+Precision: 0.6234
+Recall: 0.2568
+F1 Score: 0.2593
+
+ LOSS: tensor([46.5369], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([51.5565], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([49.4511], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([51.9650], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([52.0957], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([49.5128], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([52.5316], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.9664], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3615    0   59    0    0    0    0    0    0]
+ [ 322    0  141   35    3    0    0    0    0]
+ [ 292    0  139   52    0    0    0    0    0]
+ [ 527    0  263  141   12    0    0    0    0]
+ [ 430    0  253  137   18    0    0    0    0]
+ [ 320    0  244  121   22    0    0    0    0]
+ [ 224    0  188  129   21    0    0    0    0]
+ [ 275    0  194  235   40    0    0    0    0]
+ [ 130    0   53   50   19    0    0    0    0]]
+Accuracy: 0.4496
+Precision: 0.6013
+Recall: 0.4496
+F1 Score: 0.3389
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[29394     0   713    15     0     0     0     0     0]
+ [ 2497     0  1034   311    28     0     0     0     0]
+ [ 2319     0  1056   352    18     0     0     0     0]
+ [ 4236     0  1919   981    98     0     0     0     0]
+ [ 3565     0  1602  1286   127     0     0     0     0]
+ [ 2787     0  1447  1114   151     0     0     0     0]
+ [ 1967     0  1264   898   169     0     0     0     0]
+ [ 2404     0  1516  1348   278     0     0     0     0]
+ [  864     0   306   468   128     0     0     0     0]]
+Accuracy: 0.4596
+Precision: 0.5961
+Recall: 0.4596
+F1 Score: 0.3476
+
+ LOSS: tensor([50.9449], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([51.2837], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([48.1551], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([52.9738], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.0305], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.0146], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.3716], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([54.6536], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[1737    0 1060  877    0    0    0    0    0]
+ [  96    0   99  285   18    3    0    0    0]
+ [  90    0   87  284   22    0    0    0    0]
+ [ 156    0  159  542   75   11    0    0    0]
+ [ 134    0  112  499   80   13    0    0    0]
+ [ 114    0   71  435   74   13    0    0    0]
+ [  95    0   31  352   66   18    0    0    0]
+ [ 133    0   58  376  150   27    0    0    0]
+ [  91    0   23   89   38   11    0    0    0]]
+Accuracy: 0.2825
+Precision: 0.5579
+Recall: 0.2825
+F1 Score: 0.2755
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[15592     0  8436  6088     6     0     0     0     0]
+ [  826     0   789  2072   165    18     0     0     0]
+ [  778     0   706  2060   190    11     0     0     0]
+ [ 1382     0  1250  4009   534    59     0     0     0]
+ [ 1137     0   987  3666   695    95     0     0     0]
+ [  945     0   684  3081   699    90     0     0     0]
+ [  752     0   431  2452   523   140     0     0     0]
+ [ 1118     0   468  2895   863   202     0     0     0]
+ [  564     0   158   597   362    85     0     0     0]]
+Accuracy: 0.3072
+Precision: 0.5669
+Recall: 0.3072
+F1 Score: 0.3011
+
+ LOSS: tensor([47.5581], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([47.6138], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([53.6957], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([47.8112], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([56.3665], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([40.5433], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([55.0854], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([50.3466], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3138    0  357  179    0    0    0    0    0]
+ [ 260    0  104  121   12    4    0    0    0]
+ [ 231    0  108  121   20    3    0    0    0]
+ [ 405    0  212  244   64   18    0    0    0]
+ [ 310    0  191  241   69   27    0    0    0]
+ [ 228    0  152  241   61   25    0    0    0]
+ [ 167    0   95  210   61   29    0    0    0]
+ [ 219    0  101  239  130   55    0    0    0]
+ [ 108    0   34   54   32   24    0    0    0]]
+Accuracy: 0.4118
+Precision: 0.5442
+Recall: 0.4118
+F1 Score: 0.3449
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[26982     0  1844  1286     9     1     0     0     0]
+ [ 1923     0   804   954   144    45     0     0     0]
+ [ 1784     0   754  1030   135    42     0     0     0]
+ [ 3135     0  1435  2097   444   123     0     0     0]
+ [ 2522     0  1316  1900   656   186     0     0     0]
+ [ 1945     0  1055  1723   567   209     0     0     0]
+ [ 1372     0   828  1442   425   231     0     0     0]
+ [ 1659     0  1025  1736   748   378     0     0     0]
+ [  663     0   150   467   307   179     0     0     0]]
+Accuracy: 0.4471
+Precision: 0.5597
+Recall: 0.4471
+F1 Score: 0.3743
+
+ LOSS: tensor([51.4065], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([48.2105], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([45.6049], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([45.2188], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.9426], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.9286], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.0133], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([50.8247], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3439    0  166   62    7    0    0    0    0]
+ [ 246    0   70  123   35   24    3    0    0]
+ [ 212    0   88  116   38   29    0    0    0]
+ [ 356    0  163  231  103   85    5    0    0]
+ [ 267    0  112  263   99   82   15    0    0]
+ [ 196    0   86  233   95   89    8    0    0]
+ [ 148    0   51  164  103   85   11    0    0]
+ [ 182    0   57  178  125  176   26    0    0]
+ [  88    0   14   66   32   38   14    0    0]]
+Accuracy: 0.4546
+Precision: 0.5137
+Recall: 0.4546
+F1 Score: 0.3843
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[27699     0  1496   848    67    12     0     0     0]
+ [ 1878     0   497  1026   273   182    14     0     0]
+ [ 1741     0   454  1039   290   214     7     0     0]
+ [ 2980     0   906  1906   856   553    33     0     0]
+ [ 2356     0   773  1746   929   708    68     0     0]
+ [ 1746     0   654  1570   698   769    62     0     0]
+ [ 1194     0   483  1253   647   618   103     0     0]
+ [ 1510     0   436  1534   833  1053   180     0     0]
+ [  602     0   127   280   242   410   105     0     0]]
+Accuracy: 0.4640
+Precision: 0.5197
+Recall: 0.4640
+F1 Score: 0.3959
+
+ LOSS: tensor([46.8089], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([43.3350], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([43.7051], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.9494], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.6289], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.8395], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.9235], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.4828], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3581    0   33   49   11    0    0    0    0]
+ [ 296    0   34   80   47   41    3    0    0]
+ [ 270    0   35   79   51   39    9    0    0]
+ [ 454    0   70  190   82   95   52    0    0]
+ [ 350    0   56  185   96  101   50    0    0]
+ [ 277    0   34  148  102   95   51    0    0]
+ [ 177    0   52   98   81  101   53    0    0]
+ [ 191    0   56  135   90  155  117    0    0]
+ [  85    0   12   50   38   27   40    0    0]]
+Accuracy: 0.4653
+Precision: 0.4998
+Recall: 0.4653
+F1 Score: 0.3802
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[28667     0   385   779   235    51     5     0     0]
+ [ 2147     0   251   698   397   318    59     0     0]
+ [ 1985     0   214   715   425   316    90     0     0]
+ [ 3432     0   499  1354   833   797   319     0     0]
+ [ 2693     0   452  1277   771   995   392     0     0]
+ [ 2014     0   350  1174   718   798   445     0     0]
+ [ 1435     0   273   893   601   640   456     0     0]
+ [ 1646     0   370  1044   761   972   753     0     0]
+ [  605     0    76   202   197   319   367     0     0]]
+Accuracy: 0.4699
+Precision: 0.5034
+Recall: 0.4699
+F1 Score: 0.3913
+
+ LOSS: tensor([43.9893], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([45.4455], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.2262], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([48.3376], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.3080], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.6236], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([45.9788], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([49.2204], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3551    0   49   64    8    2    0    0    0]
+ [ 263    0   27   97   35   54   25    0    0]
+ [ 229    0   33   95   46   51   29    0    0]
+ [ 380    0   72  174  117  114   86    0    0]
+ [ 278    0   55  176  116  119   94    0    0]
+ [ 191    0   48  155   97  118   98    0    0]
+ [ 131    0   25  127   67  118   94    0    0]
+ [ 140    0   34  151   98  131  190    0    0]
+ [  70    0   12   45   31   45   49    0    0]]
+Accuracy: 0.4694
+Precision: 0.5210
+Recall: 0.4694
+F1 Score: 0.3979
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[28435     0   607   818   159    91    12     0     0]
+ [ 1894     0   246   753   303   458   216     0     0]
+ [ 1723     0   209   745   388   462   218     0     0]
+ [ 2904     0   451  1368   877  1019   615     0     0]
+ [ 2190     0   423  1273   872  1079   743     0     0]
+ [ 1628     0   271  1125   779   884   812     0     0]
+ [ 1058     0   266   857   617   769   731     0     0]
+ [ 1275     0   219  1083   776  1025  1168     0     0]
+ [  502     0    81   198   152   318   515     0     0]]
+Accuracy: 0.4733
+Precision: 0.5220
+Recall: 0.4733
+F1 Score: 0.4065
+
+ LOSS: tensor([36.6315], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([40.4373], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([39.7624], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([43.8097], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.2175], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.9956], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([46.3666], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([47.3969], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3605    0   28   31    8    2    0    0    0]
+ [ 303    0   19   75   35   44   25    0    0]
+ [ 273    0   19   66   48   50   27    0    0]
+ [ 463    0   56  133  102  103   86    0    0]
+ [ 327    0   48  164   85  124   90    0    0]
+ [ 232    0   41  147   86  101  100    0    0]
+ [ 154    0   21  109   84   96   98    0    0]
+ [ 176    0   32  127   88  138  183    0    0]
+ [  67    0   14   45   33   44   49    0    0]]
+Accuracy: 0.4643
+Precision: 0.4993
+Recall: 0.4643
+F1 Score: 0.3802
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[29093     0   306   504   140    68    11     0     0]
+ [ 2187     0   179   568   358   358   220     0     0]
+ [ 2012     0   153   535   433   406   206     0     0]
+ [ 3460     0   375  1058   787   943   611     0     0]
+ [ 2638     0   365  1115   685  1047   730     0     0]
+ [ 1831     0   319  1124   621   801   803     0     0]
+ [ 1181     0   242   872   609   669   725     0     0]
+ [ 1412     0   211  1043   716  1042  1122     0     0]
+ [  525     0    62   200   180   297   502     0     0]]
+Accuracy: 0.4736
+Precision: 0.5055
+Recall: 0.4736
+F1 Score: 0.3944
+
+ LOSS: tensor([43.1091], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([36.6163], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([37.3980], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.1094], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([41.7481], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([45.4653], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([6.6960], grad_fn=<AddBackward0>)
+HIDDEN_SIZE 128, EPOCHS 2, LR 0.005, NUM_LAYERS 2, DROPOUT 0.2, WEIGHT_DECAY 0.005, BATCH_SIZE 48, EMBEDDING_DIMS 8 
+
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([143.2657], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([123.3225], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([112.0459], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([108.6748], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([117.4498], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([107.7696], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([115.3023], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[ 237    0 2020 1428    0    0    0    0    0]
+ [  10    0  229  256    0    0    0    0    0]
+ [  10    0  225  243    0    0    0    0    0]
+ [  21    0  418  485    0    0    0    0    0]
+ [  21    0  370  469    0    0    0    0    0]
+ [  19    0  315  409    0    0    0    0    0]
+ [  10    0  235  333    0    0    0    0    0]
+ [  20    0  266  420    0    0    0    0    0]
+ [   2    0  126   77    0    0    0    0    0]]
+Accuracy: 0.1092
+Precision: 0.7167
+Recall: 0.1092
+F1 Score: 0.0757
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[ 3134     0 16728 10411     0     0     0     0     0]
+ [  163     0  1897  1802     0     0     0     0     0]
+ [  158     0  1796  1790     0     0     0     0     0]
+ [  282     0  3367  3577     0     0     0     0     0]
+ [  215     0  2947  3354     0     0     0     0     0]
+ [  188     0  2414  2778     0     0     0     0     0]
+ [  161     0  1807  2235     0     0     0     0     0]
+ [  300     0  2163  3021     0     0     0     0     0]
+ [  153     0   788   908     0     0     0     0     0]]
+Accuracy: 0.1241
+Precision: 0.7049
+Recall: 0.1241
+F1 Score: 0.1046
+
+ LOSS: tensor([109.8845], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([108.3142], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([106.2265], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([115.4712], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([111.7876], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([101.5585], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([109.6804], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([105.8842], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[2332    0  914  439    0    0    0    0    0]
+ [ 159    0  127  194   15    0    0    0    0]
+ [ 150    0  118  198   10    2    0    0    0]
+ [ 257    0  208  425   32    2    0    0    0]
+ [ 193    0  185  420   62    0    0    0    0]
+ [ 154    0  148  365   76    0    0    0    0]
+ [ 100    0   94  286   95    3    0    0    0]
+ [ 138    0   75  353  138    2    0    0    0]
+ [  45    0   37   93   29    1    0    0    0]]
+Accuracy: 0.3386
+Precision: 0.5427
+Recall: 0.3386
+F1 Score: 0.3140
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[20307     0  7498  2461     7     0     0     0     0]
+ [ 1315     0   949  1464   134     0     0     0     0]
+ [ 1205     0   891  1510   137     1     0     0     0]
+ [ 2091     0  1597  3122   380    36     0     0     0]
+ [ 1696     0  1243  2980   588     9     0     0     0]
+ [ 1295     0   962  2540   564    19     0     0     0]
+ [  970     0   605  2130   476    22     0     0     0]
+ [ 1216     0   781  2623   830    34     0     0     0]
+ [  533     0   204   779   319    14     0     0     0]]
+Accuracy: 0.3637
+Precision: 0.5649
+Recall: 0.3637
+F1 Score: 0.3361
+
+ LOSS: tensor([99.9252], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([105.4193], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([90.6544], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([93.8790], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([105.2865], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([109.2271], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([95.4115], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([99.3077], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3517   13   18  131    6    0    0    0    0]
+ [ 299   12    6  116   39   23    0    0    0]
+ [ 257   15   16  130   38   22    0    0    0]
+ [ 439   12   16  296  104   57    0    0    0]
+ [ 367    9   16  252  131   85    0    0    0]
+ [ 271   11   11  220  117  113    0    0    0]
+ [ 169   10   10  178   97  114    0    0    0]
+ [ 172    7    8  227  122  170    0    0    0]
+ [  50    3    3   80   36   33    0    0    0]]
+Accuracy: 0.4709
+Precision: 0.5111
+Recall: 0.4709
+F1 Score: 0.3849
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[28380   188   212  1429    59     5     0     0     0]
+ [ 2268    42    59  1006   272   215     0     0     0]
+ [ 2059    45    59  1049   319   213     0     0     0]
+ [ 3478   122   136  2034   869   587     0     0     0]
+ [ 2791    91   115  1760  1040   719     0     0     0]
+ [ 2112    75    76  1592   759   766     0     0     0]
+ [ 1440    57    67  1309   654   676     0     0     0]
+ [ 1605    58    58  1715   978  1070     0     0     0]
+ [  529    18    20   476   367   439     0     0     0]]
+Accuracy: 0.4716
+Precision: 0.5052
+Recall: 0.4716
+F1 Score: 0.3876
+
+ LOSS: tensor([93.8194], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([89.8161], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([90.5079], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([94.0609], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([84.7296], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([85.2523], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([89.4259], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([82.7591], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3151   42    0  409   51   32    0    0    0]
+ [ 217    9    0  109   44  102   14    0    0]
+ [ 199    3    0  104   58   94   20    0    0]
+ [ 322   13    0  201  123  206   59    0    0]
+ [ 228   11    0  192  108  245   76    0    0]
+ [ 161    0    0  158   89  231  104    0    0]
+ [ 102    2    0  102   69  213   90    0    0]
+ [  87    5    0   98  112  249  155    0    0]
+ [  51    3    0   30   21   76   24    0    0]]
+Accuracy: 0.4369
+Precision: 0.5181
+Recall: 0.4369
+F1 Score: 0.3893
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[25114   477     0  3945   537   194     6     0     0]
+ [ 1662    53     0   807   391   812   137     0     0]
+ [ 1478    39     0   789   411   842   185     0     0]
+ [ 2517    76     0  1468   741  1953   471     0     0]
+ [ 1905    71     0  1315   755  1897   573     0     0]
+ [ 1313    54     0  1079   739  1543   652     0     0]
+ [  882    28     0   667   668  1361   597     0     0]
+ [  973    50     0   854   753  1938   916     0     0]
+ [  401    19     0   208   204   610   407     0     0]]
+Accuracy: 0.4309
+Precision: 0.5190
+Recall: 0.4309
+F1 Score: 0.3876
+
+ LOSS: tensor([86.3740], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([90.1037], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([79.4382], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([81.2022], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([88.0465], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([78.6440], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([89.7750], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([79.7152], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[3466   24    0  159   31    5    0    0    0]
+ [ 226   13    0  109   52   95    0    0    0]
+ [ 201    7    0  109   57  104    0    0    0]
+ [ 326   11    0  213  129  245    0    0    0]
+ [ 236   16    0  175  126  307    0    0    0]
+ [ 155   10    0  156  104  318    0    0    0]
+ [  93    8    0  124   71  282    0    0    0]
+ [  86    5    0  124  100  391    0    0    0]
+ [  37    5    0   30   34   99    0    0    0]]
+Accuracy: 0.4768
+Precision: 0.5908
+Recall: 0.4768
+F1 Score: 0.4069
+LAP TILL PIT DECISION METRICS:
+Confusion Matrix:
+[[27800   255     0  1666   327   225     0     0     0]
+ [ 1750    70     0   745   411   886     0     0     0]
+ [ 1517    53     0   800   400   974     0     0     0]
+ [ 2511   118     0  1572   799  2226     0     0     0]
+ [ 1872   100     0  1325   947  2272     0     0     0]
+ [ 1234    75     0  1120   857  2094     0     0     0]
+ [  752    67     0   867   623  1894     0     0     0]
+ [  766    63     0  1013   896  2746     0     0     0]
+ [  258    20     0   203   229  1139     0     0     0]]
+Accuracy: 0.4739
+Precision: 0.5926
+Recall: 0.4739
+F1 Score: 0.4106
+
+ LOSS: tensor([81.0553], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([78.6833], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([84.5392], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([81.8556], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([90.4131], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([84.4653], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([84.8287], grad_fn=<AddBackward0>)
+No gradient found for laps_till_pit_predictor.1.weight
+No gradient found for laps_till_pit_predictor.1.bias
+No gradient found for laps_till_pit_predictor.4.weight
+No gradient found for laps_till_pit_predictor.4.bias
+
+ LOSS: tensor([44.4921], grad_fn=<AddBackward0>)

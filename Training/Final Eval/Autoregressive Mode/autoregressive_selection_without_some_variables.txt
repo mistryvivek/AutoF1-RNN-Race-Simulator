@@ -1,0 +1,24 @@
+LSTM - Dataset 2 (Without Pit Now and Distance Ahead)
+Total simulations 139
+Percentage of faster simulations: 97.12%
+Mode of pits: 67
+Mean of pits: 58.45
+IQR of pits: 15.0
+Mode of compound switches: 1
+Mean of compound switches: 0.99
+IQR of compound switches: 1.0
+Percentage of wet races with wet tyre usage: 35.71% with the sample size being 14
+Percentage of simulations leading to disqualification: 34.53%
+Percentage of simulations where a pit stop results in a tire change 3.6734693877551026 with the sample size being 245
+GRU - Dataset 4 (Without Pit Now and Distance Ahead)
+Total simulations 67
+Percentage of faster simulations: 95.52%
+Mode of pits: 68
+Mean of pits: 59.55
+IQR of pits: 14.5
+Mode of compound switches: 0
+Mean of compound switches: 0.48
+IQR of compound switches: 1.0
+Percentage of wet races with wet tyre usage: 0.00% with the sample size being 7
+Percentage of simulations leading to disqualification: 46.27%
+Percentage of simulations where a pit stop results in a tire change 1.5384615384615385 with the sample size being 130
